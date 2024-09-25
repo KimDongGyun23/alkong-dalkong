@@ -3,9 +3,9 @@
 import { useFormContext } from 'react-hook-form'
 
 import { BottomSheet, Label, SubHeader } from '@/components'
-import { ALARM_TIME } from '@/constants'
 import { useSelectAlarmTime } from '@/features'
 import type { ClinicBottomSheetType } from '@/types'
+import { ALARM_TIME } from '@/utility/constants'
 
 export const AlarmBottomSheet = ({ section, isShowing, onClickScrim }: ClinicBottomSheetType) => {
   const { setValue } = useFormContext()

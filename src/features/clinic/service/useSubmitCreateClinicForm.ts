@@ -3,10 +3,10 @@ import { useParams, useRouter } from 'next/navigation'
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 
-import { ALARM_TIME } from '@/constants'
 import { useCreateClinicInfo } from '@/features'
 import { useCalendarActions } from '@/store/stores'
 import type { ClinicFormType } from '@/types'
+import { ALARM_TIME } from '@/utility/constants'
 
 dayjs.extend(customParseFormat)
 

@@ -3,8 +3,8 @@
 import type { MouseEventHandler } from 'react'
 import Link from 'next/link'
 
-import { zIndex } from '@/constants'
 import { useUserStore } from '@/store/stores'
+import { zIndex } from '@/utility/constants'
 
 import { Profile } from './Profile'
 

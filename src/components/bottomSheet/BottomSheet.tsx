@@ -2,8 +2,8 @@
 import { type ComponentProps, type MouseEventHandler, useEffect } from 'react'
 import { m, type Variants } from 'framer-motion'
 
-import { zIndex } from '@/constants'
 import { useScrollLock } from '@/hooks'
+import { zIndex } from '@/utility/constants'
 
 import { Icon } from '../icons'
 import { AnimatePortal } from '../portal/AnimatePortal'

@@ -7,7 +7,7 @@ import { useStateMachine } from 'little-state-machine'
 import { Button, InputGroup } from '@/components'
 import Label from '@/components/label/Label'
 import { useCheckDuplicateId } from '@/store/queries/useAuth'
-import { persistSignUpForm } from '@/utils'
+import { persistSignUpForm } from '@/utility/utils'
 
 export const AccountStep = () => {
   const { watch, getValues, setError, clearErrors, trigger, reset } = useFormContext()

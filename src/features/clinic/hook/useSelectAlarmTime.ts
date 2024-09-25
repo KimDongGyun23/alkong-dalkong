@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 
-import { ALARM_TIME } from '@/constants'
+import { ALARM_TIME } from '@/utility/constants'
 
 export const useSelectAlarmTime = () => {
   const [selectedTime, setSelectedTime] = useState<string>(ALARM_TIME[5])

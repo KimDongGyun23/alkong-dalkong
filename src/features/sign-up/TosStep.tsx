@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 
 import { BottomSheet, Button, Icon, InputGroup } from '@/components'
-import { tos } from '@/constants'
 import { useBoolean, useToggle } from '@/hooks'
+import { tos } from '@/utility/constants'
 
 export const TosStep = () => {
   const { watch } = useFormContext()

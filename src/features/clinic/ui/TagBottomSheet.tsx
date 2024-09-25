@@ -4,9 +4,9 @@ import React from 'react'
 import { useFormContext } from 'react-hook-form'
 
 import { ActionTag, BottomSheet, Label, SubHeader } from '@/components'
-import { CLINIC_TAGS } from '@/constants'
 import { useTagToggle } from '@/features'
 import type { ClinicBottomSheetType } from '@/types'
+import { CLINIC_TAGS } from '@/utility/constants'
 
 type ToggledTagListProps = {
   selectedTags: string[]

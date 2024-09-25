@@ -2,7 +2,7 @@ import React from 'react'
 import dayjs from 'dayjs'
 
 import { useCalendarActions, useCurrentDate, useScheduledDays } from '@/store/stores/calendarStore'
-import { checkCalendarDateStyle } from '@/utils'
+import { checkCalendarDateStyle } from '@/utility/utils'
 
 type DateItemProps = {
   indexOfDate: number

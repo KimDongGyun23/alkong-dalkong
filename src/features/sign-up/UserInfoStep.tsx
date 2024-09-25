@@ -6,7 +6,7 @@ import { useStateMachine } from 'little-state-machine'
 
 import { Button, InputGroup } from '@/components'
 import Label from '@/components/label/Label'
-import { persistSignUpForm } from '@/utils'
+import { persistSignUpForm } from '@/utility/utils'
 
 export const UserInfoStep = () => {
   const { watch, trigger, getValues, reset } = useFormContext()

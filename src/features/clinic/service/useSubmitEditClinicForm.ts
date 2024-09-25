@@ -2,10 +2,10 @@
 import { useParams, useRouter } from 'next/navigation'
 import dayjs from 'dayjs'
 
-import { ALARM_TIME } from '@/constants'
 import { useEditClinicInfo } from '@/features'
 import { useCalendarActions } from '@/store/stores'
 import type { ClinicFormType } from '@/types'
+import { ALARM_TIME } from '@/utility/constants'
 
 /**
  * @description

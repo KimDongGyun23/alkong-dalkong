@@ -1,6 +1,6 @@
 'use client'
-import { HOURS, MINUTES } from '@/constants'
 import { useSelectedTime, useSelectedTimeActions } from '@/store/stores/timeStore'
+import { HOURS, MINUTES } from '@/utility/constants'
 
 import { Slider } from './Slider'
 

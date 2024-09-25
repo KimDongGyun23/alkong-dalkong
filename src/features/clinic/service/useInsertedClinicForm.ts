@@ -3,9 +3,9 @@ import { useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import dayjs from 'dayjs'
 
-import { ALARM_TIME } from '@/constants'
 import { useClinicInfo } from '@/features'
 import { useClinicForm } from '@/schema'
+import { ALARM_TIME } from '@/utility/constants'
 
 /**
  * @description
