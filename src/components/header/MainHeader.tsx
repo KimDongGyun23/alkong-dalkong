@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 
-import { useUserStore } from '@/store'
+import { useUserStore } from '@/store/stores'
 
 import { Icon } from '../icons'
 import { Profile } from '../profile/Profile'

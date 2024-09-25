@@ -2,7 +2,7 @@
 
 import { BottomNav, Calendar, Profile } from '@/components'
 import { ScheduleList, useMonthlyScheduleList } from '@/features'
-import { useUserStore } from '@/store'
+import { useUserStore } from '@/store/stores'
 
 export const ClinicClientPage = () => {
   const { user } = useUserStore()

@@ -4,7 +4,7 @@ import dayjs from 'dayjs'
 
 import { ALARM_TIME } from '@/constants'
 import { useEditClinicInfo } from '@/features'
-import { useCalendarActions } from '@/store'
+import { useCalendarActions } from '@/store/stores'
 import type { ClinicFormType } from '@/types'
 
 /**

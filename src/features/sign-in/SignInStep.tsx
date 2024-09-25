@@ -6,9 +6,9 @@ import { useRouter } from 'next/navigation'
 
 import Logo from '@/assets/logo.png'
 import { Button, DevTool, InputGroup } from '@/components'
-import { useSignIn } from '@/hooks'
 import { useLoginForm } from '@/schema'
-import { useUserStore } from '@/store'
+import { useSignIn } from '@/store/queries/useAuth'
+import { useUserStore } from '@/store/stores'
 import type { LoginFormType } from '@/types'
 
 export const SignInStep = () => {

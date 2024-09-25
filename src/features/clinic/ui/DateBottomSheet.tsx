@@ -5,7 +5,7 @@ import dayjs from 'dayjs'
 
 import { BottomSheet, Calendar, Label, SubHeader, TimeSlider } from '@/components'
 import { useFormattedVisitDate } from '@/features'
-import { useCalendarActions, useCurrentDate } from '@/store'
+import { useCalendarActions, useCurrentDate } from '@/store/stores'
 import type { ClinicBottomSheetType } from '@/types'
 
 const DateBottomSheetHeader = ({

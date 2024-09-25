@@ -2,7 +2,7 @@
 import type { PropsWithChildren } from 'react'
 import { useFormContext } from 'react-hook-form'
 
-import { useAllChecked, useCheckBoxList, useCheckListActions } from '@/store/checkBoxStore'
+import { useAllChecked, useCheckBoxList, useCheckListActions } from '@/store/stores/checkBoxStore'
 import type { CheckBoxSectionType } from '@/types/common'
 
 import { Icon } from '../icons'

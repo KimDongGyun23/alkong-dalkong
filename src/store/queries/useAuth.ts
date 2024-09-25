@@ -2,8 +2,9 @@ import type { UseMutationOptions } from '@tanstack/react-query'
 import { useMutation } from '@tanstack/react-query'
 import type { AxiosError } from 'axios'
 
-import { checkDuplicateId, signIn, signOut, signUp } from '@/apis'
 import type { SignInRequest, SignInResponse, SignUpRequest } from '@/types'
+
+import { checkDuplicateId, signIn, signOut, signUp } from './auth'
 
 const ACCESS_TOKEN = process.env.NEXT_PUBLIC_ACCESS_TOKEN
 const REFRESH_TOKEN = process.env.NEXT_PUBLIC_REFRESH_TOKEN

@@ -1,7 +1,7 @@
 'use client'
 import dayjs from 'dayjs'
 
-import { useCurrentDate } from '@/store/calendarStore'
+import { useCurrentDate } from '@/store/stores/calendarStore'
 
 import { DateItem } from './DateItem'
 

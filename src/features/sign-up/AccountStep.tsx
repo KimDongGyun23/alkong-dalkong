@@ -6,7 +6,7 @@ import { useStateMachine } from 'little-state-machine'
 
 import { Button, InputGroup } from '@/components'
 import Label from '@/components/label/Label'
-import { useCheckDuplicateId } from '@/hooks'
+import { useCheckDuplicateId } from '@/store/queries/useAuth'
 import { persistSignUpForm } from '@/utils'
 
 export const AccountStep = () => {

@@ -4,7 +4,7 @@ import { useParams, useRouter } from 'next/navigation'
 
 import { ActionTag, Label } from '@/components'
 import { ScheduleItem } from '@/features'
-import { useCurrentDate } from '@/store'
+import { useCurrentDate } from '@/store/stores'
 import type { ScheduleType } from '@/types'
 
 type ClinicListProps = {

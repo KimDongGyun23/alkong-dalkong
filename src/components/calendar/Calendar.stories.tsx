@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import type { Meta, StoryFn } from '@storybook/react'
 
-import { useCalendarActions } from '@/store'
+import { useCalendarActions } from '@/store/stores'
 
 import { Calendar } from './Calendar'
 

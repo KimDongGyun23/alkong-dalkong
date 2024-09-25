@@ -1,7 +1,7 @@
 'use client'
 import dayjs from 'dayjs'
 
-import { useCalendarActions, useCurrentDate } from '@/store/calendarStore'
+import { useCalendarActions, useCurrentDate } from '@/store/stores/calendarStore'
 
 import { Icon } from '../icons'
 

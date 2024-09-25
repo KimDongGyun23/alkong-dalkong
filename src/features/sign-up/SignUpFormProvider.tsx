@@ -6,8 +6,8 @@ import { useRouter } from 'next/navigation'
 import { createStore, StateMachineProvider } from 'little-state-machine'
 
 import { DevTool } from '@/components'
-import { useSignUp } from '@/hooks'
 import { useSignupForm } from '@/schema'
+import { useSignUp } from '@/store/queries/useAuth'
 import type { SignupFormType } from '@/types'
 
 export const SignUpFormProvider = ({ children }: PropsWithChildren) => {

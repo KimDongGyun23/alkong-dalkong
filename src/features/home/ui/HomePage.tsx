@@ -3,7 +3,7 @@
 import { DashBoardTemplate, HelperBox } from '@/features'
 import { ClinicSection, HealthSection, MedicineSection } from '@/features'
 import { HealthInfo, MedicineInfo, RecentMedicalInfo, UpcomingMedicalInfo } from '@/features'
-import { useHome } from '@/hooks/apis/useHome'
+import { useHome } from '@/store/queries/useHome'
 
 export const HomePage = ({ userId }: { userId: string }) => {
   const { data: homePageData } = useHome(userId)

@@ -4,7 +4,7 @@ import { useParams } from 'next/navigation'
 import dayjs from 'dayjs'
 
 import { useClinicCalendar } from '@/features'
-import { useCalendarActions } from '@/store'
+import { useCalendarActions } from '@/store/stores'
 import type { ScheduleType } from '@/types'
 
 /**

@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 
 import type { SignUpRequest } from '@/types'
 
-import { api } from '.'
+import { api } from '../../apis'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 

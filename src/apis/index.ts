@@ -8,6 +8,3 @@ export const api = new HttpClient({
     'Content-Type': 'application/json',
   },
 })
-
-export * from './auth'
-export * from './home'
