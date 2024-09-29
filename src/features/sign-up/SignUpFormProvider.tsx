@@ -5,14 +5,13 @@ import { FormProvider } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { createStore, StateMachineProvider } from 'little-state-machine'
 
-import { DevTool } from '@/components'
 import { useSignUp } from '@/store/queries/useAuth'
 import type { SignupFormType } from '@/types'
 import { useSignupForm } from '@/utility/schema'
 
 export const SignUpFormProvider = ({ children }: PropsWithChildren) => {
   const formMethod = useSignupForm()
-  const { handleSubmit, control } = formMethod
+  const { handleSubmit } = formMethod
 
   const router = useRouter()
 
@@ -43,7 +42,6 @@ export const SignUpFormProvider = ({ children }: PropsWithChildren) => {
       <FormProvider {...formMethod}>
         <form onSubmit={handleSubmit(signUpHandler)}>{children}</form>
       </FormProvider>
-      <DevTool control={control} />
     </StateMachineProvider>
   )
 }

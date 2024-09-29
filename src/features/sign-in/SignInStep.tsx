@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
 import Logo from '@/assets/logo.png'
-import { Button, DevTool, InputGroup } from '@/components'
+import { Button, InputGroup } from '@/components'
 import { useSignIn } from '@/store/queries/useAuth'
 import { useUserStore } from '@/store/stores'
 import type { LoginFormType } from '@/types'
@@ -13,7 +13,7 @@ import { useLoginForm } from '@/utility/schema'
 
 export const SignInStep = () => {
   const formMethod = useLoginForm()
-  const { handleSubmit, control } = formMethod
+  const { handleSubmit } = formMethod
 
   const { user, setUser } = useUserStore()
 
@@ -57,7 +57,6 @@ export const SignInStep = () => {
       <button type="button" className="text-white" onClick={handleSignUp}>
         처음이신가요? 회원가입하기
       </button>
-      <DevTool control={control} />
     </>
   )
 }
