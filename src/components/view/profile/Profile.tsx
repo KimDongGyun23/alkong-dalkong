@@ -1,11 +1,13 @@
 'use client'
 import type { MouseEventHandler } from 'react'
 
+import { useUserStore } from '@/store/stores'
+
 import { Icon } from '../icons'
 
 type ProfileProps = ProfileVariantProps & {
   onClickProfile?: VoidFunction
-  name: string
+  name?: string
 }
 
 type ProfileVariantProps = {
@@ -15,9 +17,10 @@ type ProfileVariantProps = {
 }
 
 export const Profile = ({ onClickProfile, name, ...styleProps }: ProfileProps) => {
+  const { user } = useUserStore()
   const { bgColor, textColor = 'text-gray-6', size = 'md' } = styleProps
 
-  const displayName = name.slice(-2)
+  const displayName = name ? name.slice(-2) : user.name.slice(-2)
 
   const handleClickProfile: MouseEventHandler<HTMLButtonElement> = () => {
     if (onClickProfile) onClickProfile()

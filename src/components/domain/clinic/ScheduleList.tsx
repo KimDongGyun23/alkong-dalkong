@@ -3,13 +3,8 @@
 import { useParams, useRouter } from 'next/navigation'
 
 import { ActionTag, Label } from '@/components'
-import { ScheduleItem } from '@/features'
+import { ScheduleItem, useMonthlyScheduleList } from '@/features'
 import { useCurrentDate } from '@/store/stores'
-import type { ScheduleType } from '@/types'
-
-type ClinicListProps = {
-  scheduleList: ScheduleType[]
-}
 
 const ScheduleListHeader = () => {
   const { userId } = useParams<{ userId: string }>()
@@ -27,8 +22,10 @@ const ScheduleListHeader = () => {
   )
 }
 
-export const ScheduleList = ({ scheduleList }: ClinicListProps) => {
+export const ScheduleList = () => {
   const selectedDate = useCurrentDate()
+  const scheduleList = useMonthlyScheduleList()
+
   const todaySchedules = scheduleList.filter((item) => item.hospitalDate.startsWith(selectedDate))
 
   return (
