@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
-import type { SignUpRequest } from '@/types'
+import type { SignInRequest, SignInRequest, SignUpRequest } from '@/types'
 
 import { api } from '../../utility/apis'
 
@@ -15,7 +15,7 @@ const signInConfig = {
   withCredentials: true,
 }
 
-export const signIn = async (request: SignUpRequest) => {
+export const signIn = async (request: SignInRequest) => {
   const res = await axios.post(`/user/login`, request, signInConfig)
 
   const refreshToken = Cookies.get('refresh')

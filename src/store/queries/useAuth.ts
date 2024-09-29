@@ -1,26 +1,34 @@
+import { useRouter } from 'next/navigation'
 import type { UseMutationOptions } from '@tanstack/react-query'
 import { useMutation } from '@tanstack/react-query'
 import type { AxiosError } from 'axios'
 
-import type { SignInRequest, SignInResponse, SignUpRequest } from '@/types'
+import type { SignUpRequest } from '@/types'
+
+import { useUserStore } from '../stores'
 
 import { checkDuplicateId, signIn, signOut, signUp } from './auth'
 
 const ACCESS_TOKEN = process.env.NEXT_PUBLIC_ACCESS_TOKEN
 const REFRESH_TOKEN = process.env.NEXT_PUBLIC_REFRESH_TOKEN
 
-export const useSignIn = (
-  options?: UseMutationOptions<SignInResponse, AxiosError, SignInRequest>,
-) =>
-  useMutation({
+export const useSignIn = () => {
+  const router = useRouter()
+  const { setUser } = useUserStore()
+
+  return useMutation({
     mutationFn: signIn,
-    ...options,
-    onSuccess: async (data, ...rest) => {
-      localStorage.setItem(ACCESS_TOKEN, data.accessToken)
-      localStorage.setItem(REFRESH_TOKEN, data.refreshToken)
-      options?.onSuccess?.({ ...data }, ...rest)
+    onSuccess: async ({ accessToken, refreshToken, ...rest }) => {
+      localStorage.setItem(ACCESS_TOKEN, accessToken)
+      localStorage.setItem(REFRESH_TOKEN, refreshToken)
+      setUser({ ...rest })
+      router.push(`/home/${rest.userId}`)
+    },
+    onError: (error) => {
+      console.log(error.message)
     },
   })
+}
 
 export const useCheckDuplicateId = (
   options?: UseMutationOptions<unknown, AxiosError, { id: string }>,

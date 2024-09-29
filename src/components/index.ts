@@ -2,6 +2,7 @@
 export * from './container/HomeClientPage'
 
 // domain
+export * from './domain/auth/SignInForm'
 export * from './domain/home/ClinicSection'
 export * from './domain/home/MedicineSection'
 export * from './domain/home/WeightSection'
