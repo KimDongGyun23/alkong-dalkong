@@ -12,7 +12,7 @@ import {
   useSubmitCreateClinicForm,
 } from '@/features'
 import { useToggle } from '@/hooks'
-import { useClinicForm } from '@/schema'
+import { useClinicForm } from '@/utility/schema'
 
 export const ClinicCreateClientPage = () => {
   const router = useRouter()

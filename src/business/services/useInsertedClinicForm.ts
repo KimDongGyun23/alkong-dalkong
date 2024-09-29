@@ -4,8 +4,8 @@ import { useParams } from 'next/navigation'
 import dayjs from 'dayjs'
 
 import { useClinicInfo } from '@/features'
-import { useClinicForm } from '@/schema'
 import { ALARM_TIME } from '@/utility/constants'
+import { useClinicForm } from '@/utility/schema'
 
 /**
  * @description

@@ -1,11 +1,7 @@
 import { ClinicClientPage } from '@/features'
 
 const Clinic = () => {
-  return (
-    <>
-      <ClinicClientPage />
-    </>
-  )
+  return <ClinicClientPage />
 }
 
 export default Clinic

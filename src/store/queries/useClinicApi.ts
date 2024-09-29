@@ -6,9 +6,15 @@ import {
   createClinicInfo,
   deleteClinicInfo,
   editClinicInfo,
-  queryKeys,
 } from '@/features'
 import type { ClinicCalendarRequest } from '@/types'
+
+export const queryKeys = {
+  all: ['clinic'] as const,
+  detail: (medicalId: number) => [...queryKeys.all, 'detail', medicalId] as const,
+  calendar: (userId: string, localDate: string) =>
+    [...queryKeys.all, 'calendar', userId, localDate] as const,
+}
 
 export const useClinicInfo = (medicalId: number) =>
   useQuery({
