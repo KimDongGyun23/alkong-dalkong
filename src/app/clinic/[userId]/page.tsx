@@ -1,5 +1,5 @@
 import { BottomNav, Calendar, Profile } from '@/components'
-import { ScheduleList } from '@/features'
+import { ScheduleListSection } from '@/features'
 
 const Clinic = () => {
   return (
@@ -14,7 +14,7 @@ const Clinic = () => {
         </section>
 
         <section className="mt-7">
-          <ScheduleList />
+          <ScheduleListSection />
         </section>
       </main>
       <BottomNav />

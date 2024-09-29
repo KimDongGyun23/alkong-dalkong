@@ -14,7 +14,6 @@ dayjs.locale('ko')
 type ScheduleItemProps = {
   item: ScheduleType
 }
-
 export const ScheduleItem = ({ item }: ScheduleItemProps) => {
   const { userId } = useParams<{ userId: string }>()
   const { medicalId, hospitalDate, hospitalName, medicalPart } = item
