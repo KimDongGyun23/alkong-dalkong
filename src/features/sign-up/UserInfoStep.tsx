@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useStateMachine } from 'little-state-machine'
 
 import { Button, InputGroup } from '@/components'
-import Label from '@/components/label/Label'
+import Label from '@/components/view/label/Label'
 import { persistSignUpForm } from '@/utility/utils'
 
 export const UserInfoStep = () => {

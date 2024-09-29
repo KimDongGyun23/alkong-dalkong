@@ -3,8 +3,8 @@ import { FormProvider } from 'react-hook-form'
 import { DevTool } from '@hookform/devtools'
 import type { Meta, StoryFn } from '@storybook/react'
 
-import { Button } from '@/components/button/Button'
-import { InputGroup } from '@/components/inputGroup'
+import { Button } from '@/components/view/button/Button'
+import { InputGroup } from '@/components/view/inputGroup'
 import type { LoginFormType } from '@/types'
 
 import { useLoginForm } from '../useLoginForm'

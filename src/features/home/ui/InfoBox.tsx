@@ -1,4 +1,4 @@
-import Tag from '@/components/tag/Tag'
+import Tag from '@/components/view/tag/Tag'
 import type {
   CurrentMedicineInfo,
   RecentMedicalInfoType,

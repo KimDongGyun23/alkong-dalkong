@@ -3,9 +3,9 @@ import { FormProvider } from 'react-hook-form'
 import { DevTool } from '@hookform/devtools'
 import type { Meta, StoryFn } from '@storybook/react'
 
-import { Button } from '@/components/button/Button'
-import { InputGroup } from '@/components/inputGroup'
-import Label from '@/components/label/Label'
+import { Button } from '@/components/view/button/Button'
+import { InputGroup } from '@/components/view/inputGroup'
+import Label from '@/components/view/label/Label'
 import type { AccountEditFormType } from '@/types'
 
 import { useAccountEditForm } from '../useAccountEditForm'

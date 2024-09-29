@@ -4,7 +4,7 @@ import { FormProvider } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 
 import { ActionTag, InputGroup, Label, Tag } from '@/components'
-import { MainHeader } from '@/components/header/MainHeader'
+import { MainHeader } from '@/components/view/header/MainHeader'
 import {
   AlarmBottomSheet,
   DateBottomSheet,
