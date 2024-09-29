@@ -9,11 +9,12 @@ import { useBoolean } from '@/hooks'
 
 export const ClinicInfoClientPage = () => {
   const router = useRouter()
-  const formMethod = useInsertedClinicForm()
-  const { getValues } = formMethod
+  const { userId, medicalId } = useParams<{ userId: string; medicalId: string }>()
 
   const [modalState, openModal, closeModal] = useBoolean(false)
-  const { userId, medicalId } = useParams<{ userId: string; medicalId: string }>()
+
+  const formMethod = useInsertedClinicForm()
+  const { getValues } = formMethod
 
   const handleClickModify = () => router.push(`/clinic/${userId}/edit/${medicalId}`)
 

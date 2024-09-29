@@ -12,6 +12,7 @@ type ClinicInfoModalProps = {
 export const ClinicInfoModal = ({ modalState, closeModal }: ClinicInfoModalProps) => {
   const router = useRouter()
   const { userId, medicalId } = useParams<{ userId: string; medicalId: string }>()
+
   const { mutate: deleteClinicInfo } = useDeleteClinicInfo()
 
   const handleClickDelete = () => {
