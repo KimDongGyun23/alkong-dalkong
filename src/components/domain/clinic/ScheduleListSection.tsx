@@ -2,10 +2,12 @@
 
 import { useParams, useRouter } from 'next/navigation'
 
+import { useMonthlyScheduleList } from '@/business/services/useMonthlyScheduleList'
 import { ActionTag, Label } from '@/components'
-import { ScheduleItem, useMonthlyScheduleList } from '@/features'
 import { useCurrentDate } from '@/store/stores'
 import type { ScheduleType } from '@/types'
+
+import { ScheduleItem } from './ScheduleItem'
 
 type ScheduleListProps = {
   todaySchedules: ScheduleType[]

@@ -6,7 +6,7 @@ import type {
   UpcomingMedicalInfoType,
 } from '@/types'
 
-import { formatInfoTime, formatKoDate, getDiffDay } from '../utils/dates'
+import { formatInfoTime, formatKoDate, getDiffDay } from '../../../utility/utils/dates'
 
 const InfoBox = ({ title, schedule }: { title: string; schedule: string }) => {
   return (

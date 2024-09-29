@@ -1,4 +1,4 @@
-import { HomePage } from '@/features'
+import { HomePage } from '@/components/domain/home/HomePage'
 
 export type HomeRouteParams = {
   params: { userId: string }

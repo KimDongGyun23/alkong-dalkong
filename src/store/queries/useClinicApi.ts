@@ -1,13 +1,13 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
+import type { ClinicCalendarRequest } from '@/types'
 import {
   clinicCalendar,
   clinicInfo,
   createClinicInfo,
   deleteClinicInfo,
   editClinicInfo,
-} from '@/features'
-import type { ClinicCalendarRequest } from '@/types'
+} from '@/utility/apis/clinicApi'
 
 export const queryKeys = {
   all: ['clinic'] as const,

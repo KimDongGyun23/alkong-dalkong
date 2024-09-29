@@ -3,10 +3,10 @@ import { useParams, useRouter } from 'next/navigation'
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 
-import { useCreateClinicInfo } from '@/features'
+import { useCreateClinicInfo } from '@/store/queries/useClinicApi'
 import { useCalendarActions } from '@/store/stores'
 import type { ClinicFormType } from '@/types'
-import { ALARM_TIME } from '@/utility/constants'
+import { CLINIC_ALARM_TIME } from '@/utility/constants'
 
 dayjs.extend(customParseFormat)
 
@@ -39,7 +39,7 @@ export const useSubmitCreateClinicForm = () => {
 
     const sendingFormData = {
       ...formData,
-      medicalAlarm: ALARM_TIME.indexOf(medicalAlarm),
+      medicalAlarm: CLINIC_ALARM_TIME.indexOf(medicalAlarm),
       hospitalDate: formattedDate,
       userId: parseInt(userId),
     }

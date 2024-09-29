@@ -1,9 +1,10 @@
 'use client'
-
-import { DashBoardTemplate, HelperBox } from '@/features'
-import { ClinicSection, HealthSection, MedicineSection } from '@/features'
-import { HealthInfo, MedicineInfo, RecentMedicalInfo, UpcomingMedicalInfo } from '@/features'
+import { DashBoardTemplate } from '@/components/view/dashBoardTemplate/DashBoardTemplate'
 import { useHome } from '@/store/queries/useHome'
+
+import { HelperBox } from './HelperBox'
+import { HealthInfo, MedicineInfo, RecentMedicalInfo, UpcomingMedicalInfo } from './InfoBox'
+import { ClinicSection, HealthSection, MedicineSection } from './SectionWrapper'
 
 export const HomePage = ({ userId }: { userId: string }) => {
   const { data: homePageData } = useHome(userId)

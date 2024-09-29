@@ -1,4 +1,4 @@
-import { SignInStep } from '@/features'
+import { SignInStep } from '@/components/domain/auth/SignInStep'
 
 const SignIn = () => {
   return (

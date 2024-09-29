@@ -1,6 +1,4 @@
-import React from 'react'
-
-import { ClinicCreateClientPage } from '@/features'
+import { ClinicCreateClientPage } from '@/components/container/ClinicCreateClientPage'
 
 const ClinicCreate = () => {
   return <ClinicCreateClientPage />

@@ -3,8 +3,8 @@ import { useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
 import dayjs from 'dayjs'
 
+import { useFormattedVisitDate } from '@/business/hooks/useFormattedVisitDate'
 import { BottomSheet, Calendar, Label, SubHeader, TimeSlider } from '@/components'
-import { useFormattedVisitDate } from '@/features'
 import { useCalendarActions, useCurrentDate } from '@/store/stores'
 import type { ClinicBottomSheetType } from '@/types'
 
