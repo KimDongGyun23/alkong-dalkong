@@ -8,7 +8,7 @@ import { MedicineSection } from '../domain/home/MedicineSection'
 import { WeightSection } from '../domain/home/WeightSection'
 
 export const HomeClientPage = ({ userId }: { userId: string }) => {
-  const currentTime = dayjs().format('YYYY-MM-DD')
+  const currentTime = dayjs().format('YYYY-MM-DD hh:mm:ss')
   const { data: homePageData, status } = useHome({ userId, currentTime })
 
   if (status === 'pending') return <div>로딩 중...</div>
