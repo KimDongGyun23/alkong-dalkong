@@ -17,7 +17,7 @@ export const UpcomingMedicalInfo = ({ upcomingInfo }: Pick<ClinicSectionProps, '
     <div className="flex-column gap-10 rounded-xl border border-mint-4 px-5 py-4 text-black shadow-[0_0_12px_rgba(2,41,34,0.1)]">
       <div>
         <div className="subtitle-B mb-1">
-          {upcoming}, {dayjsFormatting(hospitalDate, 'yyyy-mm-dd hh:mm:ss', 'M/D(ddd) HH:mm')}
+          {upcoming}, {dayjsFormatting(hospitalDate, 'M/D(ddd) HH:mm')}
         </div>
         <div className="headline-M">{hospitalName}</div>
       </div>
@@ -37,7 +37,7 @@ const RecentMedicalInfo = ({ recentInfo }: Pick<ClinicSectionProps, 'recentInfo'
     <div className="flex-column gap-10 rounded-xl border-gray-4 bg-gray-1 px-5 py-4 text-gray-6">
       <div>
         <div className="subtitle-B mb-1">
-          {`${getDiffDay(hospitalDate)}일 전, ${dayjsFormatting(hospitalDate, 'yyyy-mm-dd hh:mm:ss', 'M/D(ddd) HH:mm')}`}
+          {`${getDiffDay(hospitalDate)}일 전, ${dayjsFormatting(hospitalDate, 'M/D(ddd) HH:mm')}`}
         </div>
         <div className="headline-M">{hospitalName}</div>
       </div>
