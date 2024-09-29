@@ -3,20 +3,24 @@
 import { FormProvider } from 'react-hook-form'
 import { useParams, useRouter } from 'next/navigation'
 
-import { InputGroup, Label, MainHeader, Tag } from '@/components'
-import { ClinicInfoModal, useInsertedClinicForm } from '@/features'
+import { DeleteModal, InputGroup, Label, MainHeader, Tag } from '@/components'
+import { useDeleteClinicInfo, useInsertedClinicForm } from '@/features'
 import { useBoolean } from '@/hooks'
 
 export const ClinicInfoClientPage = () => {
   const router = useRouter()
   const { userId, medicalId } = useParams<{ userId: string; medicalId: string }>()
-
   const [modalState, openModal, closeModal] = useBoolean(false)
 
   const formMethod = useInsertedClinicForm()
   const { getValues } = formMethod
 
+  const { mutate: deleteClinicInfo } = useDeleteClinicInfo()
+
   const handleClickModify = () => router.push(`/clinic/${userId}/edit/${medicalId}`)
+  const handleClickDelete = () => {
+    deleteClinicInfo(medicalId, { onSuccess: () => router.replace(`/clinic/${userId}`) })
+  }
 
   return (
     <div className="flex-column h-full overflow-hidden">
@@ -70,7 +74,11 @@ export const ClinicInfoClientPage = () => {
         </form>
       </FormProvider>
 
-      <ClinicInfoModal modalState={modalState} closeModal={closeModal} />
+      <DeleteModal
+        modalState={modalState}
+        closeModal={closeModal}
+        onClickDelete={handleClickDelete}
+      />
     </div>
   )
 }

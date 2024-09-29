@@ -3,15 +3,15 @@
 import { FormProvider } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 
-import { ActionTag, InputGroup, Label, MainHeader, Tag } from '@/components'
+import { ActionTag, AlarmBottomSheet, InputGroup, Label, MainHeader, Tag } from '@/components'
 import {
-  AlarmBottomSheet,
   DateBottomSheet,
   TagBottomSheet,
   useInsertedClinicForm,
   useSubmitEditClinicForm,
 } from '@/features'
 import { useToggle } from '@/hooks'
+import { CLINIC_ALARM_TIME } from '@/utility/constants'
 
 export const ClinicEditClientPage = () => {
   const router = useRouter()
@@ -88,6 +88,7 @@ export const ClinicEditClientPage = () => {
             </div>
             <InputGroup.ErrorMessage section="medicalAlarm" />
             <AlarmBottomSheet
+              timeList={CLINIC_ALARM_TIME}
               section="medicalAlarm"
               isShowing={alarmSheet}
               onClickScrim={toggleAlarmSheet}

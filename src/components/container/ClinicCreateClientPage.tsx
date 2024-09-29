@@ -3,15 +3,11 @@
 import { FormProvider } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 
-import { ActionTag, InputGroup, Label, Tag } from '@/components'
+import { ActionTag, AlarmBottomSheet, InputGroup, Label, Tag } from '@/components'
 import { MainHeader } from '@/components/view/header/MainHeader'
-import {
-  AlarmBottomSheet,
-  DateBottomSheet,
-  TagBottomSheet,
-  useSubmitCreateClinicForm,
-} from '@/features'
+import { DateBottomSheet, TagBottomSheet, useSubmitCreateClinicForm } from '@/features'
 import { useToggle } from '@/hooks'
+import { CLINIC_ALARM_TIME } from '@/utility/constants'
 import { useClinicForm } from '@/utility/schema'
 
 export const ClinicCreateClientPage = () => {
@@ -89,6 +85,7 @@ export const ClinicCreateClientPage = () => {
 
             <InputGroup.ErrorMessage section="medicalAlarm" />
             <AlarmBottomSheet
+              timeList={CLINIC_ALARM_TIME}
               section="medicalAlarm"
               isShowing={alarmSheet}
               onClickScrim={toggleAlarmSheet}
