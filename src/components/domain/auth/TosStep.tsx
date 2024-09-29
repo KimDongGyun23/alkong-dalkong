@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 
-import { BottomSheet, Button, Icon, InputGroup } from '@/components/view'
+import { BottomSheet, Button, Icon, InputGroup } from '@/components'
 import { useBoolean, useToggle } from '@/hooks'
 import { tos } from '@/utility/constants'
 

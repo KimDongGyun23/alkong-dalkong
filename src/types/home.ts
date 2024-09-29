@@ -1,3 +1,10 @@
+export type HomeType = {
+  upcomingMedicalInfo: UpcomingMedicalInfoType
+  recentMedicalInfo: RecentMedicalInfoType
+  recentWeightInfo: RecentWeightInfoType
+  currentMedicineInfo: CurrentMedicineInfoType
+}
+
 export type HomeRequest = {
   userId: string
   currentTime: string
@@ -5,12 +12,7 @@ export type HomeRequest = {
 
 export type HomeResponse = {
   code: number
-  data: {
-    upcomingMedicalInfo?: UpcomingMedicalInfoType
-    recentMedicalInfo?: RecentMedicalInfoType
-    recentWeightInfo?: RecentWeightInfoType
-    currentMedicineInfo: CurrentMedicineInfoType
-  }
+  data: HomeType
 }
 
 export type UpcomingMedicalInfoType = {

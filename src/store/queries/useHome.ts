@@ -11,5 +11,14 @@ export const useHome = (url: HomeRequest) => {
   return useQuery({
     queryKey: queryKeys.all,
     queryFn: () => homeData(url),
+    select: (data) => ({
+      code: data.code,
+      data: {
+        upcomingInfo: data.data.upcomingMedicalInfo,
+        recentInfo: data.data.recentMedicalInfo,
+        weightInfo: data.data.recentWeightInfo,
+        medicineInfo: data.data.currentMedicineInfo,
+      },
+    }),
   })
 }

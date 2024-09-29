@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 
 import { useInsertedClinicForm } from '@/business/services/useInsertedClinicForm'
 import { useSubmitEditClinicForm } from '@/business/services/useSubmitEditClinicForm'
-import { ActionTag, AlarmBottomSheet, InputGroup, Label, MainHeader, Tag } from '@/components/view'
+import { ActionTag, AlarmBottomSheet, InputGroup, Label, MainHeader, Tag } from '@/components'
 import { useToggle } from '@/hooks'
 import { CLINIC_ALARM_TIME } from '@/utility/constants'
 

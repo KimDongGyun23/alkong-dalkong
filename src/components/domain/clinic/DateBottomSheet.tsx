@@ -4,7 +4,7 @@ import { useFormContext } from 'react-hook-form'
 import dayjs from 'dayjs'
 
 import { useFormattedVisitDate } from '@/business/hooks/useFormattedVisitDate'
-import { BottomSheet, Calendar, Label, SubHeader, TimeSlider } from '@/components/view'
+import { BottomSheet, Calendar, Label, SubHeader, TimeSlider } from '@/components'
 import { useCalendarActions, useCurrentDate } from '@/store/stores'
 import type { ClinicBottomSheetType } from '@/types'
 

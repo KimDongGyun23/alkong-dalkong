@@ -1,4 +1,4 @@
-import { HomePage } from '@/components/domain/home/HomePage'
+import { HomeClientPage } from '@/components'
 import { DashBoardTemplate } from '@/components/view/DashBoardTemplate'
 
 export type HomeRouteParams = {
@@ -8,7 +8,7 @@ export type HomeRouteParams = {
 const Home = ({ params: { userId } }: HomeRouteParams) => {
   return (
     <DashBoardTemplate route="home">
-      <HomePage userId={userId} />
+      <HomeClientPage userId={userId} />
     </DashBoardTemplate>
   )
 }

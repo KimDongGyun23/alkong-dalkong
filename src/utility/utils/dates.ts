@@ -35,7 +35,3 @@ export const formatInfoTime = (times: string[], weekList: string[]) => {
 
   return schedule
 }
-
-export const formatKoDate = (date: string) => {
-  return dayjs(date).locale('ko').format('M/D(ddd) HH:mm')
-}

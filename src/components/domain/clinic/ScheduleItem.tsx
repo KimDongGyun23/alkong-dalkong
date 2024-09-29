@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import dayjs from 'dayjs'
 
-import { Icon, Tag } from '@/components/view'
+import { Icon, Tag } from '@/components'
 import type { ScheduleType } from '@/types'
 
 import 'dayjs/locale/ko'

@@ -4,7 +4,7 @@ import { FormProvider } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 
 import { useSubmitCreateClinicForm } from '@/business/services/useSubmitCreateClinicForm'
-import { ActionTag, AlarmBottomSheet, InputGroup, Label, Tag } from '@/components/view'
+import { ActionTag, AlarmBottomSheet, InputGroup, Label, Tag } from '@/components'
 import { MainHeader } from '@/components/view/MainHeader'
 import { useToggle } from '@/hooks'
 import { CLINIC_ALARM_TIME } from '@/utility/constants'

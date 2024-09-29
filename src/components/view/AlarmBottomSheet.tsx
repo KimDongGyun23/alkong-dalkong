@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 
-import { BottomSheet, Label, SubHeader } from '@/components/view'
+import { BottomSheet, Label, SubHeader } from '@/components'
 import type { BottomSheetType } from '@/types'
 
 type AlarmBottomSheetProps = BottomSheetType & { timeList: string[] }

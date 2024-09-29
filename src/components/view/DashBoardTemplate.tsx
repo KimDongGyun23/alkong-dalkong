@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react'
 
-import { BottomNav } from '@/components/view'
+import { BottomNav } from '@/components'
 import { MainHeader } from '@/components/view/MainHeader'
 
 type DashBoardTemplateProps = {
