@@ -28,7 +28,7 @@ export const formatInfoTime = (times: string[], weekList: string[]) => {
   }
 
   if (times.length === 1) {
-    schedule += ` ${times[0]}`
+    schedule += ` ${times[0].slice(0, -3)}`
   } else {
     schedule += ` ${times.length}회`
   }
