@@ -3,7 +3,7 @@
 import { useParams, useRouter } from 'next/navigation'
 
 import { useMonthlyScheduleList } from '@/business/services/useMonthlyScheduleList'
-import { ActionTag, Label } from '@/components'
+import { ActionTag, Label } from '@/components/view'
 import { useCurrentDate } from '@/store/stores'
 import type { ScheduleType } from '@/types'
 

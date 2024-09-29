@@ -7,10 +7,10 @@ import { useToggle } from '@/hooks'
 import { useUserStore } from '@/store/stores'
 import { zIndex } from '@/utility/constants'
 
-import type { iconMap } from '../icons'
-import { Icon } from '../icons'
-import { Profile } from '../profile/Profile'
-import { ProfileModal } from '../profile/ProfileModal'
+import { Profile } from './profile/Profile'
+import { ProfileModal } from './profile/ProfileModal'
+import type { iconMap } from './icons'
+import { Icon } from './icons'
 
 type NavItem = {
   text: string

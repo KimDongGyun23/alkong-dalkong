@@ -4,12 +4,11 @@ import { useRouter } from 'next/navigation'
 
 import { useUserStore } from '@/store/stores'
 
-import { Icon } from '../icons'
-import { Profile } from '../profile/Profile'
-
+import { Profile } from './profile/Profile'
+import { Icon } from './icons'
 import type { HeaderProps } from './SubHeader'
 
-export const Setting = ({ title }: Pick<HeaderProps, 'title'>) => {
+const Setting = ({ title }: Pick<HeaderProps, 'title'>) => {
   const { user } = useUserStore()
 
   const router = useRouter()
@@ -27,7 +26,7 @@ export const Setting = ({ title }: Pick<HeaderProps, 'title'>) => {
   )
 }
 
-export const Confirm = ({
+const Confirm = ({
   title,
   onCancel,
   onConfirm,
@@ -47,7 +46,7 @@ export const Confirm = ({
   )
 }
 
-export const Modify = ({
+const Modify = ({
   title,
   onDelete,
   onModify,

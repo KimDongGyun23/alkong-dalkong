@@ -1,12 +1,15 @@
 import { useQuery } from '@tanstack/react-query'
 
-import type { HomeResponseType } from '@/types'
+import type { HomeRequest } from '@/types'
+import { homeData } from '@/utility'
 
-import { getHomePageData } from './home'
+export const queryKeys = {
+  all: ['home'] as const,
+}
 
-export const useHome = (userId: string) => {
-  return useQuery<HomeResponseType>({
-    queryKey: [userId],
-    queryFn: () => getHomePageData(userId),
+export const useHome = (url: HomeRequest) => {
+  return useQuery({
+    queryKey: queryKeys.all,
+    queryFn: () => homeData(url),
   })
 }

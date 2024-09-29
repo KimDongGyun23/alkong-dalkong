@@ -4,7 +4,7 @@ import { FormProvider } from 'react-hook-form'
 import { useParams, useRouter } from 'next/navigation'
 
 import { useInsertedClinicForm } from '@/business/services/useInsertedClinicForm'
-import { DeleteModal, InputGroup, Label, MainHeader, Tag } from '@/components'
+import { DeleteModal, InputGroup, Label, MainHeader, Tag } from '@/components/view'
 import { useBoolean } from '@/hooks'
 import { useDeleteClinicInfo } from '@/store/queries/useClinicApi'
 

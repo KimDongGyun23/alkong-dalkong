@@ -3,7 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import type { Meta } from '@storybook/react'
 import { z } from 'zod'
 
-import Label from '../label/Label'
+import Label from '../Label'
 
 import { InputGroup } from '.'
 

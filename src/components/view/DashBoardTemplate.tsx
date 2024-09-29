@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react'
 
-import { BottomNav } from '@/components'
-import { MainHeader } from '@/components/view/header/MainHeader'
+import { BottomNav } from '@/components/view'
+import { MainHeader } from '@/components/view/MainHeader'
 
 type DashBoardTemplateProps = {
   route: 'health' | 'home' | 'medicine'

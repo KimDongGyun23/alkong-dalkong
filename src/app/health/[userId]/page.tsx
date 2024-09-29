@@ -1,4 +1,4 @@
-import { BottomNav } from '@/components'
+import { BottomNav } from '@/components/view'
 
 export type HealthRouteParams = {
   params: { userId: string }

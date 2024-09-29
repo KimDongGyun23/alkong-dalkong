@@ -1,5 +1,7 @@
 'use client'
-import { DashBoardTemplate } from '@/components/view/dashBoardTemplate/DashBoardTemplate'
+import dayjs from 'dayjs'
+
+import { DashBoardTemplate } from '@/components/view/DashBoardTemplate'
 import { useHome } from '@/store/queries/useHome'
 
 import { HelperBox } from './HelperBox'
@@ -7,7 +9,8 @@ import { HealthInfo, MedicineInfo, RecentMedicalInfo, UpcomingMedicalInfo } from
 import { ClinicSection, HealthSection, MedicineSection } from './SectionWrapper'
 
 export const HomePage = ({ userId }: { userId: string }) => {
-  const { data: homePageData } = useHome(userId)
+  const currentTime = dayjs().format('YYYY-MM-DD')
+  const { data: homePageData } = useHome({ userId, currentTime })
 
   if (!homePageData) {
     return (

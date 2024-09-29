@@ -1,6 +1,6 @@
 'use client'
 
-import { Icon } from '../icons'
+import { Icon } from './icons'
 
 export type Props = {
   label: string
@@ -14,7 +14,12 @@ type ActionTagType = React.FC<Props> & {
   Minus: React.FC<Props>
 }
 
-const ActionTag: ActionTagType = ({ label, onClick, primary = false, icon = 'plus' }: Props) => {
+export const ActionTag: ActionTagType = ({
+  label,
+  onClick,
+  primary = false,
+  icon = 'plus',
+}: Props) => {
   const color = primary ? 'bg-mint-6 text-white' : 'bg-gray-2 text-gray-7'
 
   return (
@@ -39,5 +44,3 @@ const Minus = (props: Props) => {
 
 ActionTag.Plus = Plus
 ActionTag.Minus = Minus
-
-export default ActionTag

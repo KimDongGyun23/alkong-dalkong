@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react'
 
-import Label from '@/components/view/label/Label'
+import Label from '@/components/view/Label'
 
 type SectionWrapper = {
   label: React.ReactNode

@@ -5,8 +5,8 @@ import { m, type Variants } from 'framer-motion'
 import { useScrollLock } from '@/hooks'
 import { zIndex } from '@/utility/constants'
 
-import { Icon } from '../icons'
-import { AnimatePortal } from '../portal/AnimatePortal'
+import { AnimatePortal } from './portal/AnimatePortal'
+import { Icon } from './icons'
 
 type BottomSheetProps = ComponentProps<typeof AnimatePortal> & {
   onClickScrim?: VoidFunction

@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 
-import { Icon } from '../icons'
+import { Icon } from './icons'
 
 export type HeaderProps = {
   title: string
@@ -13,7 +13,7 @@ export type HeaderProps = {
   onModify: VoidFunction
 }
 
-export const Back = ({ title }: Pick<HeaderProps, 'title'>) => {
+const Back = ({ title }: Pick<HeaderProps, 'title'>) => {
   const router = useRouter()
   const handleBack = () => {
     router.back()
@@ -29,7 +29,7 @@ export const Back = ({ title }: Pick<HeaderProps, 'title'>) => {
   )
 }
 
-export const Close = ({ title, onClose }: Pick<HeaderProps, 'title' | 'onClose'>) => {
+const Close = ({ title, onClose }: Pick<HeaderProps, 'title' | 'onClose'>) => {
   return (
     <header className="flex-align relative justify-end">
       <h1 className="subtitle-B absolute left-1/2 -translate-x-1/2 text-black">{title}</h1>
@@ -40,7 +40,7 @@ export const Close = ({ title, onClose }: Pick<HeaderProps, 'title' | 'onClose'>
   )
 }
 
-export const Confirm = ({
+const Confirm = ({
   title,
   onCancel,
   onConfirm,

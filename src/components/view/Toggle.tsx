@@ -6,7 +6,7 @@ interface ToggleProps {
   onClick: (prev: boolean) => void
 }
 
-const Toggle = ({ initialState = false, onClick }: ToggleProps) => {
+export const Toggle = ({ initialState = false, onClick }: ToggleProps) => {
   const [isActive, changeToggleState] = useToggle(initialState)
 
   const handleToggleClick = () => {
@@ -29,5 +29,3 @@ const Toggle = ({ initialState = false, onClick }: ToggleProps) => {
     </div>
   )
 }
-
-export default Toggle

@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
 import Logo from '@/assets/logo.png'
-import { Button, InputGroup } from '@/components'
+import { Button, InputGroup } from '@/components/view'
 import { useSignIn } from '@/store/queries/useAuth'
 import { useUserStore } from '@/store/stores'
 import type { LoginFormType } from '@/types'
