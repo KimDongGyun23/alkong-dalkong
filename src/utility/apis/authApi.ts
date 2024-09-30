@@ -1,9 +1,8 @@
 import axios from 'axios'
-import Cookies from 'js-cookie'
 
-import type { SignInRequest, SignInRequest, SignUpRequest } from '@/types'
+import type { SignInRequest, SignUpRequest } from '@/types'
 
-import { api } from '../../utility/apis'
+import { api } from '.'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
@@ -17,11 +16,13 @@ const signInConfig = {
 
 export const signIn = async (request: SignInRequest) => {
   const res = await axios.post(`/user/login`, request, signInConfig)
-
-  const refreshToken = Cookies.get('refresh')
   const accessToken: string = res.headers['authorization']
 
-  return { ...res.data, accessToken, refreshToken }
+  return { ...res.data, accessToken }
+}
+
+export const reIssue = async () => {
+  return await axios.post(`${BASE_URL}/user/reissue`)
 }
 
 export const checkDuplicateId = async (request: { id: string }) => {

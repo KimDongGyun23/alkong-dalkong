@@ -4,13 +4,9 @@ import { useMutation } from '@tanstack/react-query'
 import type { AxiosError } from 'axios'
 
 import type { SignUpRequest } from '@/types'
+import { api, checkDuplicateId, signIn, signOut, signUp } from '@/utility'
 
 import { useUserStore } from '../stores'
-
-import { checkDuplicateId, signIn, signOut, signUp } from './auth'
-
-const ACCESS_TOKEN = process.env.NEXT_PUBLIC_ACCESS_TOKEN
-const REFRESH_TOKEN = process.env.NEXT_PUBLIC_REFRESH_TOKEN
 
 export const useSignIn = () => {
   const router = useRouter()
@@ -18,9 +14,8 @@ export const useSignIn = () => {
 
   return useMutation({
     mutationFn: signIn,
-    onSuccess: async ({ accessToken, refreshToken, ...rest }) => {
-      localStorage.setItem(ACCESS_TOKEN, accessToken)
-      localStorage.setItem(REFRESH_TOKEN, refreshToken)
+    onSuccess: async ({ accessToken, ...rest }) => {
+      api.setAccessToken(accessToken)
       setUser({ ...rest })
       router.push(`/home/${rest.userId}`)
     },
