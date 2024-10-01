@@ -1,62 +1,55 @@
-import dayjs from 'dayjs'
 import { create } from 'zustand'
 
+type ValuePiece = Date | null
+type Value = ValuePiece | [ValuePiece, ValuePiece]
+
 type CalendarState = {
-  selectedDate: string
-  createdScheduleDate: string
-  scheduledDays: string[]
+  selectedDate: ValuePiece
+  // createdScheduleDate: string
+  scheduledDates: Date[]
   actions: CalendarActions
 }
 
 type CalendarActions = {
-  goToPreviousMonth: VoidFunction
-  goToNextMonth: VoidFunction
-  setSelectedDate: (date: string) => void
-  updateScheduledDates: (dates: string[]) => void
-  resetCalendar: VoidFunction
-  setCreatedScheduleDate: (newDate: string) => void
-  swapSelectedDateToCreatedDate: VoidFunction
+  handleDateChange: (newDate: Value) => void
+  // setSelectedDate: (date: string) => void
+  updateScheduledDates: (dates: Date[]) => void
+  // resetCalendar: VoidFunction
+  // setCreatedScheduleDate: (newDate: string) => void
+  // swapSelectedDateToCreatedDate: VoidFunction
 }
 
-const initialDate = dayjs().format('YYYY-MM-DD')
+const initialDate = new Date()
 
 export const useCalendarStore = create<CalendarState>((set, get) => ({
   selectedDate: initialDate,
-  createdScheduleDate: initialDate,
-  scheduledDays: [],
+  // createdScheduleDate: initialDate,
+  scheduledDates: [],
   actions: {
-    goToPreviousMonth: () => {
-      const { selectedDate } = get()
-      const previousMonthDate = dayjs(selectedDate).subtract(1, 'month').format('YYYY-MM-DD')
-      set({ selectedDate: previousMonthDate, scheduledDays: [] })
+    handleDateChange: (newDate: Value) => {
+      set({ selectedDate: Array.isArray(newDate) ? newDate[0] : newDate })
     },
-    goToNextMonth: () => {
-      const { selectedDate } = get()
-      const nextMonthDate = dayjs(selectedDate).add(1, 'month').format('YYYY-MM-DD')
-      set({ selectedDate: nextMonthDate, scheduledDays: [] })
+    updateScheduledDates: (newDates: Date[]) => {
+      set({ scheduledDates: newDates })
     },
-    updateScheduledDates: (dates: string[]) => {
-      const uniqueDays = Array.from(new Set(dates.map((date) => dayjs(date).format('YYYY-MM-DD'))))
-      set({ scheduledDays: uniqueDays })
-    },
-    resetCalendar: () => {
-      set({ selectedDate: initialDate, scheduledDays: [] })
-    },
-    setCreatedScheduleDate: (newDate: string) => {
-      const formattedDate = dayjs(newDate).format('YYYY-MM-DD')
-      set({ createdScheduleDate: formattedDate })
-    },
-    setSelectedDate: (newDate: string) => {
-      const formattedDate = dayjs(newDate).format('YYYY-MM-DD')
-      set({ selectedDate: formattedDate })
-    },
-    swapSelectedDateToCreatedDate: () => {
-      const { createdScheduleDate } = get()
-      set({ selectedDate: createdScheduleDate })
-    },
+    // resetCalendar: () => {
+    //   set({ selectedDate: initialDate, scheduledDays: [] })
+    // },
+    // setCreatedScheduleDate: (newDate: string) => {
+    //   const formattedDate = dayjs(newDate).format('YYYY-MM-DD')
+    //   set({ createdScheduleDate: formattedDate })
+    // },
+    // setSelectedDate: (newDate: string) => {
+    //   const formattedDate = dayjs(newDate).format('YYYY-MM-DD')
+    //   set({ selectedDate: formattedDate })
+    // },
+    // swapSelectedDateToCreatedDate: () => {
+    //   const { createdScheduleDate } = get()
+    //   set({ selectedDate: createdScheduleDate })
+    // },
   },
 }))
 
-export const useCurrentDate = () => useCalendarStore((state) => state.selectedDate)
-export const useScheduledDays = () => useCalendarStore((state) => state.scheduledDays)
+export const useSelectedDate = () => useCalendarStore((state) => state.selectedDate)
+export const useScheduledDates = () => useCalendarStore((state) => state.scheduledDates)
 export const useCalendarActions = () => useCalendarStore((state) => state.actions)

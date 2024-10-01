@@ -1,6 +1,6 @@
 import { BottomNav, Profile } from '@/components'
+import { ClinicCalendar } from '@/components/domain/clinic/ClinicCalendar'
 import { ScheduleListSection } from '@/components/domain/clinic/ScheduleListSection'
-import { CustomCalendar } from '@/components/view/customCalendar/CustomCalendar'
 
 const Clinic = () => {
   return (
@@ -11,7 +11,7 @@ const Clinic = () => {
         </div>
 
         <section>
-          <CustomCalendar />
+          <ClinicCalendar />
         </section>
 
         <section className="mt-7">
