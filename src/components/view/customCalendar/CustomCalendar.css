@@ -70,6 +70,10 @@
   color: white;
 }
 
+.react-calendar__month-view__days__day--weekend {
+  color: #959595;
+}
+
 .marked {
   background-color: #50e9bb;
   border-radius: 50%;
