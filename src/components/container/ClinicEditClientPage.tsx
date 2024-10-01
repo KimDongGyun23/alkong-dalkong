@@ -1,25 +1,25 @@
 'use client'
 
 import { FormProvider } from 'react-hook-form'
-import { useRouter } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 
-import { useInsertedClinicForm } from '@/business/services/useInsertedClinicForm'
 import { useSubmitEditClinicForm } from '@/business/services/useSubmitEditClinicForm'
 import { ActionTag, AlarmBottomSheet, InputGroup, Label, MainHeader, Tag } from '@/components'
 import { useToggle } from '@/hooks'
 import { CLINIC_ALARM_TIME } from '@/utility/constants'
+import { useClinicForm } from '@/utility/schema'
 
-import { DateBottomSheet } from '../domain/clinic/DateBottomSheet'
 import { TagBottomSheet } from '../domain/clinic/TagBottomSheet'
 
 export const ClinicEditClientPage = () => {
   const router = useRouter()
+  const { medicalId } = useParams<{ medicalId: string }>()
 
   const [tagSheet, toggleTagSheet] = useToggle(false)
   const [dateSheet, toggleDateSheet] = useToggle(false)
   const [alarmSheet, toggleAlarmSheet] = useToggle(false)
 
-  const formMethod = useInsertedClinicForm()
+  const formMethod = useClinicForm(true, medicalId)
   const { handleSubmit, getValues } = formMethod
 
   const handleClickConfirm = useSubmitEditClinicForm()
@@ -61,11 +61,11 @@ export const ClinicEditClientPage = () => {
               />
             </button>
             <InputGroup.ErrorMessage section="hospitalDate" />
-            <DateBottomSheet
+            {/* <DateBottomSheet
               section="hospitalDate"
               isShowing={dateSheet}
               onClickScrim={toggleDateSheet}
-            />
+            /> */}
           </InputGroup>
 
           <InputGroup>

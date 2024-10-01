@@ -9,7 +9,7 @@ import type {
 } from '@/types'
 import { api } from '@/utility/apis'
 
-export const clinicInfo = async (medicalId: number) => {
+export const clinicInfo = async (medicalId: string) => {
   return await api.get<ClinicInfoResponse>(`/medical/${medicalId}`)
 }
 

@@ -3,17 +3,17 @@
 import { FormProvider } from 'react-hook-form'
 import { useParams, useRouter } from 'next/navigation'
 
-import { useInsertedClinicForm } from '@/business/services/useInsertedClinicForm'
 import { DeleteModal, InputGroup, Label, MainHeader, Tag } from '@/components'
 import { useBoolean } from '@/hooks'
 import { useDeleteClinicInfo } from '@/store/queries/useClinicApi'
+import { useClinicForm } from '@/utility/schema'
 
 export const ClinicInfoClientPage = () => {
   const router = useRouter()
   const { userId, medicalId } = useParams<{ userId: string; medicalId: string }>()
   const [modalState, openModal, closeModal] = useBoolean(false)
 
-  const formMethod = useInsertedClinicForm()
+  const formMethod = useClinicForm(true, medicalId)
   const { getValues } = formMethod
 
   const { mutate: deleteClinicInfo } = useDeleteClinicInfo()
