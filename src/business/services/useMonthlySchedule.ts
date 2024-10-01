@@ -1,21 +1,19 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
-import dayjs from 'dayjs'
 
 import { useClinicCalendar } from '@/store/queries/useClinicApi'
 import { useCalendarActions } from '@/store/stores'
 import type { ScheduleType } from '@/types'
 
-export const useMonthlySchedule = () => {
-  const localDate = dayjs().format('YYYY-MM')
+export const useMonthlySchedule = (localDate: string) => {
   const { userId } = useParams<{ userId: string }>()
   const { updateScheduledDates } = useCalendarActions()
 
   const [monthlyScheduleDates, setMonthlyScheduleDates] = useState<Date[]>([])
   const [monthlyScheduleList, setMonthlyScheduleList] = useState<ScheduleType[]>([])
 
-  const { data: medicalData } = useClinicCalendar({ userId, localDate })
+  const { data: medicalData, refetch } = useClinicCalendar({ userId, localDate })
 
   useEffect(() => {
     if (medicalData) {
@@ -28,5 +26,5 @@ export const useMonthlySchedule = () => {
     }
   }, [medicalData, updateScheduledDates])
 
-  return { monthlyScheduleDates, monthlyScheduleList }
+  return { monthlyScheduleDates, monthlyScheduleList, refetch }
 }

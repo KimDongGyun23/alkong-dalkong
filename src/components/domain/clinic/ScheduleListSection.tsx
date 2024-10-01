@@ -30,9 +30,9 @@ const ScheduleList = ({ todaySchedules }: ScheduleListProps) => {
 export const ScheduleListSection = () => {
   const router = useRouter()
   const { userId } = useParams<{ userId: string }>()
-  const { monthlyScheduleList } = useMonthlySchedule()
 
   const selectedDate = useSelectedDate()
+  const { monthlyScheduleList } = useMonthlySchedule(dayjs(selectedDate).format('YYYY-MM'))
 
   const todaySchedules = monthlyScheduleList.filter((item) =>
     item.hospitalDate.startsWith(dayjs(selectedDate).format('YYYY-MM-DD')),
