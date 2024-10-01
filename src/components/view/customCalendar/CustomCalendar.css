@@ -76,5 +76,7 @@
 
 .marked {
   background-color: #50e9bb;
+  font-weight: 500;
+  color: black;
   border-radius: 50%;
 }

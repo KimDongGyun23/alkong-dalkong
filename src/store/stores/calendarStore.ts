@@ -12,18 +12,13 @@ type CalendarState = {
 
 type CalendarActions = {
   handleDateChange: (newDate: Value) => void
-  // setSelectedDate: (date: string) => void
   updateScheduledDates: (dates: Date[]) => void
-  // resetCalendar: VoidFunction
-  // setCreatedScheduleDate: (newDate: string) => void
-  // swapSelectedDateToCreatedDate: VoidFunction
 }
 
 const initialDate = new Date()
 
 export const useCalendarStore = create<CalendarState>((set, get) => ({
   selectedDate: initialDate,
-  // createdScheduleDate: initialDate,
   scheduledDates: [],
   actions: {
     handleDateChange: (newDate: Value) => {
@@ -32,21 +27,6 @@ export const useCalendarStore = create<CalendarState>((set, get) => ({
     updateScheduledDates: (newDates: Date[]) => {
       set({ scheduledDates: newDates })
     },
-    // resetCalendar: () => {
-    //   set({ selectedDate: initialDate, scheduledDays: [] })
-    // },
-    // setCreatedScheduleDate: (newDate: string) => {
-    //   const formattedDate = dayjs(newDate).format('YYYY-MM-DD')
-    //   set({ createdScheduleDate: formattedDate })
-    // },
-    // setSelectedDate: (newDate: string) => {
-    //   const formattedDate = dayjs(newDate).format('YYYY-MM-DD')
-    //   set({ selectedDate: formattedDate })
-    // },
-    // swapSelectedDateToCreatedDate: () => {
-    //   const { createdScheduleDate } = get()
-    //   set({ selectedDate: createdScheduleDate })
-    // },
   },
 }))
 

@@ -5,3 +5,6 @@ export type BottomSheetType = {
   isShowing: boolean
   onClickScrim: VoidFunction
 }
+
+export type CalendarValuePiece = Date | null
+export type CalendarValue = CalendarValuePiece | [CalendarValuePiece, CalendarValuePiece]

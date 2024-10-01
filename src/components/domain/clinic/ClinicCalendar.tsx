@@ -4,8 +4,12 @@ import dayjs from 'dayjs'
 
 import { useMonthlySchedule } from '@/business/services/useMonthlySchedule'
 import { CustomCalendar } from '@/components/view/customCalendar/CustomCalendar'
+import { useCalendarActions, useSelectedDate } from '@/store/stores'
 
 export const ClinicCalendar = () => {
+  const selectedDate = useSelectedDate()
+  const { handleDateChange } = useCalendarActions()
+
   const [localDate, setLocalDate] = useState(dayjs().format('YYYY-MM'))
   const { monthlyScheduleDates, refetch } = useMonthlySchedule(localDate)
 
@@ -26,6 +30,8 @@ export const ClinicCalendar = () => {
 
   return (
     <CustomCalendar
+      value={selectedDate}
+      onChange={handleDateChange}
       tileClassName={tileClassName}
       onActiveStartDateChange={handleActiveStartDateChange}
     />
