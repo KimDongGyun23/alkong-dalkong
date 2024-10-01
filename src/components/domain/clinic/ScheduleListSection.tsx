@@ -1,6 +1,11 @@
 'use client'
+import { useParams, useRouter } from 'next/navigation'
+import dayjs from 'dayjs'
 
-// import { useCurrentDate } from '@/store/stores'
+import { useMonthlySchedule } from '@/business/services/useMonthlySchedule'
+import { ActionTag } from '@/components/view/ActionTag'
+import { Label } from '@/components/view/Label'
+import { useSelectedDate } from '@/store/stores'
 import type { ScheduleType } from '@/types'
 
 import { ScheduleItem } from './ScheduleItem'
@@ -23,18 +28,19 @@ const ScheduleList = ({ todaySchedules }: ScheduleListProps) => {
 }
 
 export const ScheduleListSection = () => {
-  // const router = useRouter()
-  // const { userId } = useParams<{ userId: string }>()
+  const router = useRouter()
+  const { userId } = useParams<{ userId: string }>()
+  const { monthlyScheduleList } = useMonthlySchedule()
 
-  // const selectedDate = ''
-  // const selectedDate = useCurrentDate()
-  // const scheduleList = useMonthlyScheduleList()
+  const selectedDate = useSelectedDate()
 
-  // const todaySchedules = scheduleList.filter((item) => item.hospitalDate.startsWith(selectedDate))
+  const todaySchedules = monthlyScheduleList.filter((item) =>
+    item.hospitalDate.startsWith(dayjs(selectedDate).format('YYYY-MM-DD')),
+  )
 
   return (
     <>
-      {/* <div className="flex-between mb-3">
+      <div className="flex-between mb-3">
         <Label icon="clinic-label">병원 내원 일정</Label>
         <ActionTag.Plus
           label="추가"
@@ -43,7 +49,7 @@ export const ScheduleListSection = () => {
         />
       </div>
 
-      <ScheduleList todaySchedules={todaySchedules} /> */}
+      <ScheduleList todaySchedules={todaySchedules} />
     </>
   )
 }
