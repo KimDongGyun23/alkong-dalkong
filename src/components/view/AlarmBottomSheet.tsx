@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 
 import { BottomSheet, Label, SubHeader } from '@/components'
@@ -15,7 +15,7 @@ export const AlarmBottomSheet = ({
   onClickScrim,
 }: AlarmBottomSheetProps) => {
   const { getValues, setValue } = useFormContext()
-  const [selectedTime, setSelectedTime] = useState<string>(timeList[timeList.length - 1])
+  const [selectedTime, setSelectedTime] = useState<string>(getValues(section))
 
   const handleClickComplete = () => {
     setValue(section, selectedTime)
@@ -27,10 +27,6 @@ export const AlarmBottomSheet = ({
     setValue(section, time)
     onClickScrim()
   }
-
-  useEffect(() => {
-    setSelectedTime(getValues(section))
-  }, [getValues, section])
 
   return (
     <BottomSheet isShowing={isShowing} onClickScrim={onClickScrim}>
