@@ -5,6 +5,7 @@ dayjs.extend(customParseFormat)
 
 const DATE_FORMATS = {
   default: 'YYYY-MM-DD',
+  monthDate: 'M월 d일',
   time: 'HH:mm',
   fullTime: 'HH:mm:ss',
   dateTime: 'YYYY-MM-DD HH:mm:ss',

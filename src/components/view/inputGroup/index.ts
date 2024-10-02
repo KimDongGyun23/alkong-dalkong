@@ -1,3 +1,4 @@
+'use client'
 import { CheckBox, CheckBoxAll } from './CheckBox'
 import { Container } from './Container'
 import { ErrorMessage } from './ErrorMessage'

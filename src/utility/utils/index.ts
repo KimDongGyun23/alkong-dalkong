@@ -1,4 +1,6 @@
 export * from './checkCalendarDateStyle'
 export * from './dates'
 export * from './formatDateWithType'
+export * from './formattedMedicineForm'
+export * from './parseDosage'
 export * from './persistSignUpForm'
