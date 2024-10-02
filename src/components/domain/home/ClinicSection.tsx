@@ -1,7 +1,6 @@
-import { Label, Tag } from '@/components'
+import { Label, Tag } from '@/components/view'
 import type { RecentMedicalInfoType, UpcomingMedicalInfoType } from '@/types'
-import { formatDateWithType } from '@/utility/utils'
-import { getDiffDay } from '@/utility/utils/dates'
+import { formatDateWithType, getDiffDay } from '@/utility/utils'
 
 type ClinicSectionProps = {
   upcomingInfo: UpcomingMedicalInfoType

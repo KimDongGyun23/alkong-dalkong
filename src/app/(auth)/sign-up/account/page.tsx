@@ -1,4 +1,4 @@
-import { AccountStep } from '@/components/domain/auth/AccountStep'
+import { AccountStep } from '@/components/domain'
 
 const Account = () => {
   return <AccountStep />

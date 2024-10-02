@@ -1,8 +1,7 @@
 'use client'
 import type { PropsWithChildren } from 'react'
 
-import { BottomNav } from '@/components'
-import { MainHeader } from '@/components/view/MainHeader'
+import { BottomNav, MainHeader } from '@/components/view'
 
 type DashBoardTemplateProps = {
   route: 'health' | 'home' | 'medicine'

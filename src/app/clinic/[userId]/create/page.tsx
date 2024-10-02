@@ -1,4 +1,4 @@
-import { ClinicCreateClientPage } from '@/components/container/ClinicCreateClientPage'
+import { ClinicCreateClientPage } from '@/components/container'
 
 const ClinicCreate = () => {
   return <ClinicCreateClientPage />

@@ -2,7 +2,7 @@
 
 import { type PropsWithChildren, useRef, useState } from 'react'
 
-import { useScrollLock } from '@/hooks/useScrollLock'
+import { useScrollLock } from '@/hooks'
 
 import { Icon } from './icons'
 

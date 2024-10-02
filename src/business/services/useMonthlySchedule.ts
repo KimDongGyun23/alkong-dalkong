@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 
-import { useClinicCalendar } from '@/store/queries/useClinicApi'
+import { useClinicCalendar } from '@/store/queries'
 import { useCalendarActions } from '@/store/stores'
 import type { ScheduleType } from '@/types'
 

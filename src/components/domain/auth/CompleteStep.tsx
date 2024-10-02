@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import SignUpComplete from '@/assets/sign-up-complete.png'
+import SignUpComplete from '/public/sign-up-complete.png'
 
 export const CompleteStep = () => {
   return (

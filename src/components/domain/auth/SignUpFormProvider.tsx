@@ -5,7 +5,7 @@ import { FormProvider } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { createStore, StateMachineProvider } from 'little-state-machine'
 
-import { useSignUp } from '@/store/queries/useAuth'
+import { useSignUp } from '@/store/queries'
 import type { SignupFormType } from '@/types'
 import { useSignupForm } from '@/utility/schema'
 

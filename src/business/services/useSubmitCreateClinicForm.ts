@@ -3,7 +3,7 @@ import { useParams, useRouter } from 'next/navigation'
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 
-import { useCreateClinicInfo } from '@/store/queries/useClinicApi'
+import { useCreateClinicInfo } from '@/store/queries'
 import { useCalendarActions } from '@/store/stores'
 import type { ClinicFormType } from '@/types'
 import { CLINIC_ALARM_TIME } from '@/utility/constants'

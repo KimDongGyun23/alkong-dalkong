@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Modal } from '@/components'
+import { Button, Modal } from '.'
 
 type DeleteModalProps = {
   modalState: boolean

@@ -4,8 +4,7 @@ import { useFormContext } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { useStateMachine } from 'little-state-machine'
 
-import { Button, InputGroup } from '@/components'
-import Label from '@/components/view/Label'
+import { Button, InputGroup, Label } from '@/components/view'
 import { persistSignUpForm } from '@/utility/utils'
 
 export const UserInfoStep = () => {

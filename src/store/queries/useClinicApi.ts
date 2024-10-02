@@ -8,16 +8,16 @@ import {
   editClinicInfo,
 } from '@/utility/apis/clinicApi'
 
-export const queryKeys = {
+export const clinicQueryKeys = {
   all: ['clinic'] as const,
-  detail: (medicalId: string) => [...queryKeys.all, 'detail', medicalId] as const,
+  detail: (medicalId: string) => [...clinicQueryKeys.all, 'detail', medicalId] as const,
   calendar: (userId: string, localDate: string) =>
-    [...queryKeys.all, 'calendar', userId, localDate] as const,
+    [...clinicQueryKeys.all, 'calendar', userId, localDate] as const,
 }
 
 export const useClinicCalendar = ({ userId, localDate }: ClinicCalendarRequest) =>
   useQuery({
-    queryKey: queryKeys.calendar(userId, localDate),
+    queryKey: clinicQueryKeys.calendar(userId, localDate),
     queryFn: () => clinicCalendar({ userId, localDate }),
   })
 
@@ -32,7 +32,7 @@ export const useEditClinicInfo = (medicalId: string) => {
 
   return useMutation({
     mutationFn: editClinicInfo,
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: queryKeys.detail(medicalId) }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: clinicQueryKeys.detail(medicalId) }),
   })
 }
 

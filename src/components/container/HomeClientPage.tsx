@@ -1,11 +1,8 @@
 'use client'
 import dayjs from 'dayjs'
 
-import { useHome } from '@/store/queries/useHome'
-
-import { ClinicSection } from '../domain/home/ClinicSection'
-import { MedicineSection } from '../domain/home/MedicineSection'
-import { WeightSection } from '../domain/home/WeightSection'
+import { ClinicSection, MedicineSection, WeightSection } from '@/components/domain'
+import { useHome } from '@/store/queries'
 
 export const HomeClientPage = ({ userId }: { userId: string }) => {
   const currentTime = dayjs().format('YYYY-MM-DD hh:mm:ss')

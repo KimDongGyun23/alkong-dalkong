@@ -1,15 +1,15 @@
 import { useQuery } from '@tanstack/react-query'
 
 import type { HomeRequest } from '@/types'
-import { homeData } from '@/utility'
+import { homeData } from '@/utility/apis'
 
-export const queryKeys = {
+export const homeQueryKeys = {
   all: ['home'] as const,
 }
 
 export const useHome = (url: HomeRequest) => {
   return useQuery({
-    queryKey: queryKeys.all,
+    queryKey: homeQueryKeys.all,
     queryFn: () => homeData(url),
     select: (data) => ({
       code: data.code,

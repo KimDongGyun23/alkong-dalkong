@@ -1,6 +1,5 @@
-import { BottomNav, Profile } from '@/components'
-import { ClinicCalendar } from '@/components/domain/clinic/ClinicCalendar'
-import { ScheduleListSection } from '@/components/domain/clinic/ScheduleListSection'
+import { ClinicCalendar, ScheduleListSection } from '@/components/domain'
+import { BottomNav, Profile } from '@/components/view'
 
 const Clinic = () => {
   return (

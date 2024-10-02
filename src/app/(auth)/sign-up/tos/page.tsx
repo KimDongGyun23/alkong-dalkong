@@ -1,4 +1,4 @@
-import { TosStep } from '@/components/domain/auth/TosStep'
+import { TosStep } from '@/components/domain'
 
 const Tos = () => {
   return <TosStep />

@@ -1,6 +1,6 @@
-import { Label } from '@/components'
+import { Label } from '@/components/view'
 import type { RecentWeightInfoType } from '@/types'
-import { getDiffDay } from '@/utility/utils/dates'
+import { getDiffDay } from '@/utility/utils'
 
 type WeightSectionProps = {
   weightInfo: RecentWeightInfoType

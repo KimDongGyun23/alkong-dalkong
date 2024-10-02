@@ -1,4 +1,4 @@
-import { CompleteStep } from '@/components/domain/auth/CompleteStep'
+import { CompleteStep } from '@/components/domain'
 
 const Complete = () => {
   return <CompleteStep />

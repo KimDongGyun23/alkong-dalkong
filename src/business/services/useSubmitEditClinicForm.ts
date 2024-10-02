@@ -2,7 +2,7 @@
 import { useParams, useRouter } from 'next/navigation'
 import dayjs from 'dayjs'
 
-import { useEditClinicInfo } from '@/store/queries/useClinicApi'
+import { useEditClinicInfo } from '@/store/queries'
 import { useCalendarActions } from '@/store/stores'
 import type { ClinicFormType } from '@/types'
 import { CLINIC_ALARM_TIME } from '@/utility/constants'

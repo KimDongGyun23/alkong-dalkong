@@ -1,8 +1,8 @@
 'use client'
 import { FormProvider } from 'react-hook-form'
 
-import { Button, InputGroup } from '@/components'
-import { useSignIn } from '@/store/queries/useAuth'
+import { Button, InputGroup } from '@/components/view'
+import { useSignIn } from '@/store/queries'
 import type { LoginFormType } from '@/types'
 import { useLoginForm } from '@/utility/schema'
 

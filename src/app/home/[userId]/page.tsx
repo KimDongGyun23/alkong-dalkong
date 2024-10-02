@@ -1,4 +1,4 @@
-import { HomeClientPage } from '@/components'
+import { HomeClientPage } from '@/components/container'
 import { DashBoardTemplate } from '@/components/view/DashBoardTemplate'
 
 export type HomeRouteParams = {

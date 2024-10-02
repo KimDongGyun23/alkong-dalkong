@@ -4,9 +4,8 @@ import { useFormContext } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { useStateMachine } from 'little-state-machine'
 
-import { Button, InputGroup } from '@/components'
-import { Label } from '@/components'
-import { useCheckDuplicateId } from '@/store/queries/useAuth'
+import { Button, InputGroup, Label } from '@/components/view'
+import { useCheckDuplicateId } from '@/store/queries'
 import { persistSignUpForm } from '@/utility/utils'
 
 export const AccountStep = () => {

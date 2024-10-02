@@ -2,11 +2,9 @@
 import { type ComponentProps, type MouseEventHandler, useEffect } from 'react'
 import { m, type Variants } from 'framer-motion'
 
+import { AnimatePortal, Icon } from '@/components/view'
 import { useScrollLock } from '@/hooks'
 import { zIndex } from '@/utility/constants'
-
-import { AnimatePortal } from './portal/AnimatePortal'
-import { Icon } from './icons'
 
 type BottomSheetProps = ComponentProps<typeof AnimatePortal> & {
   onClickScrim?: VoidFunction

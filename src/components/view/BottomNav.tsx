@@ -3,12 +3,11 @@ import { Fragment } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+import { Profile, ProfileModal } from '@/components/view'
 import { useToggle } from '@/hooks'
 import { useUserStore } from '@/store/stores'
 import { zIndex } from '@/utility/constants'
 
-import { Profile } from './profile/Profile'
-import { ProfileModal } from './profile/ProfileModal'
 import type { iconMap } from './icons'
 import { Icon } from './icons'
 

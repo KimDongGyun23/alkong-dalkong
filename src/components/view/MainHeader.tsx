@@ -2,10 +2,9 @@
 
 import { useRouter } from 'next/navigation'
 
+import { Icon, Profile } from '@/components/view'
 import { useUserStore } from '@/store/stores'
 
-import { Profile } from './profile/Profile'
-import { Icon } from './icons'
 import type { HeaderProps } from './SubHeader'
 
 const Setting = ({ title }: Pick<HeaderProps, 'title'>) => {

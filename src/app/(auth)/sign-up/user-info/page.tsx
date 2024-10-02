@@ -1,4 +1,4 @@
-import { UserInfoStep } from '@/components/domain/auth/UserInfoStep'
+import { UserInfoStep } from '@/components/domain'
 
 const UserInfo = () => {
   return <UserInfoStep />

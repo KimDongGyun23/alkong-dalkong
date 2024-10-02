@@ -1,5 +1,5 @@
 'use client'
-import { useSelectedTime, useSelectedTimeActions } from '@/store/stores/timeStore'
+import { useSelectedTime, useSelectedTimeActions } from '@/store/stores'
 import { HOURS, MINUTES } from '@/utility/constants'
 
 import { Slider } from './Slider'

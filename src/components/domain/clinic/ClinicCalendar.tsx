@@ -2,8 +2,8 @@
 import { useState } from 'react'
 import dayjs from 'dayjs'
 
-import { useMonthlySchedule } from '@/business/services/useMonthlySchedule'
-import { CustomCalendar } from '@/components/view/customCalendar/CustomCalendar'
+import { useMonthlySchedule } from '@/business/services'
+import { CustomCalendar } from '@/components/view'
 import { useCalendarActions, useSelectedDate } from '@/store/stores'
 
 export const ClinicCalendar = () => {

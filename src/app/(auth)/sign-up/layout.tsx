@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react'
 
-import { SignUpFormProvider } from '@/components/domain/auth/SignUpFormProvider'
+import { SignUpFormProvider } from '@/components/domain'
 
 const SignUpLayout = ({ children }: PropsWithChildren) => {
   return (

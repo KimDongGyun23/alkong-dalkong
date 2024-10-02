@@ -1,5 +1,5 @@
 'use client'
-import { useToggle } from '@/hooks/useToggle'
+import { useToggle } from '@/hooks'
 
 interface ToggleProps {
   initialState?: boolean

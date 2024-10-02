@@ -3,9 +3,9 @@
 import { FormProvider } from 'react-hook-form'
 import { useParams, useRouter } from 'next/navigation'
 
-import { DeleteModal, InputGroup, Label, MainHeader, Tag } from '@/components'
+import { DeleteModal, InputGroup, Label, MainHeader, Tag } from '@/components/view'
 import { useBoolean } from '@/hooks'
-import { useDeleteClinicInfo } from '@/store/queries/useClinicApi'
+import { useDeleteClinicInfo } from '@/store/queries'
 import { useClinicForm } from '@/utility/schema'
 
 export const ClinicInfoClientPage = () => {

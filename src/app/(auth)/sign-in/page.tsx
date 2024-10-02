@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { SignInForm } from '@/components'
+import { SignInForm } from '@/components/domain'
 
 import Logo from '/public/logo.png'
 

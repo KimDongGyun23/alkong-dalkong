@@ -3,15 +3,12 @@
 import { FormProvider } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 
-import { useSubmitCreateClinicForm } from '@/business/services/useSubmitCreateClinicForm'
-import { ActionTag, AlarmBottomSheet, InputGroup, Label, Tag } from '@/components'
-import { MainHeader } from '@/components/view/MainHeader'
+import { useSubmitCreateClinicForm } from '@/business/services'
+import { DateBottomSheet, TagBottomSheet } from '@/components/domain'
+import { ActionTag, AlarmBottomSheet, InputGroup, Label, MainHeader, Tag } from '@/components/view'
 import { useToggle } from '@/hooks'
 import { CLINIC_ALARM_TIME } from '@/utility/constants'
 import { useClinicForm } from '@/utility/schema'
-
-import { DateBottomSheet } from '../domain/clinic/DateBottomSheet'
-import { TagBottomSheet } from '../domain/clinic/TagBottomSheet'
 
 export const ClinicCreateClientPage = () => {
   const router = useRouter()

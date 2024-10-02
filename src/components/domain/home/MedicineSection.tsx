@@ -1,6 +1,6 @@
-import { Label } from '@/components'
+import { Label } from '@/components/view'
 import type { CurrentMedicineInfoType } from '@/types'
-import { formatInfoTime } from '@/utility/utils/dates'
+import { formatInfoTime } from '@/utility/utils'
 
 type MedicineSectionProps = {
   medicineInfo: CurrentMedicineInfoType

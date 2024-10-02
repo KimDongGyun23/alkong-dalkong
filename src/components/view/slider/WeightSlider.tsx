@@ -1,5 +1,5 @@
 'use client'
-import { useSelectedWeight, useSelectedWeightActions } from '@/store/stores/weightStore'
+import { useSelectedWeight, useSelectedWeightActions } from '@/store/stores'
 import { WEIGHT_NUMBERS } from '@/utility/constants'
 
 import { Slider } from './Slider'

@@ -8,3 +8,8 @@ export const api = new HttpClient({
     'Content-Type': 'application/json',
   },
 })
+
+export * from './authApi'
+export * from './clinicApi'
+export * from './homeApi'
+export * from './HttpClient'

@@ -2,9 +2,8 @@
 import { useParams, useRouter } from 'next/navigation'
 import dayjs from 'dayjs'
 
-import { useMonthlySchedule } from '@/business/services/useMonthlySchedule'
-import { ActionTag } from '@/components/view/ActionTag'
-import { Label } from '@/components/view/Label'
+import { useMonthlySchedule } from '@/business/services'
+import { ActionTag, Label } from '@/components/view'
 import { useSelectedDate } from '@/store/stores'
 import type { ScheduleType } from '@/types'
 

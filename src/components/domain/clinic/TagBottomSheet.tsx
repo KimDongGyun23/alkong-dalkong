@@ -3,8 +3,8 @@
 import React from 'react'
 import { useFormContext } from 'react-hook-form'
 
-import { useTagToggle } from '@/business/hooks/useTagToggle'
-import { ActionTag, BottomSheet, Label, SubHeader } from '@/components'
+import { useTagToggle } from '@/business/hooks'
+import { ActionTag, BottomSheet, Label, SubHeader } from '@/components/view'
 import type { ClinicBottomSheetType } from '@/types'
 import { CLINIC_TAGS } from '@/utility/constants'
 

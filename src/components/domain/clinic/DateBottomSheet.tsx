@@ -3,8 +3,7 @@ import { useEffect, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 import dayjs from 'dayjs'
 
-import { BottomSheet, Label, SubHeader, TimeSlider } from '@/components'
-import { CustomCalendar } from '@/components/view/customCalendar/CustomCalendar'
+import { BottomSheet, CustomCalendar, Label, SubHeader, TimeSlider } from '@/components/view'
 import type { CalendarValue, CalendarValuePiece, ClinicBottomSheetType } from '@/types'
 import { convertDayjsToDate, formatDateWithType } from '@/utility/utils'
 
