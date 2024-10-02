@@ -8,6 +8,7 @@ const DATE_FORMATS = {
   time: 'HH:mm',
   fullTime: 'HH:mm:ss',
   dateTime: 'YYYY-MM-DD HH:mm:ss',
+  timeWithSlashDate: 'M/D(ddd) HH:mm',
   fullDateTimeWithKorean: 'YYYY년 M월 D일 dddd A hh:mm',
 }
 
@@ -21,14 +22,14 @@ export const formatDateWithType: Type = (date, toFormatType = 'default', fromFor
   const format = DATE_FORMATS[toFormatType] || DATE_FORMATS.default
 
   if (fromFormatType) {
-    return dayjs(date, DATE_FORMATS[fromFormatType]).format(format)
+    return dayjs(date, DATE_FORMATS[fromFormatType]).locale('ko').format(format)
   }
-  return dayjs(date).format(format)
+  return dayjs(date).locale('ko').format(format)
 }
 
 export const convertDayjsToDate = (date: string, fromFormatType: keyof typeof DATE_FORMATS) => {
   if (fromFormatType) {
     return dayjs(date, DATE_FORMATS[fromFormatType]).toDate()
   }
-  return dayjs(date).toDate()
+  return dayjs(date).locale('ko').toDate()
 }
