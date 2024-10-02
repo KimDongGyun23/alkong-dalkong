@@ -50,7 +50,8 @@ export const DateBottomSheet = ({ section, isShowing, onClickScrim }: ClinicBott
 
   useEffect(() => {
     if (isShowing) {
-      setSelectedDate(convertDayjsToDate(getValues(section), 'fullDateTimeWithKorean'))
+      const dateOnField = getValues(section) === '' ? dayjs() : getValues(section)
+      setSelectedDate(convertDayjsToDate(dateOnField, 'fullDateTimeWithKorean'))
     }
   }, [getValues, isShowing, section])
 

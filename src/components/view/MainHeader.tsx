@@ -25,15 +25,20 @@ const Setting = ({ title }: Pick<HeaderProps, 'title'>) => {
   )
 }
 
-const Confirm = ({
-  title,
-  onCancel,
-  onConfirm,
-}: Pick<HeaderProps, 'title' | 'onCancel' | 'onConfirm'>) => {
+type ConfirmProps = Pick<HeaderProps, 'title' | 'onConfirm'> & { onCancel?: VoidFunction }
+
+const Confirm = ({ title, onCancel, onConfirm }: ConfirmProps) => {
+  const router = useRouter()
+
+  const handleCancle = () => {
+    if (onCancel) onCancel()
+    else router.back()
+  }
+
   return (
     <header className="flex-column-between h-[182px] bg-mint-3 px-[20px] pb-[24px] pt-[20px]">
       <div className="flex-between-align w-full">
-        <button className="body-B text-mint-7" onClick={onCancel}>
+        <button className="body-B text-mint-7" onClick={handleCancle}>
           취소
         </button>
         <button className="body-B text-mint-9" onClick={onConfirm}>
