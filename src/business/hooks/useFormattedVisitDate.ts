@@ -2,7 +2,7 @@
 import { useFormContext } from 'react-hook-form'
 import dayjs from 'dayjs'
 
-import { useCurrentDate, useSelectedTime } from '@/store/stores'
+import { useSelectedTime } from '@/store/stores'
 
 export const useFormattedVisitDate = (section: string, onClickScrim: VoidFunction) => {
   const { setValue } = useFormContext()

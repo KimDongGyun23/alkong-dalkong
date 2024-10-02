@@ -3,7 +3,6 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import type { ClinicCalendarRequest } from '@/types'
 import {
   clinicCalendar,
-  clinicInfo,
   createClinicInfo,
   deleteClinicInfo,
   editClinicInfo,
@@ -11,16 +10,10 @@ import {
 
 export const queryKeys = {
   all: ['clinic'] as const,
-  detail: (medicalId: number) => [...queryKeys.all, 'detail', medicalId] as const,
+  detail: (medicalId: string) => [...queryKeys.all, 'detail', medicalId] as const,
   calendar: (userId: string, localDate: string) =>
     [...queryKeys.all, 'calendar', userId, localDate] as const,
 }
-
-export const useClinicInfo = (medicalId: number) =>
-  useQuery({
-    queryKey: queryKeys.detail(medicalId),
-    queryFn: () => clinicInfo(medicalId),
-  })
 
 export const useClinicCalendar = ({ userId, localDate }: ClinicCalendarRequest) =>
   useQuery({
@@ -34,7 +27,7 @@ export const useCreateClinicInfo = () => {
   })
 }
 
-export const useEditClinicInfo = (medicalId: number) => {
+export const useEditClinicInfo = (medicalId: string) => {
   const queryClient = useQueryClient()
 
   return useMutation({

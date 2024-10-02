@@ -9,6 +9,7 @@ import { useToggle } from '@/hooks'
 import { CLINIC_ALARM_TIME } from '@/utility/constants'
 import { useClinicForm } from '@/utility/schema'
 
+import { DateBottomSheet } from '../domain/clinic'
 import { TagBottomSheet } from '../domain/clinic/TagBottomSheet'
 
 export const ClinicEditClientPage = () => {
@@ -61,11 +62,11 @@ export const ClinicEditClientPage = () => {
               />
             </button>
             <InputGroup.ErrorMessage section="hospitalDate" />
-            {/* <DateBottomSheet
+            <DateBottomSheet
               section="hospitalDate"
               isShowing={dateSheet}
               onClickScrim={toggleDateSheet}
-            /> */}
+            />
           </InputGroup>
 
           <InputGroup>

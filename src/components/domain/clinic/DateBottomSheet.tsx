@@ -1,18 +1,23 @@
 'use client'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 import dayjs from 'dayjs'
 
-import { useFormattedVisitDate } from '@/business/hooks/useFormattedVisitDate'
-import { BottomSheet, Calendar, Label, SubHeader, TimeSlider } from '@/components'
-import { useCalendarActions, useCurrentDate } from '@/store/stores'
-import type { ClinicBottomSheetType } from '@/types'
+import { BottomSheet, Label, SubHeader, TimeSlider } from '@/components'
+import { CustomCalendar } from '@/components/view/customCalendar/CustomCalendar'
+import type { CalendarValue, CalendarValuePiece, ClinicBottomSheetType } from '@/types'
+import { convertDayjsToDate, formatDateWithType } from '@/utility/utils'
 
 const DateBottomSheetHeader = ({
   section,
   onClickScrim,
-}: Omit<ClinicBottomSheetType, 'isShowing'>) => {
-  const handleClickComplete = useFormattedVisitDate(section, onClickScrim)
+  selectedDate,
+}: Omit<ClinicBottomSheetType, 'isShowing'> & { selectedDate: CalendarValuePiece }) => {
+  const { setValue } = useFormContext()
+  const handleClickComplete = () => {
+    setValue(section, formatDateWithType(selectedDate as Date, 'fullDateTimeWithKorean'))
+    onClickScrim()
+  }
 
   return (
     <div className="-mx-2 w-full pb-5">
@@ -25,9 +30,7 @@ const DateBottomSheetHeader = ({
   )
 }
 
-const DateOfVisit = () => {
-  const selectedDate = useCurrentDate()
-
+const DateOfVisit = ({ selectedDate }: { selectedDate: CalendarValuePiece }) => {
   return (
     <div className="flex-between-align mx-1 mt-[6px]">
       <p className="headline-B">방문 예정 날짜</p>
@@ -40,31 +43,33 @@ const DateOfVisit = () => {
 
 export const DateBottomSheet = ({ section, isShowing, onClickScrim }: ClinicBottomSheetType) => {
   const { getValues } = useFormContext()
-  const { setSelectedDate, resetCalendar } = useCalendarActions()
 
-  const formattedDate = getValues(section)
-    ? dayjs(getValues(section), 'YYYY년 M월 D일 dddd A hh:mm').format('YYYY-MM-DD')
-    : dayjs().format('YYYY-MM-DD')
-
-  useEffect(() => {
-    resetCalendar()
-  }, [])
+  const [selectedDate, setSelectedDate] = useState<CalendarValuePiece>(new Date())
+  const handleDateChange = (newDate: CalendarValue) => {
+    setSelectedDate(Array.isArray(newDate) ? newDate[0] : newDate)
+  }
 
   useEffect(() => {
-    setSelectedDate(formattedDate)
-  }, [isShowing, setSelectedDate, formattedDate])
+    if (isShowing) {
+      setSelectedDate(convertDayjsToDate(getValues(section), 'fullDateTimeWithKorean'))
+    }
+  }, [getValues, isShowing, section])
 
   return (
     <BottomSheet isShowing={isShowing} onClickScrim={onClickScrim}>
-      <DateBottomSheetHeader section={section} onClickScrim={onClickScrim} />
+      <DateBottomSheetHeader
+        section={section}
+        onClickScrim={onClickScrim}
+        selectedDate={selectedDate}
+      />
 
       <div className="size-full overflow-y-scroll pb-12 pt-5 scrollbar-hide">
         <section>
           <Label icon="calendar-label">방문 날짜를 선택해 주세요.</Label>
 
           <div className="mx-2 mt-4">
-            <Calendar />
-            <DateOfVisit />
+            <CustomCalendar value={selectedDate} onChange={handleDateChange} />
+            <DateOfVisit selectedDate={selectedDate} />
           </div>
         </section>
 

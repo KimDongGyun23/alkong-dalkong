@@ -21,7 +21,8 @@ const getDefaultValues = async (isEdit: boolean, medicalId?: string) => {
     const { data } = await clinicInfo(medicalId)
     return {
       hospitalName: data.hospitalName || '',
-      hospitalDate: formatDateWithType(data.hospitalDate, 'fullDateWithTimeKorean') || '',
+      hospitalDate:
+        formatDateWithType(data.hospitalDate, 'fullDateTimeWithKorean', 'dateTime') || '',
       medicalPart: data.medicalPart || [],
       medicalMemo: data.medicalMemo || '',
       medicalAlarm: CLINIC_ALARM_TIME[data.medicalAlarm] || '없음',
