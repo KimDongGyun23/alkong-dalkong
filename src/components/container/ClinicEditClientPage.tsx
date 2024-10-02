@@ -1,7 +1,7 @@
 'use client'
 
 import { FormProvider } from 'react-hook-form'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 
 import { useSubmitEditClinicForm } from '@/business/services'
 import { DateBottomSheet, TagBottomSheet } from '@/components/domain'
@@ -11,7 +11,6 @@ import { CLINIC_ALARM_TIME } from '@/utility/constants'
 import { useClinicForm } from '@/utility/schema'
 
 export const ClinicEditClientPage = () => {
-  const router = useRouter()
   const { medicalId } = useParams<{ medicalId: string }>()
 
   const [tagSheet, toggleTagSheet] = useToggle(false)
@@ -21,8 +20,7 @@ export const ClinicEditClientPage = () => {
   const formMethod = useClinicForm(true, medicalId)
   const { handleSubmit, getValues } = formMethod
 
-  const handleClickConfirm = useSubmitEditClinicForm()
-  const handleClickCancle = () => router.back()
+  const handleClickConfirm = useSubmitEditClinicForm(medicalId)
 
   return (
     <div className="flex-column h-full overflow-hidden">
@@ -30,7 +28,6 @@ export const ClinicEditClientPage = () => {
         <div>
           <MainHeader.Confirm
             title={`의사에게 전달할\n특이사항을 기입해주세요.`}
-            onCancel={handleClickCancle}
             onConfirm={handleSubmit(handleClickConfirm)}
           />
         </div>
