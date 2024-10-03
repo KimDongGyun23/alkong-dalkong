@@ -1,10 +1,10 @@
 import { ClinicCalendar, ScheduleListSection } from '@/components/domain'
-import { BottomNav, Profile } from '@/components/view'
+import { DashBoardTemplate, Profile } from '@/components/view'
 
 const Clinic = () => {
   return (
-    <>
-      <main className="mx-4 mb-[130px] mt-[38px] overflow-y-scroll scrollbar-hide">
+    <DashBoardTemplate route="clinic">
+      <main className="overflow-y-scroll scrollbar-hide">
         <div className="absolute right-5 top-[22px]">
           <Profile size="sm" bgColor="#C5FDEC" />
         </div>
@@ -17,8 +17,7 @@ const Clinic = () => {
           <ScheduleListSection />
         </section>
       </main>
-      <BottomNav />
-    </>
+    </DashBoardTemplate>
   )
 }
 

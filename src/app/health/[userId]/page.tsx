@@ -1,4 +1,4 @@
-import { BottomNav } from '@/components'
+import { DashBoardTemplate } from '@/components/view'
 
 export type HealthRouteParams = {
   params: { userId: string }
@@ -6,10 +6,9 @@ export type HealthRouteParams = {
 
 const Health = ({ params: { userId } }: HealthRouteParams) => {
   return (
-    <div>
+    <DashBoardTemplate route="health">
       <h2>{userId}</h2>
-      <BottomNav />
-    </div>
+    </DashBoardTemplate>
   )
 }
 

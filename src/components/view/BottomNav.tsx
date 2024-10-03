@@ -35,7 +35,7 @@ export const BottomNav = () => {
   return (
     <>
       {isShowing && <ProfileModal onClickProfileModal={toggleShowing} />}
-      <nav className={`absolute bottom-0 w-full ${zIndex.bottomNav}`}>
+      <nav className={`bottom-0 w-full ${zIndex.bottomNav}`}>
         <div className="flex-between items-end bg-white px-[26px] pb-[11px] pt-[4px] shadow-topShadow">
           {navItems.map(({ text, icon, path }, index) => {
             const selected = path === pathname && !isShowing
@@ -54,7 +54,6 @@ export const BottomNav = () => {
                     <div
                       className={`${profileTextStyle} flex-column-align absolute bottom-0 gap-y-[6px]`}
                     >
-                      {/* profile floating action button */}
                       <div className={`flex rounded-t-[50%] bg-white p-[8px] pb-0 ${zIndex.fab}`}>
                         <Profile
                           name={user.name}

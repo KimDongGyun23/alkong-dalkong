@@ -4,7 +4,7 @@ import type { PropsWithChildren } from 'react'
 import { BottomNav, MainHeader } from '@/components/view'
 
 type DashBoardTemplateProps = {
-  route: 'health' | 'home' | 'medicine'
+  route: 'health' | 'home' | 'medicine' | 'clinic'
 }
 
 const HeaderTitle = {
@@ -18,11 +18,9 @@ export const DashBoardTemplate = ({
   route,
 }: PropsWithChildren<DashBoardTemplateProps>) => {
   return (
-    <div className="flex h-full flex-col">
-      <MainHeader.Setting title={HeaderTitle[route]} />
-      <div className="flex-column flex-1 items-center overflow-y-auto px-5 pb-[107px] pt-8 scrollbar-hide">
-        {children}
-      </div>
+    <div className="flex-column h-full">
+      {route !== 'clinic' && <MainHeader.Setting title={HeaderTitle[route]} />}
+      <main className="flex-1 overflow-y-scroll px-5 py-8 scrollbar-hide">{children}</main>
       <BottomNav />
     </div>
   )
