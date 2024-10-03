@@ -1,6 +1,7 @@
 'use client'
 
 import { FormProvider } from 'react-hook-form'
+import { useParams } from 'next/navigation'
 
 import {
   DayBottomSheet,
@@ -22,11 +23,12 @@ export const MedicineEditClientPage = () => {
   const [periodSheet, togglePeriodSheet] = useToggle(false)
   const [dosageSheet, toggleDosageSheet] = useToggle(false)
   const [alarmSheet, toggleAlarmSheet] = useToggle(false)
+  const { userId, medicineId } = useParams<{ medicineId: string; userId: string }>()
 
-  const formMethod = useMedicineForm()
-  const { mutate: editMutation } = useEditMedicine()
-
+  const formMethod = useMedicineForm(true, userId, medicineId)
   const { handleSubmit } = formMethod
+
+  const { mutate: editMutation } = useEditMedicine()
 
   const handleSubmitForm = (formData: MedicineFormType) => {
     const formmatedForm = formattedMedicineForm(formData)

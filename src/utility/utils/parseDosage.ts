@@ -1,7 +1,7 @@
 type ParseDosageType = (dosage: string) => { dosageAmount: number; dosageType: string }
 
 export const parseDosage: ParseDosageType = (dosage) => {
-  const match = dosage.match(/(\d+)([^\d]+)/)
+  const match = dosage?.match(/(\d+)([^\d]+)/)
 
   if (match) {
     const dosageAmount = parseInt(match[1])

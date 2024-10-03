@@ -9,10 +9,10 @@ export const useSyncMedicineTimes = () => {
   const takenTimeArr = watch('medicineTakenTimeList') as string[]
 
   useEffect(() => {
-    if (takenCount > takenTimeArr.length) {
+    if (takenCount > takenTimeArr?.length) {
       const updatedTimes = [...takenTimeArr, '23:59']
       setValue('medicineTakenTimeList', updatedTimes)
-    } else if (takenCount < takenTimeArr.length) {
+    } else if (takenCount < takenTimeArr?.length) {
       const updatedTimes = takenTimeArr.slice(0, takenCount)
       setValue('medicineTakenTimeList', updatedTimes)
     }

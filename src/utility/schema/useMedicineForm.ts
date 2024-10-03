@@ -39,7 +39,6 @@ const initialValues = {
 const getDefaultValues = async (userId?: string, medicineId?: string) => {
   if (userId && medicineId) {
     const { data } = await medicineEditInfo(userId, medicineId)
-
     const convertDaysEnToKo = convertDayArrayToKorean(data.medicineWeek)
     const formattedWeek = convertDayArrayToString(convertDaysEnToKo)
 
