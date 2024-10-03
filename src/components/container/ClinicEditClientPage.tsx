@@ -3,12 +3,12 @@
 import { FormProvider } from 'react-hook-form'
 import { useParams } from 'next/navigation'
 
+import { useClinicForm } from '@/business/hooks'
 import { useSubmitEditClinicForm } from '@/business/services'
 import { DateBottomSheet, TagBottomSheet } from '@/components/domain'
 import { ActionTag, AlarmBottomSheet, InputGroup, Label, MainHeader, Tag } from '@/components/view'
 import { useToggle } from '@/hooks'
 import { CLINIC_ALARM_TIME } from '@/utility/constants'
-import { useClinicForm } from '@/utility/schema'
 
 export const ClinicEditClientPage = () => {
   const { medicalId } = useParams<{ medicalId: string }>()

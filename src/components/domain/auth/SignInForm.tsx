@@ -1,10 +1,10 @@
 'use client'
 import { FormProvider } from 'react-hook-form'
 
+import { useLoginForm } from '@/business/hooks'
 import { Button, InputGroup } from '@/components/view'
 import { useSignIn } from '@/store/queries'
 import type { LoginFormType } from '@/types'
-import { useLoginForm } from '@/utility/schema'
 
 export const SignInForm = () => {
   const formMethod = useLoginForm()

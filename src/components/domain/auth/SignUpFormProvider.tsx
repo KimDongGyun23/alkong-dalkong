@@ -5,9 +5,9 @@ import { FormProvider } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { createStore, StateMachineProvider } from 'little-state-machine'
 
+import { useSignupForm } from '@/business/hooks'
 import { useSignUp } from '@/store/queries'
 import type { SignupFormType } from '@/types'
-import { useSignupForm } from '@/utility/schema'
 
 export const SignUpFormProvider = ({ children }: PropsWithChildren) => {
   const formMethod = useSignupForm()

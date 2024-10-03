@@ -3,10 +3,10 @@
 import { FormProvider } from 'react-hook-form'
 import { useParams, useRouter } from 'next/navigation'
 
+import { useClinicForm } from '@/business/hooks'
 import { ButtonModal, InputGroup, Label, MainHeader, Tag } from '@/components/view'
 import { useBoolean } from '@/hooks'
 import { useDeleteClinicInfo } from '@/store/queries'
-import { useClinicForm } from '@/utility/schema'
 
 export const ClinicInfoClientPage = () => {
   const router = useRouter()

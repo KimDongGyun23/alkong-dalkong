@@ -3,6 +3,7 @@
 import { FormProvider } from 'react-hook-form'
 import { useParams } from 'next/navigation'
 
+import { useMedicineForm } from '@/business/hooks'
 import {
   DayBottomSheet,
   PeriodBottomSheet,
@@ -15,7 +16,6 @@ import { useToggle } from '@/hooks'
 import { useEditMedicine } from '@/store/queries'
 import type { MedicineFormType } from '@/types'
 import { MEDICINE_ALARM_TIME } from '@/utility/constants'
-import { useMedicineForm } from '@/utility/schema'
 import { formattedMedicineForm } from '@/utility/utils'
 
 export const MedicineEditClientPage = () => {
