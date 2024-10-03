@@ -3,7 +3,6 @@ import { useParams, useRouter } from 'next/navigation'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import dayjs from 'dayjs'
 
-import type { CreateMedicineRequest, ToggleTakenInfoRequest } from '@/types'
 import {
   createMedicineInfo,
   deleteMedicine,
@@ -12,7 +11,8 @@ import {
   medicineEditInfo,
   medicineInfo,
   toggleTakenInfo,
-} from '@/utility/apis'
+} from '@/store/queries/apis'
+import type { CreateMedicineRequest, ToggleTakenInfoRequest } from '@/types'
 
 export const medicineQueryKeys = {
   all: ['medicine'] as const,

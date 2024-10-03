@@ -10,7 +10,7 @@ import {
 } from '@/business/services'
 import type { MedicineFormType } from '@/types'
 
-import { medicineEditInfo } from '../apis'
+import { medicineEditInfo } from '../../store/queries/apis'
 import { MEDICINE_ALARM_TIME } from '../constants'
 import { formatDateWithType } from '../utils'
 

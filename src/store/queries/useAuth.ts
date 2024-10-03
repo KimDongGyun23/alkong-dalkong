@@ -3,8 +3,8 @@ import type { UseMutationOptions } from '@tanstack/react-query'
 import { useMutation } from '@tanstack/react-query'
 import type { AxiosError } from 'axios'
 
+import { api, checkDuplicateId, signIn, signOut, signUp } from '@/store/queries/apis'
 import type { SignUpRequest } from '@/types'
-import { api, checkDuplicateId, signIn, signOut, signUp } from '@/utility/apis'
 
 import { useUserStore } from '../stores'
 

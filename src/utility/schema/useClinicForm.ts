@@ -4,7 +4,7 @@ import { z } from 'zod'
 
 import type { ClinicFormType } from '@/types/clinic'
 
-import { clinicInfo } from '../apis/clinicApi'
+import { clinicInfo } from '../../store/queries/apis/clinicApi'
 import { CLINIC_ALARM_TIME } from '../constants'
 import { formatDateWithType } from '../utils'
 

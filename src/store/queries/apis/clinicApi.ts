@@ -1,3 +1,4 @@
+import { api } from '@/store/queries/apis'
 import type {
   ClinicCalendarRequest,
   ClinicCalendarResponse,
@@ -7,7 +8,6 @@ import type {
   EditClinicInfoRequest,
   EditClinicInfoResponse,
 } from '@/types'
-import { api } from '@/utility/apis'
 
 export const clinicInfo = async (medicalId: string) => {
   return await api.get<ClinicInfoResponse>(`/medical/${medicalId}`)

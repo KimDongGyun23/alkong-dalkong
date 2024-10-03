@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 
+import { homeData } from '@/store/queries/apis'
 import type { HomeRequest } from '@/types'
-import { homeData } from '@/utility/apis'
 
 export const homeQueryKeys = {
   all: ['home'] as const,
