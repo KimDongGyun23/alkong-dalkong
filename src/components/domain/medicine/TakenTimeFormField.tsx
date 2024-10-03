@@ -63,7 +63,7 @@ export const TakenTimeFormField = () => {
     <InputGroup>
       <Label>복용 시간</Label>
       <div className="flex-column gap-2 pl-2">
-        {takenTimeArr.map((time, index) => (
+        {takenTimeArr?.map((time, index) => (
           <React.Fragment key={index}>
             <button
               type="button"

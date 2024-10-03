@@ -16,18 +16,28 @@ import { formatDateWithType } from '../utils'
 
 const schema = z.object({
   medicineName: z.string().min(1, { message: '약품명을 입력해주세요.' }),
-  medicineWeek: z.array(z.string()).min(1, { message: '복용 요일을 선택해주세요.' }),
-  medicineTimes: z.number().min(1, '복용 횟수는 1 이상이어야 합니다.'),
-  medicineTakenTime: z.array(z.string()).min(1, { message: '복용 시간을 입력해주세요.' }),
-  medicineEndDate: z.string().min(1, { message: '반복 종료 날짜를 선택해주세요.' }),
-  medicineDosage: z.number().min(1, { message: '복용량은 1 이상이어야 합니다.' }),
-  medicineTakenType: z.enum(['DOSE', 'TABLET']),
+  medicineWeek: z.string().min(1, { message: '복용 요일을 선택해주세요.' }),
+  medicineTimes: z.number(),
+  medicineTakenTimeList: z.array(z.string()),
+  medicinePeriod: z.string(),
+  medicineDosage: z.string(),
   medicineMemo: z.string(),
   medicineAlarm: z.string(),
 })
 
-const getDefaultValues = async (isEdit: boolean, userId?: string, medicineId?: string) => {
-  if (isEdit && userId && medicineId) {
+const initialValues = {
+  medicineName: '',
+  medicineWeek: dayjs().locale('ko').format('ddd'),
+  medicineTimes: 1,
+  medicineTakenTimeList: ['23:59'],
+  medicinePeriod: dayjs().format('M월 D일'),
+  medicineDosage: '1회분',
+  medicineMemo: '',
+  medicineAlarm: '없음',
+}
+
+const getDefaultValues = async (userId?: string, medicineId?: string) => {
+  if (userId && medicineId) {
     const { data } = await medicineEditInfo(userId, medicineId)
 
     const convertDaysEnToKo = convertDayArrayToKorean(data.medicineWeek)
@@ -43,23 +53,12 @@ const getDefaultValues = async (isEdit: boolean, userId?: string, medicineId?: s
       medicinePeriod:
         data.medicineEndDate === '9999-12-31'
           ? '꾸준히 섭취'
-          : dayjs(data.medicineEndDate).format('M월 D일'),
+          : formatDateWithType(data.medicineEndDate, 'monthDate'),
       medicineDosage: `${data.medicineDosage}${getMedicineUnitInKorean(data.medicineTakenType)}`,
       medicineMemo: data.medicineMemo,
       medicineAlarm: MEDICINE_ALARM_TIME[data.medicineAlarm],
     }
-  }
-
-  return {
-    medicineName: '',
-    medicineWeek: '',
-    medicineTimes: 1,
-    medicineTakenTimeList: [],
-    medicinePeriod: '',
-    medicineDosage: 'DOSE' as 'DOSE' | 'TABLET',
-    medicineMemo: '',
-    medicineAlarm: '없음',
-  }
+  } else return initialValues
 }
 
 export const useMedicineForm = (isEdit: boolean = false, userId?: string, medicineId?: string) => {
@@ -67,7 +66,7 @@ export const useMedicineForm = (isEdit: boolean = false, userId?: string, medici
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
     resolver: zodResolver(schema),
-    defaultValues: async () => await getDefaultValues(isEdit, userId, medicineId),
+    defaultValues: isEdit ? async () => await getDefaultValues(userId, medicineId) : initialValues,
   })
 
   return formMethod

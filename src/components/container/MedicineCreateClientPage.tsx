@@ -15,7 +15,7 @@ import { useCreateMedicineInfo } from '@/store/queries'
 import type { MedicineFormType } from '@/types'
 import { MEDICINE_ALARM_TIME } from '@/utility/constants'
 import { useMedicineForm } from '@/utility/schema'
-import { formattedMedicineForm } from '@/utility/utils/formattedMedicineForm'
+import { formattedMedicineForm } from '@/utility/utils'
 
 export const MedicineCreateClientPage = () => {
   const [daySheet, toggleDaySheet] = useToggle(false)
