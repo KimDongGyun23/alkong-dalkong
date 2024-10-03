@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 
 import { useMedicineDetailData } from '@/business/services'
-import { Button, DeleteModal, SubHeader, Tag } from '@/components/view'
+import { Button, ButtonModal, SubHeader, Tag } from '@/components/view'
 import { useBoolean } from '@/hooks'
 import { useDeleteMedicine } from '@/store/queries'
 
@@ -73,10 +73,14 @@ const DetailItem = () => {
           </div>
         </div>
       ))}
-      <DeleteModal
+      <ButtonModal
+        header="삭제하시겠습니까?"
+        content="삭제하실 경우 복원이 불가능합니다."
+        cancleText="취소"
+        confirmText="삭제"
         modalState={modalState}
         closeModal={closeModal}
-        onClickDelete={() => deleteMutation(deleteMedicineId as number, { onSuccess: closeModal })}
+        onClickConfirm={() => deleteMutation(deleteMedicineId as number, { onSuccess: closeModal })}
       />
     </div>
   )

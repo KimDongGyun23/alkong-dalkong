@@ -5,7 +5,7 @@ import { type PropsWithChildren, useRef, useState } from 'react'
 import { useScrollLock } from '@/hooks'
 import { zIndex } from '@/utility/constants'
 
-import { Icon } from './icons'
+import { Icon } from '../icons'
 
 type ModalProps = {
   isOpen: boolean

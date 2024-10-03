@@ -3,7 +3,7 @@
 import { FormProvider } from 'react-hook-form'
 import { useParams, useRouter } from 'next/navigation'
 
-import { DeleteModal, InputGroup, Label, MainHeader, Tag } from '@/components/view'
+import { ButtonModal, InputGroup, Label, MainHeader, Tag } from '@/components/view'
 import { useBoolean } from '@/hooks'
 import { useDeleteClinicInfo } from '@/store/queries'
 import { useClinicForm } from '@/utility/schema'
@@ -75,10 +75,14 @@ export const ClinicInfoClientPage = () => {
         </form>
       </FormProvider>
 
-      <DeleteModal
+      <ButtonModal
+        header="삭제하시겠습니까?"
+        content="삭제하실 경우 복원이 불가능합니다."
+        cancleText="취소"
+        confirmText="삭제"
         modalState={modalState}
         closeModal={closeModal}
-        onClickDelete={handleClickDelete}
+        onClickConfirm={handleClickDelete}
       />
     </div>
   )
