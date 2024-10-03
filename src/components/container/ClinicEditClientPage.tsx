@@ -75,11 +75,11 @@ export const ClinicEditClientPage = () => {
             <InputGroup.TextArea section="medicalMemo" placeholder="증상을 입력해주세요." />
           </InputGroup>
 
-          <InputGroup>
+          <InputGroup onClick={toggleAlarmSheet}>
             <Label icon="time-label">알람</Label>
             <div className="flex-between-align w-full rounded-xl border border-mint-3 py-4 pl-5 pr-4">
               <Label>알람</Label>
-              <InputGroup.TextWithArrow section="medicalAlarm" onClick={toggleAlarmSheet} />
+              <InputGroup.TextWithArrow section="medicalAlarm" />
             </div>
             <InputGroup.ErrorMessage section="medicalAlarm" />
             <AlarmBottomSheet
