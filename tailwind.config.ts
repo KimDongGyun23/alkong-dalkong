@@ -8,7 +8,7 @@ import {
   fontSize,
   fontWeight,
   lineHeight,
-} from './src/utility/styles'
+} from './src/utility/styles/defaultStyles'
 
 const config: Config = {
   content: [
