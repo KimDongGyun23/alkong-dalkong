@@ -1,11 +1,11 @@
 'use client'
 import { useParams, useRouter } from 'next/navigation'
-import dayjs from 'dayjs'
 
-import { useMonthlySchedule } from '@/business/services'
 import { ActionTag, Label } from '@/components/view'
+import { useClinicCalendar } from '@/store/queries'
 import { useSelectedDate } from '@/store/stores'
 import type { ScheduleType } from '@/types'
+import { formatDateWithType } from '@/utility/utils'
 
 import { ScheduleItem } from './ScheduleItem'
 
@@ -31,10 +31,13 @@ export const ScheduleListSection = () => {
   const { userId } = useParams<{ userId: string }>()
 
   const selectedDate = useSelectedDate()
-  const { monthlyScheduleList } = useMonthlySchedule(dayjs(selectedDate).format('YYYY-MM'))
+  const localDate = formatDateWithType(selectedDate as Date, 'yearMonth')
+  const { data: calendarData, isError, isLoading } = useClinicCalendar({ userId, localDate })
 
-  const todaySchedules = monthlyScheduleList.filter((item) =>
-    item.hospitalDate.startsWith(dayjs(selectedDate).format('YYYY-MM-DD')),
+  if (isError || isLoading || !calendarData) return null
+
+  const todaySchedules = calendarData.scheduleList.filter((item) =>
+    item.hospitalDate.startsWith(formatDateWithType(selectedDate as Date, 'default')),
   )
 
   return (

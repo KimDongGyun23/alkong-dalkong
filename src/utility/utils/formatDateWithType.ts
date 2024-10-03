@@ -5,11 +5,12 @@ dayjs.extend(customParseFormat)
 
 const DATE_FORMATS = {
   default: 'YYYY-MM-DD',
+  yearMonth: 'YYYY-MM',
   monthDate: 'M월 d일',
   time: 'HH:mm',
   fullTime: 'HH:mm:ss',
-  dateTime: 'YYYY-MM-DD HH:mm:ss',
   timeWithSlashDate: 'M/D(ddd) HH:mm',
+  dateTime: 'YYYY-MM-DD HH:mm:ss',
   fullDateTimeWithKorean: 'YYYY년 M월 D일 dddd A hh:mm',
 }
 

@@ -12,7 +12,13 @@ import {
   medicineInfo,
   toggleTakenInfo,
 } from '@/store/queries/apis'
-import type { CreateMedicineRequest, ToggleTakenInfoRequest } from '@/types'
+import type { CreateMedicineRequest, MedicineDateDtoType, ToggleTakenInfoRequest } from '@/types'
+import {
+  convertDayArrayToKorean,
+  convertDayArrayToString,
+  formatDateWithType,
+  getMedicineUnitInKorean,
+} from '@/utility/utils'
 
 export const medicineQueryKeys = {
   all: ['medicine'] as const,
@@ -29,6 +35,23 @@ export const useMedicineInfo = () => {
   return useQuery({
     queryKey: medicineQueryKeys.info(userId),
     queryFn: () => medicineInfo(userId, today),
+    select: (data) => {
+      const transformedMedicineList = data.data.medicineDateDtoList.reduce(
+        (acc, medicine) => {
+          acc[medicine.medicineId] = medicine
+          return acc
+        },
+        {} as Record<number, MedicineDateDtoType>,
+      )
+
+      return {
+        ...data,
+        data: {
+          medicineList: transformedMedicineList,
+          timeListByHours: data.data.medicineTakenInfo,
+        },
+      }
+    },
   })
 }
 
@@ -38,6 +61,28 @@ export const useMedicineDetail = () => {
   return useQuery({
     queryKey: medicineQueryKeys.detail(userId),
     queryFn: () => medicineDetail(userId),
+    select: (data) => {
+      const transformedData = data.data.map((medicine) => {
+        const takenWeek = convertDayArrayToKorean(medicine.medicineWeek)
+        const formattedWeek = convertDayArrayToString(takenWeek)
+
+        const takenTime = medicine.medicineTakenTime.map((time) =>
+          formatDateWithType(time, 'time', 'fullTime'),
+        )
+
+        return {
+          ...medicine,
+          medicineWeek: formattedWeek,
+          medicineTakenTime: takenTime,
+          medicineTakenType: getMedicineUnitInKorean(medicine.medicineTakenType),
+        }
+      })
+
+      return {
+        code: data.code,
+        data: transformedData,
+      }
+    },
   })
 }
 

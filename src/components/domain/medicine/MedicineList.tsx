@@ -1,8 +1,7 @@
 'use client'
 
-import { useMedicineListByHours } from '@/business/services'
 import { Icon } from '@/components/view'
-import { useToggleTakenInfo } from '@/store/queries'
+import { useMedicineInfo, useToggleTakenInfo } from '@/store/queries'
 import type { MedicineDateDtoType } from '@/types'
 import { getMedicineUnitInKorean, isTakenMedicine } from '@/utility/utils'
 
@@ -40,7 +39,10 @@ const MedicineItem = ({ medicine, isTaken, takenIndex }: MedicineItemProps) => {
 }
 
 export const MedicineList = () => {
-  const { medicineList, timeListByHours } = useMedicineListByHours()
+  const { data: medicineData, isPending, isError } = useMedicineInfo()
+  if (isPending || isError) return null
+
+  const { medicineList, timeListByHours } = medicineData?.data
 
   if (!Object.keys(medicineList).length)
     return (

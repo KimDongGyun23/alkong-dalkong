@@ -2,8 +2,7 @@
 
 import { FormProvider } from 'react-hook-form'
 
-import { useClinicForm } from '@/business/hooks'
-import { useSubmitCreateClinicForm } from '@/business/services'
+import { useClinicForm, useSubmitCreateClinicForm } from '@/business/hooks'
 import { DateBottomSheet, TagBottomSheet } from '@/components/domain'
 import { ActionTag, AlarmBottomSheet, InputGroup, Label, MainHeader, Tag } from '@/components/view'
 import { useToggle } from '@/hooks'

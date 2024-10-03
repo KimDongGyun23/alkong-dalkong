@@ -3,15 +3,14 @@
 import { useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 
-import { useMedicineDetailData } from '@/business/services'
 import { Button, ButtonModal, SubHeader, Tag } from '@/components/view'
 import { useBoolean } from '@/hooks'
-import { useDeleteMedicine } from '@/store/queries'
+import { useDeleteMedicine, useMedicineDetail } from '@/store/queries'
 
 const DetailItem = () => {
   const router = useRouter()
   const { userId } = useParams<{ userId: string }>()
-  const { detailData, isPending, isError } = useMedicineDetailData()
+  const { data: detailData, isPending, isError } = useMedicineDetail()
   const [modalState, openModal, closeModal] = useBoolean(false)
   const [deleteMedicineId, setDeleteMedicineId] = useState<number | undefined>()
 
@@ -28,7 +27,7 @@ const DetailItem = () => {
   if (isPending) return <p>로딩중</p>
   if (isError) return <p>에러</p>
 
-  if (!detailData.length)
+  if (!detailData.data.length)
     return (
       <p className="subtitle-M flex-center h-full text-center text-gray-6">
         복용 중인 약이 없어요!
@@ -37,7 +36,7 @@ const DetailItem = () => {
 
   return (
     <div className="flex-column gap-6 overflow-scroll px-5 py-4 scrollbar-hide">
-      {detailData.map((medicine) => (
+      {detailData.data.map((medicine) => (
         <div key={medicine.medicineId} className="rounded-xl border border-mint-3 bg-white p-5">
           <div className="flex-between-align border-b border-b-mint-5 px-1 pb-4">
             <p className="subtitle-B">{medicine.medicineName}</p>
