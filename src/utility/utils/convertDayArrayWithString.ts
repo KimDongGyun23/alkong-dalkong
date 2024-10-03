@@ -1,3 +1,5 @@
+import dayjs from 'dayjs'
+
 export const DAYS = {
   일: 'SUNDAY',
   월: 'MONDAY',
@@ -54,4 +56,30 @@ type convertEnglishDaysToKoreanType = (days: string[]) => string[]
 export const convertDayArrayToKorean: convertEnglishDaysToKoreanType = (days) => {
   const ENGLISH_TO_KOREAN = Object.fromEntries(Object.entries(DAYS).map(([ko, en]) => [en, ko]))
   return days.map((day) => ENGLISH_TO_KOREAN[day])
+}
+
+type getDiffDayType = (date: string) => number
+export const getDiffDay: getDiffDayType = (date) => {
+  const now = dayjs().locale('ko').startOf('day')
+  return now.diff(dayjs(date).locale('ko').startOf('day'), 'day')
+}
+
+type formatInfoTimeType = (times: string[], weekList: string[]) => string
+export const formatInfoTime: formatInfoTimeType = (times, weekList) => {
+  let schedule = ''
+
+  if (weekList.length === 7) {
+    schedule = '매일'
+  } else {
+    const formatKo = weekList.map((week) => convertDayArrayToKorean([week])[0])
+    schedule = formatKo.join(', ')
+  }
+
+  if (times.length === 1) {
+    schedule += ` ${times[0].slice(0, -3)}`
+  } else {
+    schedule += ` ${times.length}회`
+  }
+
+  return schedule
 }

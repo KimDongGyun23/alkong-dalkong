@@ -1,6 +1,6 @@
 'use client'
 import { useSelectedWeight, useSelectedWeightActions } from '@/store/stores'
-import { WEIGHT_NUMBERS } from '@/utility/constants'
+import { WEIGHT_SLIDER_NUMBERS } from '@/utility/constants'
 
 import { Slider } from './Slider'
 
@@ -20,18 +20,18 @@ export const WeightSlider = () => {
       <div className="headline-M absolute top-1/2 h-[30px] w-[158px] -translate-x-6 -translate-y-1/2 rounded-lg bg-mint-2" />
       <div className="flex gap-[14px]">
         <Slider
-          list={WEIGHT_NUMBERS}
+          list={WEIGHT_SLIDER_NUMBERS}
           initialSlide={tensOfWeight}
           onChange={handleTensWeightChange}
         />
         <Slider
-          list={WEIGHT_NUMBERS}
+          list={WEIGHT_SLIDER_NUMBERS}
           initialSlide={onesOfWeight}
           onChange={handleOnesWeightChange}
         />
         <p className="h-[30px] translate-y-[65px]">.</p>
         <Slider
-          list={WEIGHT_NUMBERS}
+          list={WEIGHT_SLIDER_NUMBERS}
           initialSlide={decimalOfWeight}
           onChange={handleDecimalWeightChange}
         />

@@ -1,5 +1,3 @@
-export * from './convertDayArrayWithString'
-export * from './returnBooleanTypeOfMedicine'
 export * from './useMedicineDetailData'
 export * from './useMedicineListByHours'
 export * from './useMonthlySchedule'

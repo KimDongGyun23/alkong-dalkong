@@ -1,6 +1,6 @@
 'use client'
 import { useSelectedTime, useSelectedTimeActions } from '@/store/stores'
-import { HOURS, MINUTES } from '@/utility/constants'
+import { TIME_SLIDER_HOURS, TIME_SLIDER_MINUTES } from '@/utility/constants'
 
 import { Slider } from './Slider'
 
@@ -15,9 +15,9 @@ export const TimeSlider = () => {
     <div className="flex-center relative w-full select-none rounded-xl bg-mint-0 py-[17px]">
       <div className="absolute top-1/2 h-[30px] w-[192px] -translate-y-1/2 rounded-lg bg-mint-2" />
       <div className="flex gap-8">
-        <Slider list={HOURS} initialSlide={hour} onChange={handleHourChange} />
+        <Slider list={TIME_SLIDER_HOURS} initialSlide={hour} onChange={handleHourChange} />
         <p className="h-[30px] translate-y-[60px] leading-[30px]">:</p>
-        <Slider list={MINUTES} initialSlide={minute} onChange={handleMinuteChange} />
+        <Slider list={TIME_SLIDER_MINUTES} initialSlide={minute} onChange={handleMinuteChange} />
       </div>
     </div>
   )

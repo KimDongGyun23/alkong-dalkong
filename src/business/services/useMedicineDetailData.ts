@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from 'react'
 
+import { useMedicineDetail } from '@/store/queries'
+import type { MedicineDetailType } from '@/types'
 import {
   convertDayArrayToKorean,
   convertDayArrayToString,
+  formatDateWithType,
   getMedicineUnitInKorean,
-} from '@/business/services'
-import { useMedicineDetail } from '@/store/queries'
-import type { MedicineDetailType } from '@/types'
-import { formatDateWithType } from '@/utility/utils'
+} from '@/utility/utils'
 
 type MedicineDetailDataType = Omit<MedicineDetailType, 'medicineWeek'> & { medicineWeek: string }
 

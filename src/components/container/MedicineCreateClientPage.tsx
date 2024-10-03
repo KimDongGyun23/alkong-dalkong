@@ -15,7 +15,7 @@ import { useToggle } from '@/hooks'
 import { useCreateMedicineInfo } from '@/store/queries'
 import type { MedicineFormType } from '@/types'
 import { MEDICINE_ALARM_TIME } from '@/utility/constants'
-import { formattedMedicineForm } from '@/utility/utils'
+import { formatMedicineForm } from '@/utility/utils'
 
 export const MedicineCreateClientPage = () => {
   const [daySheet, toggleDaySheet] = useToggle(false)
@@ -28,7 +28,7 @@ export const MedicineCreateClientPage = () => {
   const { mutate: createMutation } = useCreateMedicineInfo()
 
   const handleSubmitForm = (formData: MedicineFormType) => {
-    const formmatedForm = formattedMedicineForm(formData)
+    const formmatedForm = formatMedicineForm(formData)
     createMutation(formmatedForm)
   }
 

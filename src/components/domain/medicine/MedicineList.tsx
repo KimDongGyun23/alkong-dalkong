@@ -1,13 +1,10 @@
 'use client'
 
-import {
-  getMedicineUnitInKorean,
-  isTakenMedicine,
-  useMedicineListByHours,
-} from '@/business/services'
+import { useMedicineListByHours } from '@/business/services'
 import { Icon } from '@/components/view'
 import { useToggleTakenInfo } from '@/store/queries'
 import type { MedicineDateDtoType } from '@/types'
+import { getMedicineUnitInKorean, isTakenMedicine } from '@/utility/utils'
 
 type MedicineItemProps = {
   isTaken: boolean

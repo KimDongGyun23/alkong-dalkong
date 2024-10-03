@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 
-import { convertDayStringToArray, DAYS } from '@/business/services'
+import { convertDayStringToArray, DAYS } from '@/utility/utils'
 
 export const useToggleDaySelection = (section: string) => {
   const { watch } = useFormContext()

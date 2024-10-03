@@ -3,9 +3,9 @@
 import { useFormContext } from 'react-hook-form'
 
 import { useToggleDaySelection } from '@/business/hooks'
-import { convertDayArrayToString, DAYS } from '@/business/services'
 import { BottomSheet, Label, SubHeader } from '@/components/view'
 import type { BottomSheetType } from '@/types'
+import { convertDayArrayToString, DAYS } from '@/utility/utils'
 
 export const DayBottomSheet = ({ section, isShowing, onClickScrim }: BottomSheetType) => {
   const { setValue } = useFormContext()

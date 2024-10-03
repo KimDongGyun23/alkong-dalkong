@@ -2,8 +2,8 @@
 
 import { useFormContext } from 'react-hook-form'
 
-import { useStepper } from '@/business/hooks'
 import { Icon } from '@/components/view'
+import { useStepper } from '@/hooks/useStepper'
 
 type StepperProps = {
   section: string

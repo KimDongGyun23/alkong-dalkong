@@ -1,11 +1,15 @@
 import dayjs from 'dayjs'
 
-import { convertDayArrayToEnglish, convertDayStringToArray } from '@/business/services'
 import type { MedicineFormType } from '@/types'
 import { MEDICINE_ALARM_TIME } from '@/utility/constants'
-import { formatDateWithType, parseDosage } from '@/utility/utils'
+import {
+  convertDayArrayToEnglish,
+  convertDayStringToArray,
+  formatDateWithType,
+  parseDosage,
+} from '@/utility/utils'
 
-export const formattedMedicineForm = (formData: MedicineFormType) => {
+export const formatMedicineForm = (formData: MedicineFormType) => {
   const { medicineWeek, medicineDosage, medicinePeriod, medicineAlarm, ...rest } = formData
   const { dosageAmount, dosageType } = parseDosage(medicineDosage)
 
