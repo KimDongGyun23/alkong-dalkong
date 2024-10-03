@@ -14,8 +14,8 @@ type ScheduleListProps = {
 }
 
 const ScheduleList = ({ todaySchedules }: ScheduleListProps) => {
-  if (!todaySchedules)
-    return <p className="subtitle-M mt-[82px] text-center text-gray-6">예정된 일정이 없어요!</p>
+  if (!todaySchedules || !todaySchedules.length)
+    return <p className="subtitle-M my-16 text-center text-gray-6">예정된 일정이 없어요!</p>
 
   return (
     <div className="flex-column gap-3">
