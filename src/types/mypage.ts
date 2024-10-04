@@ -1,4 +1,11 @@
-export type AccountEditFormType = {
+export type AccountInfoResponse = {
+  name: string
+  phoneNumber: string
+  birth: string
+  gender: 'MAN' | 'WOMAN'
+}
+
+export type EditAccountInfoRequest = {
   name: string
   phoneNumber: string
   birth: string

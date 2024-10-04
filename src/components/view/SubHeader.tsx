@@ -13,15 +13,12 @@ export type HeaderProps = {
   onModify: VoidFunction
 }
 
-const Back = ({ title }: Pick<HeaderProps, 'title'>) => {
+export const Back = ({ title }: { title: string }) => {
   const router = useRouter()
-  const handleBack = () => {
-    router.back()
-  }
 
   return (
     <header className="flex-between-align relative">
-      <button onClick={handleBack}>
+      <button onClick={() => router.back()}>
         <Icon name="arrow-left" />
       </button>
       <h1 className="subtitle-B absolute left-1/2 -translate-x-1/2 text-black">{title}</h1>

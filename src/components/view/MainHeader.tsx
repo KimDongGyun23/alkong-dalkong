@@ -12,7 +12,7 @@ const Setting = ({ title }: Pick<HeaderProps, 'title'>) => {
 
   const router = useRouter()
   const handleGoSetting = () => {
-    router.push(`/setting/${user.userId}`)
+    router.push(`/mypage`)
   }
 
   return (

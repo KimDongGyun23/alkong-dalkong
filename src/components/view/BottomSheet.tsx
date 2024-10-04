@@ -48,10 +48,10 @@ export const BottomSheet = ({
         exit="exit"
       >
         <m.div
-          className={`flex-column-align ${heightStyle} absolute left-0 top-full ${zIndex.modal} w-full rounded-t-3xl ${bgStyle} px-[20px]`}
+          className={`flex-column ${heightStyle} absolute inset-x-0 top-full ${zIndex.modal} w-full rounded-t-3xl ${bgStyle} px-[20px]`}
           variants={bottomSheetVariants}
         >
-          <div className="pb-[17px] pt-[8px]">
+          <div className="self-center pb-[17px] pt-[8px]">
             <Icon name="handle-bar" />
           </div>
           {children}

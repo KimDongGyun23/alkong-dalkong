@@ -28,3 +28,6 @@ export * from './medicine/PeriodBottomSheet'
 export * from './medicine/Stepper'
 export * from './medicine/TakenDosageBottomSheet'
 export * from './medicine/TakenTimeFormField'
+
+// mypage
+export * from './mypage/AccountBottomSheet'

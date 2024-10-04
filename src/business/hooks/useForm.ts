@@ -2,9 +2,9 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import dayjs from 'dayjs'
 
-import { clinicInfo, medicineEditInfo } from '@/store/queries/apis'
+import { accountInfo, clinicInfo, medicineEditInfo } from '@/store/queries/apis'
 import type {
-  AccountEditFormType,
+  AccountInfoResponse,
   ClinicFormType,
   LoginFormType,
   MedicineFormType,
@@ -26,10 +26,23 @@ import {
 } from '@/utility/utils'
 
 export const useAccountEditForm = () => {
-  const formMethod = useForm<AccountEditFormType>({
+  const initialValues = {
+    name: '',
+    phoneNumber: '',
+    birth: '',
+    gender: 'MAN' as 'MAN' | 'WOMAN',
+  }
+
+  const getDefaultValues = async () => {
+    const { birth, ...rest } = await accountInfo()
+    return { birth: formatDateWithType(birth, 'noDashDate'), ...rest }
+  }
+
+  const formMethod = useForm<AccountInfoResponse>({
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
     resolver: zodResolver(accountEditSchema),
+    defaultValues: getDefaultValues || initialValues,
   })
 
   return formMethod

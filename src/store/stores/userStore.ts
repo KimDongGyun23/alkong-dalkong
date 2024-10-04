@@ -9,6 +9,7 @@ type UserState = {
 
 type UserActions = {
   setUser: (user: User) => void
+  changeName: (newName: string) => void
 }
 
 // mockData. 로그인 개발 이후 수정 필요
@@ -31,6 +32,7 @@ export const useUserStore = create(
       setUser: (user: User) => {
         set({ user })
       },
+      changeName: (newName) => set((state) => ({ user: { ...state.user, name: newName } })),
     }),
     {
       name: 'userStore',
