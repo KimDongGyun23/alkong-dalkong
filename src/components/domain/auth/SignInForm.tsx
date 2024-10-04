@@ -12,7 +12,9 @@ export const SignInForm = () => {
 
   const { mutate: signIn } = useSignIn()
 
-  const handleSignInFormSubmit = (formData: LoginFormType) => signIn(formData)
+  const handleSignInFormSubmit = (formData: LoginFormType) => {
+    signIn(formData)
+  }
 
   return (
     <FormProvider {...formMethod}>

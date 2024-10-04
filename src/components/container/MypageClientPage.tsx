@@ -1,11 +1,10 @@
 'use client'
 import type { PropsWithChildren } from 'react'
 
+import { AccountBottomSheet, PassowrdBottomSheet } from '@/components/domain'
 import { Profile, SubHeader } from '@/components/view'
 import { useToggle } from '@/hooks'
 import { useUserStore } from '@/store/stores'
-
-import { AccountBottomSheet } from '../domain'
 
 const ButtonGroup = ({ children }: PropsWithChildren) => {
   return (
@@ -19,6 +18,7 @@ export const MypageClientPage = () => {
   const { user } = useUserStore()
 
   const [accountSheet, toggleAccountSheet] = useToggle()
+  const [passwordSheet, togglePasswordSheet] = useToggle()
 
   return (
     <div className="flex-column h-full overflow-y-scroll px-5 pt-5 scrollbar-hide">
@@ -39,9 +39,10 @@ export const MypageClientPage = () => {
         <section className="flex-column mt-14 gap-6">
           <ButtonGroup>
             <button onClick={toggleAccountSheet}>내 정보 수정하기</button>
-            <button>비밀번호 변경</button>
+            <button onClick={togglePasswordSheet}>비밀번호 변경</button>
           </ButtonGroup>
           <AccountBottomSheet isShowing={accountSheet} onClickScrim={toggleAccountSheet} />
+          <PassowrdBottomSheet isShowing={passwordSheet} onClickScrim={togglePasswordSheet} />
 
           <ButtonGroup>
             <button>가족 그룹 추가</button>

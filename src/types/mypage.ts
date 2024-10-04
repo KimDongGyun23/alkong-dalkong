@@ -17,3 +17,5 @@ export type PasswordEditFormType = {
   confirm: string
   newPassword: string
 }
+
+export type EditPasswordRequest = Omit<PasswordEditFormType, 'confirm'>

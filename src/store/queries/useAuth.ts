@@ -1,3 +1,4 @@
+'use client'
 import { useRouter } from 'next/navigation'
 import type { UseMutationOptions } from '@tanstack/react-query'
 import { useMutation } from '@tanstack/react-query'
