@@ -4,6 +4,7 @@ import type { PropsWithChildren } from 'react'
 import { AccountBottomSheet, PassowrdBottomSheet } from '@/components/domain'
 import { Profile, SubHeader } from '@/components/view'
 import { useToggle } from '@/hooks'
+import { useDeleteMembership } from '@/store/queries'
 import { useUserStore } from '@/store/stores'
 
 const ButtonGroup = ({ children }: PropsWithChildren) => {
@@ -19,6 +20,12 @@ export const MypageClientPage = () => {
 
   const [accountSheet, toggleAccountSheet] = useToggle()
   const [passwordSheet, togglePasswordSheet] = useToggle()
+
+  const { mutate: deleteMembershipMutation } = useDeleteMembership()
+
+  const handleDeleteMembership = () => {
+    deleteMembershipMutation()
+  }
 
   return (
     <div className="flex-column h-full overflow-y-scroll px-5 pt-5 scrollbar-hide">
@@ -56,7 +63,7 @@ export const MypageClientPage = () => {
         </section>
 
         <div className="body-M mb-[65px] mt-[34px] flex justify-end gap-[18px] text-gray-6">
-          <button>회원 탈퇴</button>
+          <button onClick={handleDeleteMembership}>회원 탈퇴</button>
           <span>|</span>
           <button>로그아웃</button>
         </div>

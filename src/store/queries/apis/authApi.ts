@@ -36,3 +36,7 @@ export const signUp = async (request: SignUpRequest) => {
 export const signOut = async () => {
   return await api.post('/user/logout')
 }
+
+export const deleteMembership = async () => {
+  return await api.delete('/user/exit')
+}

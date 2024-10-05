@@ -7,16 +7,14 @@ type WeightSectionProps = {
 }
 
 export const WeightSection = ({ weightInfo }: WeightSectionProps) => {
-  const { weight, date } = weightInfo
-
   return (
     <section className="mb-8 w-full">
       <Label icon="health-label">체중 기록</Label>
       <div className="flex-column mt-2 gap-3">
         {weightInfo ? (
           <div className="flex items-center justify-between rounded-xl border border-mint-3 px-6 py-4">
-            <span className="subtitle-B">{`${weight}kg`}</span>
-            <span className="headline-R text-gray-6">{`${getDiffDay(date)}일 전`}</span>
+            <span className="subtitle-B">{`${weightInfo.weight}kg`}</span>
+            <span className="headline-R text-gray-6">{`${getDiffDay(weightInfo.date)}일 전`}</span>
           </div>
         ) : (
           <div className="flex items-center justify-between rounded-xl border border-mint-3 px-6 py-4">

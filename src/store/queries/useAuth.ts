@@ -1,10 +1,17 @@
 'use client'
-import { useRouter } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
 import type { UseMutationOptions } from '@tanstack/react-query'
 import { useMutation } from '@tanstack/react-query'
 import type { AxiosError } from 'axios'
 
-import { api, checkDuplicateId, signIn, signOut, signUp } from '@/store/queries/apis'
+import {
+  api,
+  checkDuplicateId,
+  deleteMembership,
+  signIn,
+  signOut,
+  signUp,
+} from '@/store/queries/apis'
 import type { SignUpRequest } from '@/types'
 
 import { useUserStore } from '../stores'
@@ -53,3 +60,10 @@ export const useSignOut = (options?: UseMutationOptions) =>
       options?.onSuccess?.(data, ...rest)
     },
   })
+
+export const useDeleteMembership = () => {
+  return useMutation({
+    mutationFn: () => deleteMembership(),
+    onSuccess: () => redirect('/sign-in'),
+  })
+}
