@@ -31,4 +31,5 @@ export * from './medicine/TakenTimeFormField'
 
 // mypage
 export * from './mypage/AccountBottomSheet'
+export * from './mypage/CreateGroupBottomSheet'
 export * from './mypage/PasswordBottomSheet'

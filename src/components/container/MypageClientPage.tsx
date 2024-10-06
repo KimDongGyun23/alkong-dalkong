@@ -1,7 +1,11 @@
 'use client'
 import type { PropsWithChildren } from 'react'
 
-import { AccountBottomSheet, PassowrdBottomSheet } from '@/components/domain'
+import {
+  AccountBottomSheet,
+  CreateGroupBottomSheet,
+  PassowrdBottomSheet,
+} from '@/components/domain'
 import { Profile, SubHeader } from '@/components/view'
 import { useToggle } from '@/hooks'
 import { useDeleteMembership } from '@/store/queries'
@@ -20,6 +24,7 @@ export const MypageClientPage = () => {
 
   const [accountSheet, toggleAccountSheet] = useToggle()
   const [passwordSheet, togglePasswordSheet] = useToggle()
+  const [createGroupSheet, toggleCreateGroupSheet] = useToggle()
 
   const { mutate: deleteMembershipMutation } = useDeleteMembership()
 
@@ -52,9 +57,13 @@ export const MypageClientPage = () => {
           <PassowrdBottomSheet isShowing={passwordSheet} onClickScrim={togglePasswordSheet} />
 
           <ButtonGroup>
-            <button>가족 그룹 추가</button>
+            <button onClick={toggleCreateGroupSheet}>가족 그룹 추가</button>
             <button>가족 설정하기</button>
           </ButtonGroup>
+          <CreateGroupBottomSheet
+            isShowing={createGroupSheet}
+            onClickScrim={toggleCreateGroupSheet}
+          />
 
           <ButtonGroup>
             <button>푸시 알람 설정</button>
