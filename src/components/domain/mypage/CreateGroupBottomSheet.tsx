@@ -3,17 +3,29 @@ import { useState } from 'react'
 
 import { BottomSheet, Button, CodeModal, SubHeader } from '@/components/view'
 import { useBoolean } from '@/hooks'
-import { useEnterFamilyGroup } from '@/store/queries'
+import { useCreateFamilyGroup, useEnterFamilyGroup } from '@/store/queries'
 import type { BottomSheetType } from '@/types'
 
 export const CreateGroupBottomSheet = ({
   isShowing,
   onClickScrim,
 }: Omit<BottomSheetType, 'section'>) => {
-  const [modalState, openModal, closeModal] = useBoolean(false)
+  const [createModalState, openCreateModal, closeCreateModal] = useBoolean(false)
+  const [additionModalState, openAdditionModal, closeAdditionModal] = useBoolean(false)
   const [inputCode, setInputCode] = useState<string>('')
+  const [createGroupCode, setCreateGroupCode] = useState<string>('')
 
+  const { mutate: createFamilyGroupMutation } = useCreateFamilyGroup()
   const { mutate: enterFamilyGroupMutation } = useEnterFamilyGroup()
+
+  const handleCreateFamilyGroup = () => {
+    createFamilyGroupMutation(undefined, {
+      onSuccess: ({ familyCode }) => {
+        setCreateGroupCode(familyCode)
+        openCreateModal()
+      },
+    })
+  }
 
   const handleSubmitFamilyCode = () => {
     enterFamilyGroupMutation({ familyCode: inputCode })
@@ -33,7 +45,7 @@ export const CreateGroupBottomSheet = ({
             우리 가족 그룹을 만들어 보세요!
           </p>
 
-          <Button onClick={openModal}>새로운 그룹 만들기</Button>
+          <Button onClick={handleCreateFamilyGroup}>새로운 그룹 만들기</Button>
         </section>
 
         <div className="flex-align mb-8  gap-3">
@@ -59,9 +71,15 @@ export const CreateGroupBottomSheet = ({
       </BottomSheet>
       <CodeModal
         header="새로운 가족 그룹 생성 완료!"
+        codeNumber={createGroupCode}
+        modalState={createModalState}
+        closeModal={closeCreateModal}
+      />
+      <CodeModal
+        header="새로운 가족 그룹 생성 완료!"
         codeNumber="1234 4567"
-        modalState={modalState}
-        closeModal={closeModal}
+        modalState={additionModalState}
+        closeModal={closeAdditionModal}
       />
     </>
   )

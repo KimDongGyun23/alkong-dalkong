@@ -1,8 +1,9 @@
-import type {
-  AccountInfoResponse,
-  EditAccountInfoRequest,
-  EditPasswordRequest,
-  EnterFamilyGroupRequest,
+import {
+  type AccountInfoResponse,
+  type CreateFamilyGroupResponse,
+  type EditAccountInfoRequest,
+  type EditPasswordRequest,
+  type EnterFamilyGroupRequest,
 } from '@/types'
 
 import { api } from '.'
@@ -17,6 +18,10 @@ export const editAccountInfo = async (request: EditAccountInfoRequest) => {
 
 export const editPassowrd = async (request: EditPasswordRequest) => {
   return await api.post(`/mypage/edit-password`, request)
+}
+
+export const createFamilyGroup = async () => {
+  return await api.post<CreateFamilyGroupResponse>(`/mypage/create-family`)
 }
 
 export const enterFamilyGroup = async (request: EnterFamilyGroupRequest) => {
