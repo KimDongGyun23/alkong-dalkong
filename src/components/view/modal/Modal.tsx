@@ -3,7 +3,6 @@
 import { type PropsWithChildren, useRef, useState } from 'react'
 
 import { useScrollLock } from '@/hooks'
-import { zIndex } from '@/utility/constants'
 
 import { Icon } from '../icons'
 
@@ -29,16 +28,14 @@ export const Modal = ({ children, isOpen, onClose }: PropsWithChildren<ModalProp
 
   return (
     isOpen && (
-      <div className="flex-center fixed inset-0 h-svh w-full">
+      <div className="flex-center fixed inset-0 z-20 h-svh w-full">
         <div
-          className={`fixed inset-0 bg-gray-6 opacity-40 ${zIndex.backdrop}`}
+          className={`fixed inset-0 bg-gray-6 opacity-40`}
           ref={modalBackground}
           onClick={handleBackgroundClick}
           aria-hidden="true"
         />
-        <div
-          className={`flex-column absolute w-[87.2%] max-w-[390px] rounded-xl bg-white pb-6 pt-[52px] ${zIndex.modal}`}
-        >
+        <div className="flex-column absolute w-[87.2%] max-w-[390px] rounded-xl bg-white pb-6 pt-[52px]">
           <button onClick={onClose} type="button" className="absolute right-4 top-5">
             <Icon name="close" />
           </button>
