@@ -7,6 +7,7 @@ type ButtonProps = {
   size?: 'md' | 'sm'
   primary?: boolean
   disabled?: boolean
+  width?: string
   type?: 'button' | 'submit'
 }
 
@@ -16,6 +17,7 @@ export const Button = ({
   size = 'md',
   primary = true,
   disabled = false,
+  width,
   type = 'button',
 }: PropsWithChildren<ButtonProps>) => {
   const color = disabled
@@ -27,7 +29,7 @@ export const Button = ({
   return (
     <button
       type={type}
-      className={`flex-center rounded-[12px] ${color} w-full ${buttonSize}`}
+      className={`flex-center rounded-[12px] ${color} ${width} ${buttonSize}`}
       onClick={onClick}
       disabled={disabled}
     >

@@ -1,4 +1,5 @@
-import { DashBoardTemplate } from '@/components/view'
+import { HealthReport, WedightOfToday } from '@/components/domain'
+import { DashBoardTemplate, Label } from '@/components/view'
 
 export type HealthRouteParams = {
   params: { userId: string }
@@ -7,7 +8,20 @@ export type HealthRouteParams = {
 const Health = ({ params: { userId } }: HealthRouteParams) => {
   return (
     <DashBoardTemplate route="health">
-      <h2>{userId}</h2>
+      <section>
+        <Label icon="check-label">체중 그래프</Label>
+        <div>그래프</div>
+      </section>
+
+      <section className="flex-column mt-10 gap-2">
+        <Label icon="emergency-label">오늘의 체중</Label>
+        <WedightOfToday />
+      </section>
+
+      <section className="flex-column mt-8 gap-2">
+        <Label icon="health-label">건강 분석 리포트</Label>
+        <HealthReport />
+      </section>
     </DashBoardTemplate>
   )
 }

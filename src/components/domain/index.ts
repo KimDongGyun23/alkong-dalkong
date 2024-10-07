@@ -33,3 +33,7 @@ export * from './medicine/TakenTimeFormField'
 export * from './mypage/AccountBottomSheet'
 export * from './mypage/CreateGroupBottomSheet'
 export * from './mypage/PasswordBottomSheet'
+
+// health
+export * from './health/HealthReport'
+export * from './health/WedightOfToday'
