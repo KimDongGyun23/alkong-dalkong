@@ -1,5 +1,9 @@
-import { BottomSheet, Button, CodeModal, InputGroup, SubHeader } from '@/components/view'
+'use client'
+import { useState } from 'react'
+
+import { BottomSheet, Button, CodeModal, SubHeader } from '@/components/view'
 import { useBoolean } from '@/hooks'
+import { useEnterFamilyGroup } from '@/store/queries'
 import type { BottomSheetType } from '@/types'
 
 export const CreateGroupBottomSheet = ({
@@ -7,6 +11,13 @@ export const CreateGroupBottomSheet = ({
   onClickScrim,
 }: Omit<BottomSheetType, 'section'>) => {
   const [modalState, openModal, closeModal] = useBoolean(false)
+  const [inputCode, setInputCode] = useState<string>('')
+
+  const { mutate: enterFamilyGroupMutation } = useEnterFamilyGroup()
+
+  const handleSubmitFamilyCode = () => {
+    enterFamilyGroupMutation({ familyCode: inputCode })
+  }
 
   return (
     <>
@@ -37,10 +48,13 @@ export const CreateGroupBottomSheet = ({
             <br />이 곳에 가족 코드를 입력해 주세요!
           </p>
 
-          <InputGroup>
-            <InputGroup.InputWithoutRegister placeholder="숫자만 입력해주세요." />
-          </InputGroup>
-          <Button>가족 코드 인증</Button>
+          <input
+            value={inputCode}
+            onChange={(e) => setInputCode(e.target.value)}
+            placeholder="가족 코드를 입력해주세요."
+            className="subtitle-M placeholder:subtitle-R w-full rounded-xl border border-mint-3 px-6 py-4 placeholder:text-gray-7 focus:outline-none"
+          />
+          <Button onClick={handleSubmitFamilyCode}>가족 코드 인증</Button>
         </section>
       </BottomSheet>
       <CodeModal

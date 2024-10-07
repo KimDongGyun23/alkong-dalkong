@@ -19,3 +19,5 @@ export type PasswordEditFormType = {
 }
 
 export type EditPasswordRequest = Omit<PasswordEditFormType, 'confirm'>
+
+export type EnterFamilyGroupRequest = { familyCode: string }
