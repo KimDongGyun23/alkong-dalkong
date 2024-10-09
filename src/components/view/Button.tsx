@@ -17,7 +17,7 @@ export const Button = ({
   size = 'md',
   primary = true,
   disabled = false,
-  width,
+  width = 'w-full',
   type = 'button',
 }: PropsWithChildren<ButtonProps>) => {
   const color = disabled
