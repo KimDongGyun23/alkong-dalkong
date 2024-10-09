@@ -15,3 +15,6 @@ export const CLINIC_TAGS = [
   '열',
   '어지러움',
 ]
+
+// health
+export const HEALTH_DROPDOWN = ['주간', '월간']

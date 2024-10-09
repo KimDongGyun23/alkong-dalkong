@@ -1,4 +1,5 @@
 import { HealthReport, WedightOfToday } from '@/components/domain'
+import { PeriodDropDown } from '@/components/domain'
 import { DashBoardTemplate, Label } from '@/components/view'
 
 export type HealthRouteParams = {
@@ -9,7 +10,10 @@ const Health = ({ params: { userId } }: HealthRouteParams) => {
   return (
     <DashBoardTemplate route="health">
       <section>
-        <Label icon="check-label">체중 그래프</Label>
+        <div className="flex-align gap-[19px]">
+          <Label icon="check-label">체중 그래프</Label>
+          <PeriodDropDown />
+        </div>
         <div>그래프</div>
       </section>
 
