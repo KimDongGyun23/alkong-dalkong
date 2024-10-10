@@ -1,17 +1,17 @@
 'use client'
 
-import { useState } from 'react'
-
 import { Icon } from '@/components/view'
 import { useToggle } from '@/hooks'
+import { useHealthPeriodActions, useHealthPeriodKorean } from '@/store/stores'
 import { HEALTH_DROPDOWN } from '@/utility/constants'
 
 export const PeriodDropDown = () => {
-  const [period, setPeriod] = useState<number>(0)
+  const period = useHealthPeriodKorean()
+  const { changePeriod } = useHealthPeriodActions()
   const [isOpen, toggleIsOpen] = useToggle(false)
 
   const handleSelect = (index: number) => {
-    setPeriod(index)
+    changePeriod(index)
     toggleIsOpen()
   }
 
@@ -24,7 +24,7 @@ export const PeriodDropDown = () => {
         className={`flex-align cursor-pointer gap-2 ${topRoundedStyle} bg-gray-2 px-3 py-1`}
         onClick={toggleIsOpen}
       >
-        <p className="body-M text-gray-7">{HEALTH_DROPDOWN[period]}</p>
+        <p className="body-M text-gray-7">{period}</p>
         <div className="translate-y-px">
           {isOpen ? <Icon name="arrow-up" /> : <Icon name="arrow-down" />}
         </div>
@@ -33,7 +33,7 @@ export const PeriodDropDown = () => {
       {isOpen && (
         <div className={`${bototmRoundedStyle} absolute w-full bg-gray-2`}>
           {HEALTH_DROPDOWN.map((item, index) =>
-            index !== period ? (
+            item !== period ? (
               <button
                 key={item}
                 className="w-full border-t border-gray-4 px-3 py-1 text-left"

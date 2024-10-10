@@ -11,6 +11,7 @@ export const api = new HttpClient({
 
 export * from './authApi'
 export * from './clinicApi'
+export * from './healthApi'
 export * from './homeApi'
 export * from './HttpClient'
 export * from './medicineApi'

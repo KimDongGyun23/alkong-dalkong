@@ -1,6 +1,7 @@
 export * from './ClinicCreateClientPage'
 export * from './ClinicEditClientPage'
 export * from './ClinicInfoClientPage'
+export * from './HealthClientPage'
 export * from './HomeClientPage'
 export * from './MedicineCreateClientPage'
 export * from './MedicineDetailClientPage'

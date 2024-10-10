@@ -1,6 +1,7 @@
 export * from './auth'
 export * from './clinic'
 export * from './common'
+export * from './health'
 export * from './home'
 export * from './medicine'
 export * from './mypage'

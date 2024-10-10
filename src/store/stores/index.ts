@@ -1,5 +1,6 @@
 export * from './calendarStore'
 export * from './checkBoxStore'
+export * from './healthPeriodStore'
 export * from './timeStore'
 export * from './userStore'
 export * from './weightStore'
