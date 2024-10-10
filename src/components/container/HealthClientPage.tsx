@@ -4,7 +4,7 @@ import { useHealthPage } from '@/store/queries/useHealthApi'
 import { useHealthPeriodEnglish, useUserStore } from '@/store/stores'
 
 import { HealthReport, PeriodDropDown } from '../domain'
-import { DashBoardTemplate, Label } from '../view'
+import { Button, DashBoardTemplate, Label } from '../view'
 
 export const HealthClientPage = () => {
   const { user } = useUserStore()
@@ -27,6 +27,16 @@ export const HealthClientPage = () => {
           <PeriodDropDown />
         </div>
         <div>그래프</div>
+      </section>
+
+      <section className="flex-column mt-10 gap-2">
+        <Label icon="emergency-label">오늘의 체중</Label>
+        <div className="flex-align w-full gap-[7px]">
+          <p className="subtitle-M grow rounded-xl bg-mint-0 px-6 py-[14px]">weight</p>
+          <Button width="w-[100px]" primary onClick={() => {}}>
+            수정
+          </Button>
+        </div>
       </section>
 
       <section className="flex-column mt-8 gap-2">
