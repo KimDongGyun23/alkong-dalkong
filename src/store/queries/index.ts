@@ -1,5 +1,6 @@
 export * from './useAuth'
 export * from './useClinicApi'
+export * from './useHealthApi'
 export * from './useHome'
 export * from './useMedicineApi'
 export * from './useMypage'

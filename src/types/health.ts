@@ -24,8 +24,14 @@ export type HealthPageResponse = {
   period: string
   data: {
     physicalId: number
-    wegiht: WeightType
+    weight: WeightType
     weightInfo: WeightInfoType[]
     healthReport: HealthReportType
   }
+}
+
+export type TodayWeightRequest = {
+  physicalId: number
+  weight: number
+  createdAt: string
 }
