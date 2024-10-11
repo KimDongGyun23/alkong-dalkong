@@ -10,8 +10,8 @@ type HealthPeriodActions = {
   changePeriod: (index: number) => void
 }
 
-const PERIOD_KO = ['주간', '월간']
-const PERIOD_EN = ['weekly', 'monthly']
+export const PERIOD_KO = ['주간', '월간']
+export const PERIOD_EN = ['weekly', 'monthly']
 
 export const useHealthPeriodStore = create<HealthPeriodState>((set) => ({
   periodKo: PERIOD_KO[0],

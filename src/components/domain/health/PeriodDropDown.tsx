@@ -2,8 +2,7 @@
 
 import { Icon } from '@/components/view'
 import { useToggle } from '@/hooks'
-import { useHealthPeriodActions, useHealthPeriodKorean } from '@/store/stores'
-import { HEALTH_DROPDOWN } from '@/utility/constants'
+import { PERIOD_KO, useHealthPeriodActions, useHealthPeriodKorean } from '@/store/stores'
 
 export const PeriodDropDown = () => {
   const period = useHealthPeriodKorean()
@@ -32,7 +31,7 @@ export const PeriodDropDown = () => {
 
       {isOpen && (
         <div className={`${bototmRoundedStyle} absolute w-full bg-gray-2`}>
-          {HEALTH_DROPDOWN.map((item, index) =>
+          {PERIOD_KO.map((item, index) =>
             item !== period ? (
               <button
                 key={item}
