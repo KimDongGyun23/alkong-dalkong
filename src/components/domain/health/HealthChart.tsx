@@ -1,3 +1,4 @@
+'use client'
 import type { TooltipProps } from 'recharts'
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, YAxis } from 'recharts'
 
