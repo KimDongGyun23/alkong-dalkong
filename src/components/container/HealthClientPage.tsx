@@ -1,38 +1,32 @@
 'use client'
 
-import { useEffect } from 'react'
-
-import { useToggle } from '@/hooks'
-import { useHealthPage } from '@/store/queries'
-import { useHealthPeriodEnglish, useSelectedWeightActions, useUserStore } from '@/store/stores'
-
-import { HealthReport, PeriodDropDown, WeightBottomSheet } from '../domain'
-import { Button, DashBoardTemplate, Label } from '../view'
+import { HealthChart, PeriodDropDown } from '../domain'
+import { DashBoardTemplate, Label } from '../view'
 
 export const HealthClientPage = () => {
-  const period = useHealthPeriodEnglish()
-  const [weightSheet, toggleWeightSheet] = useToggle(false)
+  // const period = useHealthPeriodEnglish()
+  // const [weightSheet, toggleWeightSheet] = useToggle(false)
 
-  const { user } = useUserStore()
-  const { setInitialWeight } = useSelectedWeightActions()
+  // const { user } = useUserStore()
+  // const { setInitialWeight } = useSelectedWeightActions()
 
-  const {
-    data: healthData,
-    isError,
-    isPending,
-  } = useHealthPage({ userId: user.userId, period: period })
+  // const {
+  //   data: healthData,
+  //   isError,
+  //   isPending,
+  // } = useHealthPage({ userId: user.userId, period: period })
 
-  useEffect(() => {
-    if (healthData?.data) {
-      const serverWeight = healthData.data.weight.weight.toString()
-      console.log(serverWeight)
-      setInitialWeight(serverWeight)
-    }
-  }, [healthData, setInitialWeight])
+  // useEffect(() => {
+  //   if (healthData?.data) {
+  //     const serverWeight = healthData.data.weight.weight.toString()
+  //     console.log(serverWeight)
+  //     setInitialWeight(serverWeight)
+  //   }
+  // }, [healthData, setInitialWeight])
 
-  if (isError || isPending) return null
+  // if (isError || isPending) return null
 
-  console.log(healthData)
+  // console.log(healthData)
 
   return (
     <DashBoardTemplate route="health">
@@ -41,10 +35,10 @@ export const HealthClientPage = () => {
           <Label icon="check-label">체중 그래프</Label>
           <PeriodDropDown />
         </div>
-        <div>그래프</div>
+        <HealthChart />
       </section>
 
-      <section className="flex-column mt-10 gap-2">
+      {/* <section className="flex-column mt-10 gap-2">
         <Label icon="emergency-label">오늘의 체중</Label>
         <div className="flex-align w-full gap-[7px]">
           <input
@@ -68,7 +62,7 @@ export const HealthClientPage = () => {
       <section className="flex-column mt-8 gap-2">
         <Label icon="health-label">건강 분석 리포트</Label>
         <HealthReport report={healthData.data.healthReport} />
-      </section>
+      </section> */}
     </DashBoardTemplate>
   )
 }

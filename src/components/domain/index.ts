@@ -35,6 +35,7 @@ export * from './mypage/CreateGroupBottomSheet'
 export * from './mypage/PasswordBottomSheet'
 
 // health
+export * from './health/HealthChart'
 export * from './health/HealthReport'
 export * from './health/PeriodDropDown'
 export * from './health/WedightOfToday'
