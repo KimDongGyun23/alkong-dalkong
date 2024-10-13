@@ -1,3 +1,4 @@
+import type { TooltipProps } from 'recharts'
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, YAxis } from 'recharts'
 
 const data = {
@@ -16,7 +17,7 @@ const dummyData = [
   { name: '첫째주', value: 57 },
   { name: '둘째주', value: 58 },
   { name: '셋째주', value: 59 },
-  { name: '넷째주', value: 56 },
+  { name: '넷째주', value: 48 },
 ]
 
 const getDomain = (data: DummyDataType) => {
@@ -39,6 +40,19 @@ const getDomain = (data: DummyDataType) => {
   return [lowerBound, upperBound]
 }
 
+const CustomizedTooltip = ({ active, payload }: TooltipProps<number, string>) => {
+  if (active && payload && payload.length) {
+    const { name, value } = payload[0].payload
+    return (
+      <div className="relative rounded-lg bg-mint-1 px-4 py-2 text-center">
+        <p className="caption-M">{name}</p>
+        <p className="headline-B">{`${value}kg`}</p>
+      </div>
+    )
+  }
+  return null
+}
+
 export const HealthChart = () => {
   const [minDomain, maxDomain] = getDomain(dummyData)
   const tickCount = Math.max(3, Math.ceil((maxDomain - minDomain) / 5) + 1)
@@ -57,7 +71,7 @@ export const HealthChart = () => {
           interval={0}
           className="text-sm text-gray-7"
         />
-        <Tooltip />
+        <Tooltip content={<CustomizedTooltip />} />
         <Line
           type="linear"
           dataKey="value"
