@@ -7,6 +7,7 @@ export const api = new HttpClient({
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true,
 })
 
 export * from './authApi'
