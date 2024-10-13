@@ -1,35 +1,36 @@
 'use client'
 
-import dayjs from 'dayjs'
+import { useEffect } from 'react'
 
-import { useHealthPage, useTodayWeight } from '@/store/queries'
-import { useHealthPeriodEnglish, useSelectedWeight, useUserStore } from '@/store/stores'
-import { formatDateWithType } from '@/utility/utils'
+import { useToggle } from '@/hooks'
+import { useHealthPage } from '@/store/queries'
+import { useHealthPeriodEnglish, useSelectedWeightActions, useUserStore } from '@/store/stores'
 
-import { HealthReport, PeriodDropDown } from '../domain'
+import { HealthReport, PeriodDropDown, WeightBottomSheet } from '../domain'
 import { Button, DashBoardTemplate, Label } from '../view'
 
 export const HealthClientPage = () => {
-  const { user } = useUserStore()
   const period = useHealthPeriodEnglish()
-  const weight = useSelectedWeight()
+  const [weightSheet, toggleWeightSheet] = useToggle(false)
+
+  const { user } = useUserStore()
+  const { setInitialWeight } = useSelectedWeightActions()
 
   const {
     data: healthData,
     isError,
     isPending,
   } = useHealthPage({ userId: user.userId, period: period })
-  const { mutate: todayWeightMutation } = useTodayWeight()
+
+  useEffect(() => {
+    if (healthData?.data) {
+      const serverWeight = healthData.data.weight.weight.toString()
+      console.log(serverWeight)
+      setInitialWeight(serverWeight)
+    }
+  }, [healthData, setInitialWeight])
 
   if (isError || isPending) return null
-
-  const handleClickWeightEdit = () => {
-    todayWeightMutation({
-      physicalId: healthData?.data.physicalId,
-      weight: parseFloat(weight),
-      createdAt: formatDateWithType(dayjs().toString(), 'default'),
-    })
-  }
 
   console.log(healthData)
 
@@ -53,10 +54,15 @@ export const HealthClientPage = () => {
             value={`${healthData.data.weight.weight}kg`}
             placeholder="아직 기록이 없어요."
           />
-          <Button width="w-[100px]" primary onClick={handleClickWeightEdit}>
+          <Button width="w-[100px]" primary onClick={toggleWeightSheet}>
             수정
           </Button>
         </div>
+        <WeightBottomSheet
+          physicalId={healthData.data.physicalId}
+          isShowing={weightSheet}
+          onClickScrim={toggleWeightSheet}
+        />
       </section>
 
       <section className="flex-column mt-8 gap-2">
