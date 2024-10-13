@@ -61,7 +61,7 @@ export const convertDayArrayToKorean: convertEnglishDaysToKoreanType = (days) =>
 type getDiffDayType = (date: string) => number
 export const getDiffDay: getDiffDayType = (date) => {
   const now = dayjs().locale('ko').startOf('day')
-  return now.diff(dayjs(date).locale('ko').startOf('day'), 'day')
+  return Math.abs(now.diff(dayjs(date).locale('ko').startOf('day'), 'day'))
 }
 
 type formatInfoTimeType = (times: string[], weekList: string[]) => string
