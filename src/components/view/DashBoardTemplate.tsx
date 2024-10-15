@@ -1,7 +1,8 @@
 'use client'
 import type { PropsWithChildren } from 'react'
+import { useRouter } from 'next/navigation'
 
-import { BottomNav, MainHeader } from '@/components/view'
+import { BottomNav, MainHeader, Profile } from '@/components/view'
 
 type DashBoardTemplateProps = {
   route: 'health' | 'home' | 'medicine' | 'clinic'
@@ -17,10 +18,20 @@ export const DashBoardTemplate = ({
   children,
   route,
 }: PropsWithChildren<DashBoardTemplateProps>) => {
+  const isClinicPage = route !== 'clinic'
+  const router = useRouter()
+
   return (
     <div className="flex-column h-full">
-      {route !== 'clinic' && <MainHeader.Setting title={HeaderTitle[route]} />}
-      <main className="flex-1 overflow-y-scroll px-5 py-8 scrollbar-hide">{children}</main>
+      {isClinicPage && <MainHeader.Setting title={HeaderTitle[route]} />}
+      <main className="flex-1 overflow-y-scroll px-5 py-8 scrollbar-hide">
+        {isClinicPage && (
+          <div className="absolute right-5 top-[22px]">
+            <Profile size="sm" bgColor="#C5FDEC" onClickProfile={() => router.push('mypage')} />
+          </div>
+        )}
+        {children}
+      </main>
       <BottomNav />
     </div>
   )
