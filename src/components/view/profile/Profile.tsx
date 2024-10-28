@@ -1,5 +1,6 @@
 'use client'
 import type { MouseEventHandler } from 'react'
+import { useRouter } from 'next/navigation'
 
 import { useUserStore } from '@/store/stores'
 
@@ -18,12 +19,14 @@ type ProfileVariantProps = {
 
 export const Profile = ({ onClickProfile, name, ...styleProps }: ProfileProps) => {
   const { user } = useUserStore()
+  const router = useRouter()
   const { bgColor, textColor = 'text-gray-6', size = 'md' } = styleProps
 
   const displayName = name ? name.slice(-2) : user.name.slice(-2)
 
   const handleClickProfile: MouseEventHandler<HTMLButtonElement> = () => {
     if (onClickProfile) onClickProfile()
+    else router.push('/mypage')
   }
 
   return (
