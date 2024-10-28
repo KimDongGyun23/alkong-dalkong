@@ -25,4 +25,17 @@ export type CreateFamilyGroupResponse = {
   familyCode: string
 }
 
+export type FamilyType = {
+  familyCode: string
+  familyName: string
+  members: {
+    name: string
+    userId: number
+  }[]
+}
+
+export type FamilySettingResponse = {
+  families: FamilyType[]
+}
+
 export type EnterFamilyGroupRequest = { familyCode: string }

@@ -1,15 +1,20 @@
-import {
-  type AccountInfoResponse,
-  type CreateFamilyGroupResponse,
-  type EditAccountInfoRequest,
-  type EditPasswordRequest,
-  type EnterFamilyGroupRequest,
+import type { FamilySettingResponse } from '@/types'
+import type {
+  AccountInfoResponse,
+  CreateFamilyGroupResponse,
+  EditAccountInfoRequest,
+  EditPasswordRequest,
+  EnterFamilyGroupRequest,
 } from '@/types'
 
 import { api } from '.'
 
 export const accountInfo = async () => {
   return await api.get<AccountInfoResponse>(`/mypage/edit-info`)
+}
+
+export const familySetting = async () => {
+  return await api.get<FamilySettingResponse>(`/mypage/family-list`)
 }
 
 export const editAccountInfo = async (request: EditAccountInfoRequest) => {

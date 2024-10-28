@@ -1,13 +1,25 @@
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 
 import type { EditAccountInfoRequest, EditPasswordRequest } from '@/types'
 
-import { createFamilyGroup, editAccountInfo, editPassowrd, enterFamilyGroup } from './apis'
+import {
+  createFamilyGroup,
+  editAccountInfo,
+  editPassowrd,
+  enterFamilyGroup,
+  familySetting,
+} from './apis'
 
 export const mypageQueryKeys = {
   all: ['mypage'] as const,
-  accountInfo: ['mypage'] as const,
+  familySetting: () => [...mypageQueryKeys.all, 'familySetting'] as const,
 }
+
+export const useFamilySetting = () =>
+  useQuery({
+    queryKey: mypageQueryKeys.familySetting(),
+    queryFn: familySetting,
+  })
 
 export const useEditAccountInfo = () => {
   return useMutation({
