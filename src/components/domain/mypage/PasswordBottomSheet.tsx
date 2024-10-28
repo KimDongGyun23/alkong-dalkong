@@ -1,3 +1,4 @@
+'use client'
 import { FormProvider } from 'react-hook-form'
 
 import { usePasswordEditForm } from '@/business/hooks'
