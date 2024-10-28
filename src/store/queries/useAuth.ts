@@ -51,14 +51,9 @@ export const useSignUp = (options?: UseMutationOptions<unknown, AxiosError, Sign
     },
   })
 
-export const useSignOut = (options?: UseMutationOptions) =>
+export const useSignOut = () =>
   useMutation({
     mutationFn: signOut,
-    ...options,
-    onSuccess: async (data, ...rest) => {
-      localStorage.clear()
-      options?.onSuccess?.(data, ...rest)
-    },
   })
 
 export const useDeleteMembership = () => {

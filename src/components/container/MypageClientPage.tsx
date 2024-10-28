@@ -1,5 +1,6 @@
 'use client'
 import type { PropsWithChildren } from 'react'
+import { useRouter } from 'next/navigation'
 
 import {
   AccountBottomSheet,
@@ -9,7 +10,7 @@ import {
 } from '@/components/domain'
 import { Profile, SubHeader } from '@/components/view'
 import { useToggle } from '@/hooks'
-import { useDeleteMembership } from '@/store/queries'
+import { useDeleteMembership, useSignOut } from '@/store/queries'
 import { useUserStore } from '@/store/stores'
 
 const ButtonGroup = ({ children }: PropsWithChildren) => {
@@ -22,6 +23,7 @@ const ButtonGroup = ({ children }: PropsWithChildren) => {
 
 export const MypageClientPage = () => {
   const { user } = useUserStore()
+  const router = useRouter()
 
   const [accountSheet, toggleAccountSheet] = useToggle()
   const [passwordSheet, togglePasswordSheet] = useToggle()
@@ -29,9 +31,15 @@ export const MypageClientPage = () => {
   const [familySettingSheet, toggleFamilySettingSheet] = useToggle()
 
   const { mutate: deleteMembershipMutation } = useDeleteMembership()
+  const { mutate: logoutMutation } = useSignOut()
 
   const handleDeleteMembership = () => {
     deleteMembershipMutation()
+  }
+
+  const handleLogout = () => {
+    logoutMutation()
+    router.push('/sign-in')
   }
 
   return (
@@ -80,7 +88,7 @@ export const MypageClientPage = () => {
         <div className="body-M mb-[65px] mt-[34px] flex justify-end gap-[18px] text-gray-6">
           <button onClick={handleDeleteMembership}>회원 탈퇴</button>
           <span>|</span>
-          <button>로그아웃</button>
+          <button onClick={handleLogout}>로그아웃</button>
         </div>
       </div>
     </div>
