@@ -4,6 +4,7 @@ import type { PropsWithChildren } from 'react'
 import {
   AccountBottomSheet,
   CreateGroupBottomSheet,
+  FamilySettingBottomSheet,
   PassowrdBottomSheet,
 } from '@/components/domain'
 import { Profile, SubHeader } from '@/components/view'
@@ -25,6 +26,7 @@ export const MypageClientPage = () => {
   const [accountSheet, toggleAccountSheet] = useToggle()
   const [passwordSheet, togglePasswordSheet] = useToggle()
   const [createGroupSheet, toggleCreateGroupSheet] = useToggle()
+  const [familySettingSheet, toggleFamilySettingSheet] = useToggle()
 
   const { mutate: deleteMembershipMutation } = useDeleteMembership()
 
@@ -58,11 +60,15 @@ export const MypageClientPage = () => {
 
           <ButtonGroup>
             <button onClick={toggleCreateGroupSheet}>가족 그룹 추가</button>
-            <button>가족 설정하기</button>
+            <button onClick={toggleFamilySettingSheet}>가족 설정하기</button>
           </ButtonGroup>
           <CreateGroupBottomSheet
             isShowing={createGroupSheet}
             onClickScrim={toggleCreateGroupSheet}
+          />
+          <FamilySettingBottomSheet
+            isShowing={familySettingSheet}
+            onClickScrim={toggleFamilySettingSheet}
           />
 
           <ButtonGroup>
