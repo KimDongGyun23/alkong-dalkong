@@ -36,11 +36,11 @@ export const TosStep = () => {
   const tosContent = isPersonal ? tos.personal : tos.notification
 
   return (
-    <div className="flex-column-between mx-[20px] min-h-screen gap-[32px] bg-white pb-[55px]">
+    <div className="flex-column-between mx-5 min-h-screen gap-8 bg-white pb-[55px]">
       <div>
-        <SignUpHeader step={1} />
-        <h1 className="title-B mb-[24px] whitespace-pre text-black">{`정말 마지막이에요,\n이용약관에 동의해 주세요!`}</h1>
-        <div className="flex-column w-full gap-[12px]">
+        <SignUpHeader step={2} />
+        <h1 className="title-B mb-8 whitespace-pre text-black">{`정말 마지막이에요,\n이용약관에 동의해 주세요!`}</h1>
+        <div className="flex-column w-full gap-3">
           <InputGroup.CheckBoxAll>전체 동의</InputGroup.CheckBoxAll>
           <InputGroup.CheckBox section="personal" onClickArrow={handleClickPersonal}>
             개인정보 이용 동의 (필수)
@@ -51,14 +51,16 @@ export const TosStep = () => {
           <InputGroup.ErrorMessage section="personal" />
         </div>
       </div>
+
       <Button type="submit" disabled={isDisable}>
         시작하기
       </Button>
+
       <BottomSheet onClickScrim={toggleShowing} isShowing={isShowing} bgStyle="bg-gray-2">
-        <button className="absolute right-[20px] top-[16px] z-[1005]" onClick={toggleShowing}>
+        <button className="absolute right-5 top-4 z-[1005]" onClick={toggleShowing}>
           <Icon name="close" />
         </button>
-        <div className="flex-column w-full gap-[24px] overflow-y-scroll pt-[18px] scrollbar-hide">
+        <div className="flex-column w-full gap-6 overflow-y-scroll pt-[18px] scrollbar-hide">
           <h1 className="headline-B text-gray-8">{tosTitle}</h1>
           <article className="body-M whitespace-pre text-gray-8">{tosContent}</article>
         </div>

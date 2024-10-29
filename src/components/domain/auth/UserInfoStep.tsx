@@ -43,7 +43,7 @@ export const UserInfoStep = () => {
   return (
     <div className="flex-column-between mx-[20px] min-h-screen gap-[32px] bg-white pb-[55px]">
       <div>
-        <SignUpHeader step={2} />
+        <SignUpHeader step={1} />
         <h1 className="title-B mb-[24px] text-black">회원 정보를 입력해 주세요!</h1>
         <div className="flex-column w-full gap-[16px]">
           <InputGroup>

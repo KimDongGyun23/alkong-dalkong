@@ -4,7 +4,8 @@ import type { CheckBoxSectionType } from '@/types/common'
 
 type Actions = {
   handleCheckBoxClick: (section: CheckBoxSectionType) => void
-  handleAllCheckClick: () => void
+  handleAllCheckClick: VoidFunction
+  resetCheckList: VoidFunction
 }
 
 type CheckBoxListStore = {
@@ -35,6 +36,7 @@ export const useCheckBoxListStore = create<CheckBoxListStore>((set, get) => ({
       if (isAllChecked) set({ checkBoxList: initialCheckBoxList, isAllChecked: false })
       else set({ checkBoxList: allChecked, isAllChecked: true })
     },
+    resetCheckList: () => set({ checkBoxList: initialCheckBoxList, isAllChecked: false }),
   },
 }))
 

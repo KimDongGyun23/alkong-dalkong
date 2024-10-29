@@ -10,7 +10,7 @@ export const SignUpHeader = ({ step }: SignUpHeaderProps) => {
         {[...Array(3)].map((_, index) => (
           <hr
             key={index}
-            className={`h-[6px] w-full border-none ${index === step ? 'bg-green-1' : 'bg-green-4'}`}
+            className={`h-[6px] w-full border-none ${index <= step ? 'bg-green-1' : 'bg-green-4'}`}
           />
         ))}
       </div>

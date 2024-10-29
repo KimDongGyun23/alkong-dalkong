@@ -9,14 +9,14 @@ import { Icon } from '../icons'
 
 type CheckBoxProps = {
   section: CheckBoxSectionType
-  onClickArrow: () => void
+  onClickArrow: VoidFunction
 }
 
 type CheckBoxViewProps = {
   section: CheckBoxSectionType | 'all'
   isChecked: boolean
-  onChange: () => void
-  onClickArrow?: () => void
+  onChange: VoidFunction
+  onClickArrow?: VoidFunction
 }
 
 const CheckBoxView = ({

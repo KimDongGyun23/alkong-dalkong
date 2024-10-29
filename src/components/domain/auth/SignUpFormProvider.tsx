@@ -7,16 +7,20 @@ import { createStore, StateMachineProvider } from 'little-state-machine'
 
 import { useSignupForm } from '@/business/hooks'
 import { useSignUp } from '@/store/queries'
+import { useCheckListActions } from '@/store/stores'
 import type { SignupFormType } from '@/types'
 
 export const SignUpFormProvider = ({ children }: PropsWithChildren) => {
   const formMethod = useSignupForm()
-  const { handleSubmit } = formMethod
+  const { resetCheckList } = useCheckListActions()
+  const { handleSubmit, reset } = formMethod
 
   const router = useRouter()
 
   const { mutate: signUp } = useSignUp({
     onSuccess: () => {
+      reset()
+      resetCheckList()
       router.replace(`/sign-up/complete`)
     },
     onError: (error) => {
