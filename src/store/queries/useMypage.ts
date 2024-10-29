@@ -1,6 +1,9 @@
+'use client'
 import { useMutation, useQuery } from '@tanstack/react-query'
 
 import type { EditAccountInfoRequest, EditPasswordRequest } from '@/types'
+
+import { useUserStore } from '../stores'
 
 import {
   createFamilyGroup,
@@ -11,8 +14,11 @@ import {
 } from './apis'
 
 export const mypageQueryKeys = {
-  all: ['mypage'] as const,
-  familySetting: () => [...mypageQueryKeys.all, 'familySetting'] as const,
+  all: () => {
+    const { user } = useUserStore.getState()
+    return ['mypage', user.loginId] as const
+  },
+  familySetting: () => [...mypageQueryKeys.all(), 'familySetting'] as const,
 }
 
 export const useFamilySetting = () =>

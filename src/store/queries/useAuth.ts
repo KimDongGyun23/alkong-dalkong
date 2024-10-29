@@ -24,7 +24,7 @@ export const useSignIn = () => {
     mutationFn: signIn,
     onSuccess: async ({ accessToken, ...rest }) => {
       api.setAccessToken(accessToken)
-      setUser({ ...rest })
+      setUser({ loginId: rest.userId, ...rest })
       router.push(`/home/${rest.userId}`)
     },
     onError: (error) => {

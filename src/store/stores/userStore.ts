@@ -16,12 +16,13 @@ type UserActions = {
 const defaultState = {
   userId: '1',
   name: '가나다라',
+  loginId: '1',
   familyCode: 'testFamily',
   family: [
-    { userId: '1', name: '가나다라', familyCode: 'testFamily' },
-    { userId: '2', name: '마바사', familyCode: 'testFamily' },
-    { userId: '3', name: '아자차카', familyCode: 'testFamily' },
-    { userId: '4', name: '타파하', familyCode: 'testFamily' },
+    { userId: '1', name: '가나다라', loginId: '1', familyCode: 'testFamily' },
+    { userId: '2', name: '마바사', loginId: '1', familyCode: 'testFamily' },
+    { userId: '3', name: '아자차카', loginId: '1', familyCode: 'testFamily' },
+    { userId: '4', name: '타파하', loginId: '1', familyCode: 'testFamily' },
   ],
 }
 
