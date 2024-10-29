@@ -1,13 +1,13 @@
 'use client'
 import type { HealthReportType } from '@/types'
-import { getCurrentUsernameToStorage } from '@/utility/utils'
+import { getUserDataToLocalStorage } from '@/utility/utils'
 
 type HealthReportProps = {
   report: HealthReportType
 }
 
 export const HealthReport = ({ report }: HealthReportProps) => {
-  const currentUsername = getCurrentUsernameToStorage()
+  const { currentUsername } = getUserDataToLocalStorage()
   const { apiAvgWeight, diffWeight, laskweekWeight } = report
 
   const absDiffWeight = Math.abs(diffWeight)

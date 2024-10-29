@@ -7,11 +7,7 @@ import { Profile, ProfileModal } from '@/components/view'
 import { useToggle } from '@/hooks'
 import { useFamilyMember } from '@/store/queries'
 import { zIndex } from '@/utility/constants'
-import {
-  getCurrentIdToStorage,
-  getCurrentUsernameToStorage,
-  getFamilyCodeToStorage,
-} from '@/utility/utils'
+import { getUserDataToLocalStorage } from '@/utility/utils'
 
 import type { iconMap } from './icons'
 import { Icon } from './icons'
@@ -24,10 +20,8 @@ type NavItem = {
 
 export const BottomNav = () => {
   const pathname = usePathname()
-  const currentId = getCurrentIdToStorage()
-  const username = getCurrentUsernameToStorage()
+  const { currentId, familyCode, currentUsername } = getUserDataToLocalStorage()
 
-  const familyCode = getFamilyCodeToStorage()
   const { data: familyMemberData, refetch } = useFamilyMember(familyCode)
 
   const navItems: NavItem = [
@@ -75,13 +69,13 @@ export const BottomNav = () => {
                     >
                       <div className={`flex rounded-t-[50%] bg-white p-[8px] pb-0 ${zIndex.fab}`}>
                         <Profile
-                          name={username}
+                          name={currentUsername}
                           onClickProfile={handleProfileClick}
                           bgColor={isShowing ? '#949698' : '#F5F6F8'}
                           textColor={isShowing ? 'text-gray-1' : 'text-gray-6'}
                         />
                       </div>
-                      {username}
+                      {currentUsername}
                     </div>
                   </div>
                 )}

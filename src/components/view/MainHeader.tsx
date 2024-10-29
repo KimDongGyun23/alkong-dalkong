@@ -3,12 +3,12 @@
 import { useRouter } from 'next/navigation'
 
 import { Icon, Profile } from '@/components/view'
-import { getCurrentUsernameToStorage } from '@/utility/utils'
+import { getUserDataToLocalStorage } from '@/utility/utils'
 
 import type { HeaderProps } from './SubHeader'
 
 const Setting = ({ title }: Pick<HeaderProps, 'title'>) => {
-  const currentUsername = getCurrentUsernameToStorage()
+  const { currentUsername } = getUserDataToLocalStorage()
 
   const router = useRouter()
   const handleGoSetting = () => {

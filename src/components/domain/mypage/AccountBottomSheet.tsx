@@ -9,10 +9,8 @@ import { useEditAccountInfo } from '@/store/queries'
 import type { BottomSheetType, EditAccountInfoRequest } from '@/types'
 import {
   formatDateWithType,
-  getCurrentUsernameToStorage,
-  getLoginUsernameToStorage,
-  setCurrentUsernameToStorage,
-  setLoginUsernameToStorage,
+  getUserDataToLocalStorage,
+  setUserDataToLocalStorage,
 } from '@/utility/utils'
 
 type HeaderProps = {
@@ -55,15 +53,15 @@ export const AccountBottomSheet = ({
   const { handleSubmit } = formMethod
   const { mutate: editMutation } = useEditAccountInfo()
 
-  const loginUsername = getLoginUsernameToStorage()
-  const currentUsername = getCurrentUsernameToStorage()
+  const { loginUsername, currentUsername } = getUserDataToLocalStorage()
 
   const submitAccountEditForm = (formData: EditAccountInfoRequest) => {
     const sendingFormData = { ...formData, birth: formatDateWithType(formData.birth, 'default') }
     editMutation(sendingFormData, { onSuccess: onClickScrim })
 
-    if (loginUsername === currentUsername) setCurrentUsernameToStorage(formData.name)
-    setLoginUsernameToStorage(formData.name)
+    if (loginUsername === currentUsername)
+      setUserDataToLocalStorage({ currentUsername: formData.name, loginUsername: formData.name })
+    else setUserDataToLocalStorage({ loginUsername: formData.name })
   }
 
   return (

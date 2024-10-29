@@ -13,25 +13,22 @@ import {
   signUp,
 } from '@/store/queries/apis'
 import type { SignUpRequest } from '@/types'
-import {
-  setCurrentIdToStorage,
-  setCurrentUsernameToStorage,
-  setFamilyCodeToStorage,
-  setLoginUsernameToStorage,
-} from '@/utility/utils'
+import { setUserDataToLocalStorage } from '@/utility/utils'
 
 export const useSignIn = () => {
   const router = useRouter()
 
   return useMutation({
     mutationFn: signIn,
-    onSuccess: async ({ accessToken, ...rest }) => {
+    onSuccess: async ({ accessToken, userId, familyCode, name }) => {
       api.setAccessToken(accessToken)
-      setCurrentIdToStorage(rest.userId)
-      setFamilyCodeToStorage(rest.familyCode)
-      setCurrentUsernameToStorage(rest.name)
-      setLoginUsernameToStorage(rest.name)
-      router.push(`/home/${rest.userId}`)
+      setUserDataToLocalStorage({
+        currentId: userId,
+        familyCode: familyCode,
+        currentUsername: name,
+        loginUsername: name,
+      })
+      router.push(`/home/${userId}`)
     },
     onError: (error) => {
       console.log(error.message)

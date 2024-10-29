@@ -11,7 +11,7 @@ import {
 import { Profile, SubHeader } from '@/components/view'
 import { useToggle } from '@/hooks'
 import { useDeleteMembership, useSignOut } from '@/store/queries'
-import { getLoginUsernameToStorage } from '@/utility/utils'
+import { getUserDataToLocalStorage } from '@/utility/utils'
 
 const ButtonGroup = ({ children }: PropsWithChildren) => {
   return (
@@ -23,7 +23,7 @@ const ButtonGroup = ({ children }: PropsWithChildren) => {
 
 export const MypageClientPage = () => {
   const router = useRouter()
-  const loginUsername = getLoginUsernameToStorage()
+  const { loginUsername } = getUserDataToLocalStorage()
 
   const [accountSheet, toggleAccountSheet] = useToggle()
   const [passwordSheet, togglePasswordSheet] = useToggle()

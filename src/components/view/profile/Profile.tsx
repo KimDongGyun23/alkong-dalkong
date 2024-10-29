@@ -2,7 +2,7 @@
 import type { MouseEventHandler } from 'react'
 import { useRouter } from 'next/navigation'
 
-import { getLoginUsernameToStorage } from '@/utility/utils'
+import { getUserDataToLocalStorage } from '@/utility/utils'
 
 import { Icon } from '../icons'
 
@@ -18,7 +18,7 @@ type ProfileVariantProps = {
 }
 
 export const Profile = ({ onClickProfile, name, ...styleProps }: ProfileProps) => {
-  const loginUsername = getLoginUsernameToStorage()
+  const { loginUsername } = getUserDataToLocalStorage()
   const router = useRouter()
   const { bgColor, textColor = 'text-gray-6', size = 'md' } = styleProps
 

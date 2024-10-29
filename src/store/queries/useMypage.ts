@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
 import type { EditAccountInfoRequest, EditPasswordRequest } from '@/types'
-import { getCurrentIdToStorage } from '@/utility/utils'
+import { getUserDataToLocalStorage } from '@/utility/utils'
 
 import {
   createFamilyGroup,
@@ -14,7 +14,7 @@ import {
 
 export const mypageQueryKeys = {
   all: () => {
-    const currentId = getCurrentIdToStorage()
+    const { currentId } = getUserDataToLocalStorage()
     return ['mypage', currentId] as const
   },
   familySetting: () => [...mypageQueryKeys.all(), 'familySetting'] as const,

@@ -1,15 +1,24 @@
-export const setLocalStorageItem = (key: string, value: string | number) => {
-  if (typeof window !== 'undefined') {
-    localStorage.setItem(key, JSON.stringify(value))
-  }
+type UserData = {
+  familyCode: string
+  currentId: string | number
+  userId: string | number
+  currentUsername: string
+  loginUsername: string
 }
 
-export const getLocalStorageItem = (key: string) => {
-  if (typeof window !== 'undefined') {
-    const storedValue = localStorage.getItem(key)
-    return storedValue ? JSON.parse(storedValue) : null
-  }
-  return null
+const STORAGE_KEY = 'user'
+
+export const setUserDataToLocalStorage = (data: Partial<UserData>) => {
+  const existingData = getUserDataToLocalStorage()
+  const updatedData = { ...existingData, ...data }
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedData))
+}
+
+export const getUserDataToLocalStorage = (): UserData => {
+  const storedData = localStorage.getItem(STORAGE_KEY)
+
+  return storedData ? JSON.parse(storedData) : {}
 }
 
 export const removeLocalStorageItem = (key: string) => {
@@ -22,36 +31,4 @@ export const clearLocalStorage = () => {
   if (typeof window !== 'undefined') {
     localStorage.clear()
   }
-}
-
-export const setCurrentIdToStorage = (value: string | number) => {
-  setLocalStorageItem('currentId', value)
-}
-
-export const getCurrentIdToStorage = () => {
-  return getLocalStorageItem('currentId')
-}
-
-export const setFamilyCodeToStorage = (value: string) => {
-  setLocalStorageItem('familyCode', value)
-}
-
-export const getFamilyCodeToStorage = () => {
-  return getLocalStorageItem('familyCode')
-}
-
-export const setCurrentUsernameToStorage = (value: string) => {
-  setLocalStorageItem('currentUsername', value)
-}
-
-export const getCurrentUsernameToStorage = () => {
-  return getLocalStorageItem('currentUsername')
-}
-
-export const setLoginUsernameToStorage = (value: string) => {
-  setLocalStorageItem('loginUsername', value)
-}
-
-export const getLoginUsernameToStorage = () => {
-  return getLocalStorageItem('loginUsername')
 }
