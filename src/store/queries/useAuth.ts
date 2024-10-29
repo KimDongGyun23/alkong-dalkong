@@ -13,6 +13,7 @@ import {
   signUp,
 } from '@/store/queries/apis'
 import type { SignUpRequest } from '@/types'
+import { setCurrentIdToStorage } from '@/utility/utils'
 
 import { useUserStore } from '../stores'
 
@@ -25,6 +26,7 @@ export const useSignIn = () => {
     onSuccess: async ({ accessToken, ...rest }) => {
       api.setAccessToken(accessToken)
       setUser({ loginId: rest.userId, ...rest })
+      setCurrentIdToStorage(rest.userId)
       router.push(`/home/${rest.userId}`)
     },
     onError: (error) => {
