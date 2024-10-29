@@ -11,7 +11,6 @@ export const CreateGroupBottomSheet = ({
   onClickScrim,
 }: Omit<BottomSheetType, 'section'>) => {
   const [createModalState, openCreateModal, closeCreateModal] = useBoolean(false)
-  const [additionModalState, openAdditionModal, closeAdditionModal] = useBoolean(false)
   const [inputCode, setInputCode] = useState<string>('')
   const [createGroupCode, setCreateGroupCode] = useState<string>('')
   const [isEnteredGroup, setIsEnteredGroupTrue, setIsEnteredGroupFalse] = useBoolean(false)
@@ -83,12 +82,6 @@ export const CreateGroupBottomSheet = ({
         codeNumber={createGroupCode}
         modalState={createModalState}
         closeModal={closeCreateModal}
-      />
-      <CodeModal
-        header="새로운 가족 그룹 생성 완료!"
-        codeNumber="1234 4567"
-        modalState={additionModalState}
-        closeModal={closeAdditionModal}
       />
     </>
   )

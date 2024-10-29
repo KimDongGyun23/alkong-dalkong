@@ -1,4 +1,8 @@
-import { BottomSheet, Button, Profile, SubHeader } from '@/components/view'
+'use client'
+import { useState } from 'react'
+
+import { BottomSheet, Button, CodeModal, Profile, SubHeader } from '@/components/view'
+import { useBoolean } from '@/hooks'
 import { useFamilySetting } from '@/store/queries'
 import type { BottomSheetType } from '@/types'
 
@@ -6,7 +10,15 @@ export const FamilySettingBottomSheet = ({
   isShowing,
   onClickScrim,
 }: Omit<BottomSheetType, 'section'>) => {
+  const [familyCodeNumber, setFamilyCodeNumber] = useState<string>('')
+  const [additionModalState, openAdditionModal, closeAdditionModal] = useBoolean(false)
+
   const { data: familySettingData } = useFamilySetting()
+
+  const handleClickAdditionalPerson = (familyCode: string) => {
+    setFamilyCodeNumber(familyCode)
+    openAdditionModal()
+  }
 
   return (
     <BottomSheet isShowing={isShowing} onClickScrim={onClickScrim}>
@@ -41,10 +53,19 @@ export const FamilySettingBottomSheet = ({
               ))}
             </div>
 
-            <Button size="md">인원 추가하기</Button>
+            <Button size="md" onClick={() => handleClickAdditionalPerson(family.familyCode)}>
+              인원 추가하기
+            </Button>
           </div>
         ))}
       </div>
+
+      <CodeModal
+        header="우리 가족 그룹의 초대 코드"
+        codeNumber={familyCodeNumber}
+        modalState={additionModalState}
+        closeModal={closeAdditionModal}
+      />
     </BottomSheet>
   )
 }
