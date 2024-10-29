@@ -9,16 +9,20 @@ type UserData = {
 const STORAGE_KEY = 'user'
 
 export const setUserDataToLocalStorage = (data: Partial<UserData>) => {
-  const existingData = getUserDataToLocalStorage()
-  const updatedData = { ...existingData, ...data }
+  if (typeof window !== 'undefined') {
+    const existingData = getUserDataToLocalStorage()
+    const updatedData = { ...existingData, ...data }
 
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedData))
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedData))
+  }
 }
 
 export const getUserDataToLocalStorage = (): UserData => {
-  const storedData = localStorage.getItem(STORAGE_KEY)
-
-  return storedData ? JSON.parse(storedData) : {}
+  if (typeof window !== 'undefined') {
+    const storedData = localStorage.getItem(STORAGE_KEY)
+    return storedData ? JSON.parse(storedData) : {}
+  }
+  return {} as UserData
 }
 
 export const removeLocalStorageItem = (key: string) => {
