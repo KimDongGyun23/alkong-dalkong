@@ -8,6 +8,7 @@ import {
   editAccountInfo,
   editPassowrd,
   enterFamilyGroup,
+  familyMember,
   familySetting,
 } from './apis'
 
@@ -17,12 +18,20 @@ export const mypageQueryKeys = {
     return ['mypage', currentId] as const
   },
   familySetting: () => [...mypageQueryKeys.all(), 'familySetting'] as const,
+  familyMember: () => [...mypageQueryKeys.all(), 'familyMember'] as const,
 }
 
 export const useFamilySetting = () =>
   useQuery({
     queryKey: mypageQueryKeys.familySetting(),
     queryFn: familySetting,
+  })
+
+export const useFamilyMember = (familyCode: string) =>
+  useQuery({
+    queryKey: mypageQueryKeys.familyMember(),
+    queryFn: () => familyMember(familyCode),
+    enabled: false,
   })
 
 export const useEditAccountInfo = () => {

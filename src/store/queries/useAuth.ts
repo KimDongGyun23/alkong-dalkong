@@ -13,7 +13,11 @@ import {
   signUp,
 } from '@/store/queries/apis'
 import type { SignUpRequest } from '@/types'
-import { setCurrentIdToStorage } from '@/utility/utils'
+import {
+  setCurrentIdToStorage,
+  setFamilyCodeToStorage,
+  setUsernameToStorage,
+} from '@/utility/utils'
 
 import { useUserStore } from '../stores'
 
@@ -27,6 +31,8 @@ export const useSignIn = () => {
       api.setAccessToken(accessToken)
       setUser({ loginId: rest.userId, ...rest })
       setCurrentIdToStorage(rest.userId)
+      setFamilyCodeToStorage(rest.familyCode)
+      setUsernameToStorage(rest.name)
       router.push(`/home/${rest.userId}`)
     },
     onError: (error) => {

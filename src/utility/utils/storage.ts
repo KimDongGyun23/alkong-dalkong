@@ -1,4 +1,4 @@
-export const setLocalStorageItem = (key: string, value: string) => {
+export const setLocalStorageItem = (key: string, value: string | number) => {
   if (typeof window !== 'undefined') {
     localStorage.setItem(key, JSON.stringify(value))
   }
@@ -24,10 +24,26 @@ export const clearLocalStorage = () => {
   }
 }
 
-export const setCurrentIdToStorage = (value: string) => {
+export const setCurrentIdToStorage = (value: string | number) => {
   setLocalStorageItem('currentId', value)
 }
 
 export const getCurrentIdToStorage = () => {
   return getLocalStorageItem('currentId')
+}
+
+export const setFamilyCodeToStorage = (value: string) => {
+  setLocalStorageItem('familyCode', value)
+}
+
+export const getFamilyCodeToStorage = () => {
+  return getLocalStorageItem('familyCode')
+}
+
+export const setUsernameToStorage = (value: string) => {
+  setLocalStorageItem('username', value)
+}
+
+export const getUsernameToStorage = () => {
+  return getLocalStorageItem('username')
 }

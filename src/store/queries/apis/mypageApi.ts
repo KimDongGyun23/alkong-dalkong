@@ -1,4 +1,4 @@
-import type { FamilySettingResponse } from '@/types'
+import type { FamilyMemberType, FamilySettingResponse } from '@/types'
 import type {
   AccountInfoResponse,
   CreateFamilyGroupResponse,
@@ -15,6 +15,10 @@ export const accountInfo = async () => {
 
 export const familySetting = async () => {
   return await api.get<FamilySettingResponse>(`/mypage/family-list`)
+}
+
+export const familyMember = async (familyCode: string) => {
+  return await api.get<FamilyMemberType>(`/member-info/${familyCode}`)
 }
 
 export const editAccountInfo = async (request: EditAccountInfoRequest) => {

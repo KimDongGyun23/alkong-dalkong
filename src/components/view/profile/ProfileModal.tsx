@@ -3,18 +3,18 @@
 import type { MouseEventHandler } from 'react'
 import Link from 'next/link'
 
-import { useUserStore } from '@/store/stores'
+import type { FamilyMemberType } from '@/types'
 import { zIndex } from '@/utility/constants'
+import { setCurrentIdToStorage, setUsernameToStorage } from '@/utility/utils'
 
 import { Profile } from './Profile'
 
 type ProfileModalProps = {
   onClickProfileModal?: VoidFunction
+  members: FamilyMemberType['members']
 }
 
-export const ProfileModal = ({ onClickProfileModal }: ProfileModalProps) => {
-  const { user, setUser } = useUserStore()
-
+export const ProfileModal = ({ onClickProfileModal, members }: ProfileModalProps) => {
   const handleClickScrim: MouseEventHandler<HTMLDivElement> = () => {
     if (onClickProfileModal) onClickProfileModal()
   }
@@ -26,9 +26,10 @@ export const ProfileModal = ({ onClickProfileModal }: ProfileModalProps) => {
       aria-hidden="true"
     >
       <div className="grid grid-cols-3 gap-[40px]">
-        {user.family?.map(({ userId, name }) => {
+        {members?.map(({ name, userId }) => {
           const handleClickProfile = () => {
-            setUser({ ...user, userId: userId, name: name })
+            setCurrentIdToStorage(userId)
+            setUsernameToStorage(name)
             if (onClickProfileModal) onClickProfileModal()
           }
 
