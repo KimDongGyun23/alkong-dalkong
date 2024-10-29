@@ -36,12 +36,9 @@ export const useSignIn = () => {
   })
 }
 
-export const useCheckDuplicateId = (
-  options?: UseMutationOptions<unknown, AxiosError, { id: string }>,
-) =>
+export const useCheckDuplicateId = () =>
   useMutation({
     mutationFn: checkDuplicateId,
-    ...options,
   })
 
 export const useSignUp = (options?: UseMutationOptions<unknown, AxiosError, SignUpRequest>) =>

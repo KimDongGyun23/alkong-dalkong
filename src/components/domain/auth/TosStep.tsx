@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 
-import { BottomSheet, Button, Icon, InputGroup } from '@/components/view'
+import { BottomSheet, Button, Icon, InputGroup, SignUpHeader } from '@/components/view'
 import { useBoolean, useToggle } from '@/hooks'
 import { tos } from '@/utility/constants'
 
@@ -38,14 +38,7 @@ export const TosStep = () => {
   return (
     <div className="flex-column-between mx-[20px] min-h-screen gap-[32px] bg-white pb-[55px]">
       <div>
-        <div className="flex-column-align mb-[40px] mt-[18px] gap-[12px]">
-          <h1 className="subtitle-B">회원가입</h1>
-          <div className="flex-center w-full gap-[4px] px-[8px]">
-            <hr className="h-[6px] w-full border-none bg-green-4" />
-            <hr className="h-[6px] w-full border-none bg-green-4" />
-            <hr className="h-[6px] w-full border-none bg-green-4" />
-          </div>
-        </div>
+        <SignUpHeader step={1} />
         <h1 className="title-B mb-[24px] whitespace-pre text-black">{`정말 마지막이에요,\n이용약관에 동의해 주세요!`}</h1>
         <div className="flex-column w-full gap-[12px]">
           <InputGroup.CheckBoxAll>전체 동의</InputGroup.CheckBoxAll>

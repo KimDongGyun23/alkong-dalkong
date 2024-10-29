@@ -4,7 +4,7 @@ import { useFormContext } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { useStateMachine } from 'little-state-machine'
 
-import { Button, InputGroup, Label } from '@/components/view'
+import { Button, InputGroup, Label, SignUpHeader } from '@/components/view'
 import { persistSignUpForm } from '@/utility/utils'
 
 export const UserInfoStep = () => {
@@ -43,14 +43,7 @@ export const UserInfoStep = () => {
   return (
     <div className="flex-column-between mx-[20px] min-h-screen gap-[32px] bg-white pb-[55px]">
       <div>
-        <div className="flex-column-align mb-[40px] mt-[18px] gap-[12px]">
-          <h1 className="subtitle-B">회원가입</h1>
-          <div className="flex-center w-full gap-[4px] px-[8px]">
-            <hr className="h-[6px] w-full border-none bg-green-4" />
-            <hr className="h-[6px] w-full border-none bg-green-4" />
-            <hr className="h-[6px] w-full border-none bg-green-1" />
-          </div>
-        </div>
+        <SignUpHeader step={2} />
         <h1 className="title-B mb-[24px] text-black">회원 정보를 입력해 주세요!</h1>
         <div className="flex-column w-full gap-[16px]">
           <InputGroup>
