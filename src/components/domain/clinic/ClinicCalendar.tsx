@@ -13,14 +13,9 @@ export const ClinicCalendar = () => {
 
   const selectedDate = useSelectedDate()
   const { handleDateChange } = useCalendarActions()
-  const {
-    data: calendarData,
-    isError,
-    isLoading,
-    refetch,
-  } = useClinicCalendar({ userId, localDate })
+  const { data: calendarData, isError, isLoading } = useClinicCalendar({ userId, localDate })
 
-  if (isError || isLoading || !calendarData) return null
+  if (isError || isLoading || !calendarData) return <CustomCalendar />
   const { scheduledDates } = calendarData
 
   const isDateMarked = (date: Date) =>
@@ -31,8 +26,7 @@ export const ClinicCalendar = () => {
   const handleActiveStartDateChange = ({ activeStartDate }: { activeStartDate: Date | null }) => {
     if (activeStartDate) {
       const newMonth = dayjs(activeStartDate).format('YYYY-MM')
-      setLocalDate(newMonth)
-      refetch()
+      if (newMonth !== localDate) setLocalDate(newMonth)
     }
   }
 
