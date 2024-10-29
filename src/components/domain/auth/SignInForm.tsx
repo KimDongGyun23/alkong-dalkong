@@ -10,7 +10,7 @@ export const SignInForm = () => {
   const formMethod = useLoginForm()
   const { handleSubmit } = formMethod
 
-  const { mutate: signIn } = useSignIn()
+  const { mutate: signIn, isError } = useSignIn()
 
   const handleSignInFormSubmit = (formData: LoginFormType) => {
     signIn(formData)
@@ -27,6 +27,11 @@ export const SignInForm = () => {
           <InputGroup.Input section="password" placeholder="비밀번호" type="password" />
         </section>
 
+        {isError && (
+          <p className="caption-M mx-[8px] h-[18px] self-start text-red">
+            * 아이디와 비밀번호를 확인해주세요.
+          </p>
+        )}
         <Button type="submit">로그인</Button>
       </form>
     </FormProvider>
