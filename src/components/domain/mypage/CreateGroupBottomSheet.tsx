@@ -14,6 +14,7 @@ export const CreateGroupBottomSheet = ({
   const [additionModalState, openAdditionModal, closeAdditionModal] = useBoolean(false)
   const [inputCode, setInputCode] = useState<string>('')
   const [createGroupCode, setCreateGroupCode] = useState<string>('')
+  const [isEnteredGroup, setIsEnteredGroupTrue, setIsEnteredGroupFalse] = useBoolean(false)
 
   const { mutate: createFamilyGroupMutation } = useCreateFamilyGroup()
   const { mutate: enterFamilyGroupMutation } = useEnterFamilyGroup()
@@ -28,14 +29,19 @@ export const CreateGroupBottomSheet = ({
   }
 
   const handleSubmitFamilyCode = () => {
-    enterFamilyGroupMutation({ familyCode: inputCode })
+    enterFamilyGroupMutation({ familyCode: inputCode }, { onSuccess: setIsEnteredGroupTrue })
+  }
+
+  const handleCloseBottomSheet = () => {
+    setIsEnteredGroupFalse()
+    onClickScrim()
   }
 
   return (
     <>
-      <BottomSheet isShowing={isShowing} onClickScrim={onClickScrim}>
+      <BottomSheet isShowing={isShowing} onClickScrim={handleCloseBottomSheet}>
         <div className="pb-5">
-          <SubHeader.Close title="가족 그룹 추가" onClose={onClickScrim} />
+          <SubHeader.Close title="가족 그룹 추가" onClose={handleCloseBottomSheet} />
         </div>
 
         <section className="mb-8 mt-5">
@@ -66,6 +72,9 @@ export const CreateGroupBottomSheet = ({
             placeholder="가족 코드를 입력해주세요."
             className="subtitle-M placeholder:subtitle-R w-full rounded-xl border border-mint-3 px-6 py-4 placeholder:text-gray-7 focus:outline-none"
           />
+          {isEnteredGroup && (
+            <p className="text-mint-6">* 성공적으로 가족 그룹에 추가되었습니다.</p>
+          )}
           <Button onClick={handleSubmitFamilyCode}>가족 코드 인증</Button>
         </section>
       </BottomSheet>

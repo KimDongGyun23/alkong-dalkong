@@ -47,7 +47,10 @@ export const useCreateFamilyGroup = () => {
 }
 
 export const useEnterFamilyGroup = () => {
+  const queryClient = useQueryClient()
+
   return useMutation({
     mutationFn: enterFamilyGroup,
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: mypageQueryKeys.familySetting() }),
   })
 }
