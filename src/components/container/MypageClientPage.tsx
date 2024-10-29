@@ -11,7 +11,7 @@ import {
 import { Profile, SubHeader } from '@/components/view'
 import { useToggle } from '@/hooks'
 import { useDeleteMembership, useSignOut } from '@/store/queries'
-import { useUserStore } from '@/store/stores'
+import { getLoginUsernameToStorage } from '@/utility/utils'
 
 const ButtonGroup = ({ children }: PropsWithChildren) => {
   return (
@@ -22,8 +22,8 @@ const ButtonGroup = ({ children }: PropsWithChildren) => {
 }
 
 export const MypageClientPage = () => {
-  const { user } = useUserStore()
   const router = useRouter()
+  const loginUsername = getLoginUsernameToStorage()
 
   const [accountSheet, toggleAccountSheet] = useToggle()
   const [passwordSheet, togglePasswordSheet] = useToggle()
@@ -52,7 +52,7 @@ export const MypageClientPage = () => {
             <p className="title-B">
               안녕하세요,
               <br />
-              {user?.name}님!
+              {loginUsername}님!
             </p>
             <Profile size="xl" bgColor="#C5FDEC" />
           </div>

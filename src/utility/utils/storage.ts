@@ -40,10 +40,18 @@ export const getFamilyCodeToStorage = () => {
   return getLocalStorageItem('familyCode')
 }
 
-export const setUsernameToStorage = (value: string) => {
-  setLocalStorageItem('username', value)
+export const setCurrentUsernameToStorage = (value: string) => {
+  setLocalStorageItem('currentUsername', value)
 }
 
-export const getUsernameToStorage = () => {
-  return getLocalStorageItem('username')
+export const getCurrentUsernameToStorage = () => {
+  return getLocalStorageItem('currentUsername')
+}
+
+export const setLoginUsernameToStorage = (value: string) => {
+  setLocalStorageItem('loginUsername', value)
+}
+
+export const getLoginUsernameToStorage = () => {
+  return getLocalStorageItem('loginUsername')
 }

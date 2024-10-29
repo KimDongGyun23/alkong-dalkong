@@ -3,12 +3,12 @@
 import { useRouter } from 'next/navigation'
 
 import { Icon, Profile } from '@/components/view'
-import { useUserStore } from '@/store/stores'
+import { getCurrentUsernameToStorage } from '@/utility/utils'
 
 import type { HeaderProps } from './SubHeader'
 
 const Setting = ({ title }: Pick<HeaderProps, 'title'>) => {
-  const { user } = useUserStore()
+  const currentUsername = getCurrentUsernameToStorage()
 
   const router = useRouter()
   const handleGoSetting = () => {
@@ -18,9 +18,14 @@ const Setting = ({ title }: Pick<HeaderProps, 'title'>) => {
   return (
     <header className="flex-column-between h-[182px] bg-mint-3 px-[20px] pb-[24px] pt-[20px]">
       <div className="flex-align w-full justify-end">
-        <Profile name={user.name} size="sm" bgColor="#C5FDEC" onClickProfile={handleGoSetting} />
+        <Profile
+          name={currentUsername}
+          size="sm"
+          bgColor="#C5FDEC"
+          onClickProfile={handleGoSetting}
+        />
       </div>
-      <h1 className="title-B whitespace-pre text-black">{`${user.name}${title}`}</h1>
+      <h1 className="title-B whitespace-pre text-black">{`${currentUsername}${title}`}</h1>
     </header>
   )
 }

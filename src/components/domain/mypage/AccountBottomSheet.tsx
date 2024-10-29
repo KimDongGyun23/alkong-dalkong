@@ -6,9 +6,14 @@ import { useAccountEditForm } from '@/business/hooks'
 import { BottomSheet, Icon, InputGroup, Label, Profile, SubHeader } from '@/components/view'
 import { useToggle } from '@/hooks'
 import { useEditAccountInfo } from '@/store/queries'
-import { useUserStore } from '@/store/stores'
 import type { BottomSheetType, EditAccountInfoRequest } from '@/types'
-import { formatDateWithType } from '@/utility/utils'
+import {
+  formatDateWithType,
+  getCurrentUsernameToStorage,
+  getLoginUsernameToStorage,
+  setCurrentUsernameToStorage,
+  setLoginUsernameToStorage,
+} from '@/utility/utils'
 
 type HeaderProps = {
   isEdit: boolean
@@ -48,14 +53,17 @@ export const AccountBottomSheet = ({
 
   const formMethod = useAccountEditForm()
   const { handleSubmit } = formMethod
-
-  const { changeName } = useUserStore()
   const { mutate: editMutation } = useEditAccountInfo()
+
+  const loginUsername = getLoginUsernameToStorage()
+  const currentUsername = getCurrentUsernameToStorage()
 
   const submitAccountEditForm = (formData: EditAccountInfoRequest) => {
     const sendingFormData = { ...formData, birth: formatDateWithType(formData.birth, 'default') }
     editMutation(sendingFormData, { onSuccess: onClickScrim })
-    changeName(formData.name)
+
+    if (loginUsername === currentUsername) setCurrentUsernameToStorage(formData.name)
+    setLoginUsernameToStorage(formData.name)
   }
 
   return (

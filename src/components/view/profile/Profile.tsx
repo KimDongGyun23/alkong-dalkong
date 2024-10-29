@@ -2,7 +2,7 @@
 import type { MouseEventHandler } from 'react'
 import { useRouter } from 'next/navigation'
 
-import { useUserStore } from '@/store/stores'
+import { getLoginUsernameToStorage } from '@/utility/utils'
 
 import { Icon } from '../icons'
 
@@ -18,11 +18,11 @@ type ProfileVariantProps = {
 }
 
 export const Profile = ({ onClickProfile, name, ...styleProps }: ProfileProps) => {
-  const { user } = useUserStore()
+  const loginUsername = getLoginUsernameToStorage()
   const router = useRouter()
   const { bgColor, textColor = 'text-gray-6', size = 'md' } = styleProps
 
-  const displayName = name ? name.slice(-2) : user.name.slice(-2)
+  const displayName = name ? name.slice(-2) : loginUsername.slice(-2)
 
   const handleClickProfile: MouseEventHandler<HTMLButtonElement> = () => {
     if (onClickProfile) onClickProfile()

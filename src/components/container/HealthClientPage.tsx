@@ -4,23 +4,24 @@ import { useEffect } from 'react'
 
 import { useToggle } from '@/hooks'
 import { useHealthPage } from '@/store/queries'
-import { useHealthPeriodEnglish, useSelectedWeightActions, useUserStore } from '@/store/stores'
+import { useHealthPeriodEnglish, useSelectedWeightActions } from '@/store/stores'
+import { getCurrentIdToStorage } from '@/utility/utils'
 
 import { HealthChart, HealthReport, PeriodDropDown, WeightBottomSheet } from '../domain'
 import { Button, DashBoardTemplate, Label } from '../view'
 
 export const HealthClientPage = () => {
   const period = useHealthPeriodEnglish()
+  const currentId = getCurrentIdToStorage()
   const [weightSheet, toggleWeightSheet] = useToggle(false)
 
-  const { user } = useUserStore()
   const { setInitialWeight } = useSelectedWeightActions()
 
   const {
     data: healthData,
     isError,
     isPending,
-  } = useHealthPage({ userId: user.userId, period: period })
+  } = useHealthPage({ userId: currentId, period: period })
 
   useEffect(() => {
     if (healthData?.data) {

@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import type { FamilyMemberType } from '@/types'
 import { zIndex } from '@/utility/constants'
-import { setCurrentIdToStorage, setUsernameToStorage } from '@/utility/utils'
+import { setCurrentIdToStorage, setCurrentUsernameToStorage } from '@/utility/utils'
 
 import { Profile } from './Profile'
 
@@ -29,7 +29,7 @@ export const ProfileModal = ({ onClickProfileModal, members }: ProfileModalProps
         {members?.map(({ name, userId }) => {
           const handleClickProfile = () => {
             setCurrentIdToStorage(userId)
-            setUsernameToStorage(name)
+            setCurrentUsernameToStorage(name)
             if (onClickProfileModal) onClickProfileModal()
           }
 

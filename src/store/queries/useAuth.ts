@@ -15,24 +15,22 @@ import {
 import type { SignUpRequest } from '@/types'
 import {
   setCurrentIdToStorage,
+  setCurrentUsernameToStorage,
   setFamilyCodeToStorage,
-  setUsernameToStorage,
+  setLoginUsernameToStorage,
 } from '@/utility/utils'
-
-import { useUserStore } from '../stores'
 
 export const useSignIn = () => {
   const router = useRouter()
-  const { setUser } = useUserStore()
 
   return useMutation({
     mutationFn: signIn,
     onSuccess: async ({ accessToken, ...rest }) => {
       api.setAccessToken(accessToken)
-      setUser({ loginId: rest.userId, ...rest })
       setCurrentIdToStorage(rest.userId)
       setFamilyCodeToStorage(rest.familyCode)
-      setUsernameToStorage(rest.name)
+      setCurrentUsernameToStorage(rest.name)
+      setLoginUsernameToStorage(rest.name)
       router.push(`/home/${rest.userId}`)
     },
     onError: (error) => {

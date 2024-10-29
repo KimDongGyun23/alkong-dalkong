@@ -9,8 +9,8 @@ import { useFamilyMember } from '@/store/queries'
 import { zIndex } from '@/utility/constants'
 import {
   getCurrentIdToStorage,
+  getCurrentUsernameToStorage,
   getFamilyCodeToStorage,
-  getUsernameToStorage,
 } from '@/utility/utils'
 
 import type { iconMap } from './icons'
@@ -25,7 +25,7 @@ type NavItem = {
 export const BottomNav = () => {
   const pathname = usePathname()
   const currentId = getCurrentIdToStorage()
-  const username = getUsernameToStorage()
+  const username = getCurrentUsernameToStorage()
 
   const familyCode = getFamilyCodeToStorage()
   const { data: familyMemberData, refetch } = useFamilyMember(familyCode)
