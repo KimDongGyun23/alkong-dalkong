@@ -26,9 +26,9 @@ export const FamilySettingBottomSheet = ({
               </div>
             </div>
 
-            {family.members.map(({ name, userId }) => (
-              <div key={userId} className="flex flex-wrap justify-center gap-8">
-                <div className="flex-column-align gap-[6px]">
+            <div className="flex flex-wrap justify-center gap-8">
+              {family.members.map(({ name, userId }) => (
+                <div key={userId} className="flex-column-align gap-[6px]">
                   <Profile
                     bgColor="#949698"
                     textColor="text-gray-1"
@@ -38,8 +38,8 @@ export const FamilySettingBottomSheet = ({
                   />
                   <span className="headline-M">{name}</span>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
 
             <Button size="md">인원 추가하기</Button>
           </div>

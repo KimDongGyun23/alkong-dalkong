@@ -1,5 +1,5 @@
 'use client'
-import { useMutation, useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
 import type { EditAccountInfoRequest, EditPasswordRequest } from '@/types'
 
@@ -40,8 +40,11 @@ export const useEditPassword = () => {
 }
 
 export const useCreateFamilyGroup = () => {
+  const queryClient = useQueryClient()
+
   return useMutation({
     mutationFn: createFamilyGroup,
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: mypageQueryKeys.familySetting() }),
   })
 }
 
