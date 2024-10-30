@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { FormProvider } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
-import { signIn, useSession } from 'next-auth/react'
+import { getSession, signIn } from 'next-auth/react'
 
 import { useLoginForm } from '@/business/hooks'
 import { Button, InputGroup } from '@/components/view'
@@ -15,7 +15,7 @@ export const SignInForm = () => {
   const { handleSubmit } = formMethod
   const router = useRouter()
   const [message, setMessage] = useState('')
-  const { data: session } = useSession()
+  // const { data: session } = useSession()
 
   const handleSignInFormSubmit = async (formData: LoginFormType) => {
     try {
@@ -28,15 +28,19 @@ export const SignInForm = () => {
       if (response?.error) {
         setMessage('* 아이디와 비밀번호가 일치하지 않습니다.')
       } else {
-        setUserDataToLocalStorage({
-          currentId: session?.user.userId,
-          familyCode: session?.user.familyCode,
-          currentUsername: session?.user.name,
-          loginUsername: session?.user.name,
-        })
+        const session = await getSession()
+        if (session) {
+          console.log('ssssss', session?.user.userId)
+          setUserDataToLocalStorage({
+            currentId: session?.user.userId,
+            familyCode: session?.user.familyCode,
+            currentUsername: session?.user.name,
+            loginUsername: session?.user.name,
+          })
 
-        api.setAccessToken(session?.user.accessToken)
-        router.replace(`/home/${session?.user.userId}`)
+          api.setAccessToken(session?.user.accessToken)
+          router.replace(`/home/${session?.user.userId}`)
+        }
       }
     } catch (err) {
       console.error('error', err)
