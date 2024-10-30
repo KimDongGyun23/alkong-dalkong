@@ -33,7 +33,7 @@ export const Slider = ({ list, initialSlide, onChange }: SliderProps) => {
       activeIndexRef.current = realIndex
       debouncedSlideChange()
     },
-    [debouncedSlideChange, list.length],
+    [debouncedSlideChange],
   )
 
   return (

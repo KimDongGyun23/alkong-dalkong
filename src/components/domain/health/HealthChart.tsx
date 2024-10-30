@@ -2,13 +2,6 @@
 import type { TooltipProps } from 'recharts'
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, YAxis } from 'recharts'
 
-const data = {
-  '2024-10-1': 57,
-  '2024-10-2': 58,
-  '2024-10-3': 58,
-  '2024-10-4': 55,
-}
-
 type DummyDataType = {
   name: string
   value: number

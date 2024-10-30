@@ -87,7 +87,7 @@ export const AccountStep = () => {
 
   useEffect(() => {
     reset(signUp)
-  }, [])
+  }, [reset, signUp])
 
   const handleGoNext = async () => {
     const isValid = await trigger(['id', 'password', 'confirm'])

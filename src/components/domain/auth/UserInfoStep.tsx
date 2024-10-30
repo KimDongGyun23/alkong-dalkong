@@ -29,7 +29,7 @@ export const UserInfoStep = () => {
 
   useEffect(() => {
     reset(signUp)
-  }, [])
+  }, [reset, signUp])
 
   const router = useRouter()
   const handleGoNext = async () => {
