@@ -22,7 +22,7 @@ export const ProfileModal = ({ onClickProfileModal, members }: ProfileModalProps
   return (
     <div
       onClick={handleClickScrim}
-      className={`absolute inset-0 flex h-[calc(100vh-75px)] w-full items-end justify-center overflow-hidden bg-[rgba(15,23,42,0.5)] px-[52px] pb-[62px] ${zIndex.fab}`}
+      className={`absolute inset-0 flex h-[calc(100svh-75px)] w-full items-end justify-center overflow-hidden bg-[rgba(15,23,42,0.5)] px-[52px] pb-[62px] ${zIndex.fab}`}
       aria-hidden="true"
     >
       <div className="grid grid-cols-3 gap-[40px]">
