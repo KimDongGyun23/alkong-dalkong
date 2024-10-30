@@ -22,7 +22,7 @@ export const Profile = ({ onClickProfile, name, ...styleProps }: ProfileProps) =
   const router = useRouter()
   const { bgColor, textColor = 'text-gray-6', size = 'md' } = styleProps
 
-  const displayName = name ? name.slice(-2) : loginUsername.slice(-2)
+  const displayName = name ? name?.slice(-2) : loginUsername?.slice(-2)
 
   const handleClickProfile: MouseEventHandler<HTMLButtonElement> = () => {
     if (onClickProfile) onClickProfile()
