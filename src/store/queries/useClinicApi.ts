@@ -7,12 +7,16 @@ import {
   editClinicInfo,
 } from '@/store/queries/apis/clinicApi'
 import type { ClinicCalendarRequest, ScheduleType } from '@/types'
+import { getUserDataToLocalStorage } from '@/utility/utils'
 
 export const clinicQueryKeys = {
-  all: ['clinic'] as const,
-  detail: (medicalId: string) => [...clinicQueryKeys.all, 'detail', medicalId] as const,
+  all: () => {
+    const { currentId } = getUserDataToLocalStorage()
+    return ['clinic', currentId] as const
+  },
+  detail: (medicalId: string) => [...clinicQueryKeys.all(), 'detail', medicalId] as const,
   calendar: (userId: string, localDate: string) =>
-    [...clinicQueryKeys.all, 'calendar', userId, localDate] as const,
+    [...clinicQueryKeys.all(), 'calendar', userId, localDate] as const,
 }
 
 export const useClinicCalendar = ({ userId, localDate }: ClinicCalendarRequest) =>

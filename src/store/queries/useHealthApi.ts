@@ -1,12 +1,16 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
 import type { HealthPageRequest } from '@/types'
+import { getUserDataToLocalStorage } from '@/utility/utils'
 
 import { healthPage, todayWeight } from './apis'
 
 export const healthQueryKeys = {
-  all: ['health'] as const,
-  home: (userId: string, period: string) => [...healthQueryKeys.all, userId, period] as const,
+  all: () => {
+    const { currentId } = getUserDataToLocalStorage()
+    return ['health', currentId] as const
+  },
+  home: (userId: string, period: string) => [...healthQueryKeys.all(), userId, period] as const,
 }
 
 export const useHealthPage = ({ userId, period }: HealthPageRequest) =>
@@ -20,6 +24,6 @@ export const useTodayWeight = () => {
 
   return useMutation({
     mutationFn: todayWeight,
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: healthQueryKeys.all }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: healthQueryKeys.all() }),
   })
 }

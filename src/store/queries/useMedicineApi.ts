@@ -18,14 +18,18 @@ import {
   convertDayArrayToString,
   formatDateWithType,
   getMedicineUnitInKorean,
+  getUserDataToLocalStorage,
 } from '@/utility/utils'
 
 export const medicineQueryKeys = {
-  all: ['medicine'] as const,
-  info: (userId: string) => [...medicineQueryKeys.all, 'info', userId] as const,
-  detail: (userId: string) => [...medicineQueryKeys.all, 'detail', userId] as const,
+  all: () => {
+    const { currentId } = getUserDataToLocalStorage()
+    return ['medicine', currentId] as const
+  },
+  info: (userId: string) => [...medicineQueryKeys.all(), 'info', userId] as const,
+  detail: (userId: string) => [...medicineQueryKeys.all(), 'detail', userId] as const,
   edit: (userId: string, medicineId: string) =>
-    [...medicineQueryKeys.all, 'edit', userId, medicineId] as const,
+    [...medicineQueryKeys.all(), 'edit', userId, medicineId] as const,
 }
 
 export const useMedicineInfo = () => {
@@ -103,7 +107,7 @@ export const useCreateMedicineInfo = () => {
   return useMutation({
     mutationFn: (request: CreateMedicineRequest) => createMedicineInfo(userId, request),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: medicineQueryKeys.all })
+      queryClient.invalidateQueries({ queryKey: medicineQueryKeys.all() })
       router.replace(`/medicine/${userId}/detail`)
     },
   })
@@ -126,7 +130,7 @@ export const useDeleteMedicine = () => {
 
   return useMutation({
     mutationFn: (medicineId: number) => deleteMedicine(userId, medicineId),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: medicineQueryKeys.all }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: medicineQueryKeys.all() }),
   })
 }
 
@@ -138,7 +142,7 @@ export const useEditMedicine = () => {
   return useMutation({
     mutationFn: (request: CreateMedicineRequest) => editMedicine(userId, medicineId, request),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: medicineQueryKeys.all })
+      queryClient.invalidateQueries({ queryKey: medicineQueryKeys.all() })
       router.replace(`/medicine/${userId}/detail`)
     },
   })
