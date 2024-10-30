@@ -15,11 +15,8 @@ const signInConfig = {
   withCredentials: true,
 }
 
-export const signIn = async (request: SignInRequest) => {
-  const res = await axios.post(`/user/login`, request, signInConfig)
-  const accessToken: string = res.headers['authorization']
-
-  return { ...res.data, accessToken }
+export const login = async (request: SignInRequest) => {
+  return await axios.post(`/user/login`, request, signInConfig)
 }
 
 export const reIssue = async () => {
