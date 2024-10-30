@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
-import { login } from '@/store/queries/apis'
+import { login, logOut } from '@/store/queries/apis'
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   pages: {
@@ -49,6 +49,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         session.user.accessToken = token.accessToken
       }
       return session
+    },
+  },
+  events: {
+    signOut(data) {
+      console.log(
+        'auth.ts events signout',
+        'session' in data && data.session,
+        'token' in data && data.token,
+      )
+      logOut()
+      if ('session' in data) data.session = null
+      if ('token' in data) data.token = null
     },
   },
 })

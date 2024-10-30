@@ -1,6 +1,7 @@
 'use client'
 import type { PropsWithChildren } from 'react'
-import { useRouter } from 'next/navigation'
+import { signOut } from 'next-auth/react'
+import { useQueryClient } from '@tanstack/react-query'
 
 import {
   AccountBottomSheet,
@@ -10,8 +11,8 @@ import {
 } from '@/components/domain'
 import { Profile, SubHeader } from '@/components/view'
 import { useToggle } from '@/hooks'
-import { useDeleteMembership, useSignOut } from '@/store/queries'
-import { getUserDataToLocalStorage } from '@/utility/utils'
+import { useDeleteMembership } from '@/store/queries'
+import { clearLocalStorage, getUserDataToLocalStorage } from '@/utility/utils'
 
 const ButtonGroup = ({ children }: PropsWithChildren) => {
   return (
@@ -22,7 +23,7 @@ const ButtonGroup = ({ children }: PropsWithChildren) => {
 }
 
 export const MypageClientPage = () => {
-  const router = useRouter()
+  const queryClient = useQueryClient()
   const { loginUsername } = getUserDataToLocalStorage()
 
   const [accountSheet, toggleAccountSheet] = useToggle()
@@ -31,15 +32,15 @@ export const MypageClientPage = () => {
   const [familySettingSheet, toggleFamilySettingSheet] = useToggle()
 
   const { mutate: deleteMembershipMutation } = useDeleteMembership()
-  const { mutate: logoutMutation } = useSignOut()
 
   const handleDeleteMembership = () => {
     deleteMembershipMutation()
   }
 
   const handleLogout = () => {
-    logoutMutation()
-    router.push('/sign-in')
+    queryClient.resetQueries()
+    clearLocalStorage()
+    signOut({ callbackUrl: '/sign-in' })
   }
 
   return (

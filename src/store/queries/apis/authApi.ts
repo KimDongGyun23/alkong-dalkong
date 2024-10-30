@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 import type { SignInRequest, SignUpRequest } from '@/types'
-import { clearLocalStorage } from '@/utility/utils'
 
 import { api } from '.'
 
@@ -31,8 +30,7 @@ export const signUp = async (request: SignUpRequest) => {
   return await axios.post(`${BASE_URL}/user/signup`, request)
 }
 
-export const signOut = async () => {
-  clearLocalStorage()
+export const logOut = async () => {
   return await api.post('/user/logout')
 }
 

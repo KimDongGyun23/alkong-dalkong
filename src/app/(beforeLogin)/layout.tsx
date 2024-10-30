@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react'
 import { redirect } from 'next/navigation'
 
-import { auth } from '../auth'
+import { auth } from '../../auth'
 
 export default async function Layout({ children }: PropsWithChildren) {
   const session = await auth()

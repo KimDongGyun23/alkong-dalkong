@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-import { auth } from '@/app/auth'
+import { auth } from '@/auth'
 
 export async function middleware() {
   const rediretUrl =
