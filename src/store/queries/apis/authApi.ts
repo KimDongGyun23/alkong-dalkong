@@ -1,3 +1,4 @@
+import type { AxiosRequestConfig } from 'axios'
 import axios from 'axios'
 
 import type { SignInRequest, SignUpRequest } from '@/types'
@@ -18,8 +19,9 @@ export const login = async (request: SignInRequest) => {
   return await axios.post(`/user/login`, request, signInConfig)
 }
 
-export const reIssue = async () => {
-  return await axios.post(`${BASE_URL}/user/reissue`)
+export const reIssue = async (config: AxiosRequestConfig) => {
+  console.log(config)
+  return await axios.post(`${BASE_URL}/user/reissue`, {}, config)
 }
 
 export const checkDuplicateId = async (request: { id: string }) => {

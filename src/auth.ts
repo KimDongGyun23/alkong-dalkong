@@ -1,3 +1,4 @@
+import { cookies } from 'next/headers'
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
@@ -22,21 +23,25 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
 
         const accessToken = authResponse.headers['authorization']
+        const refreshToken = authResponse.headers['refresh']
         const user = await authResponse.data
+        cookies().set('refresh', refreshToken)
 
-        return { ...user, accessToken }
+        return { ...user, accessToken, refreshToken }
       },
     }),
   ],
   callbacks: {
     async jwt({ user, token }) {
       if (user) {
+        console.log('user exist')
         return {
           ...token,
           userId: user.userId,
           name: user.name,
           familyCode: user.familyCode,
           accessToken: user.accessToken,
+          refreshToken: user.refreshToken,
         }
       }
       return token
@@ -47,6 +52,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         session.user.name = token.name as string
         session.user.familyCode = token.familyCode as string
         session.user.accessToken = token.accessToken
+        session.user.refreshToken = token.refreshToken
       }
       return session
     },

@@ -1,3 +1,4 @@
+import { getCookies } from 'next-client-cookies/server'
 import axios, {
   type AxiosError,
   type AxiosInstance,
@@ -12,6 +13,7 @@ import { reIssue } from './authApi'
 export class HttpClient {
   private readonly client: AxiosInstance
   private accessToken: string | null = null
+  private refreshToken: string | null = null
 
   constructor(config?: AxiosRequestConfig) {
     this.client = axios.create(config)
@@ -26,6 +28,10 @@ export class HttpClient {
 
   setAccessToken(token: string) {
     this.accessToken = token
+  }
+
+  setRefreshTokenHeader(token: string) {
+    this.refreshToken = token
   }
 
   get<T>(...args: Parameters<typeof this.client.get>) {
@@ -53,6 +59,11 @@ export class HttpClient {
       config.headers.Authorization = this.accessToken
     }
 
+    // if (this.refreshToken) {
+    //   console.log(this.accessToken)
+    //   config.headers.Cookie = `refresh=${this.refreshToken}`
+    // }
+
     return config
   }
 
@@ -66,7 +77,20 @@ export class HttpClient {
     if (isAxiosError(error)) {
       if (response?.status === 401 || response?.status === 403) {
         try {
-          const reIssueResponse = await reIssue()
+          if (typeof window === 'undefined') {
+            const cookies = await getCookies()
+            this.refreshToken = cookies.get('refresh') || null
+          } else {
+            this.refreshToken = this.getClientCookies('refresh')
+          }
+
+          const config = {
+            headers: {
+              Cookie: `Refresh=${this.refreshToken}`,
+            },
+          }
+
+          const reIssueResponse = await reIssue(config)
 
           const newAccessToken = reIssueResponse.headers['authorization']
           this.setAccessToken(newAccessToken)
@@ -84,5 +108,17 @@ export class HttpClient {
     }
 
     return Promise.reject(error)
+  }
+
+  private getClientCookies(name: string): string | null {
+    const cookies = document.cookie
+      .split('; ')
+      .reduce((prev: Record<string, string>, current: string) => {
+        const [key, value] = current.split('=')
+        prev[key] = decodeURIComponent(value)
+        return prev
+      }, {})
+
+    return cookies[name] || null
   }
 }

@@ -50,7 +50,6 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/parser", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:7.18.0"],\
           ["axios", "npm:1.7.3"],\
           ["chromatic", "virtual:5d465395bb03a03c7d96f250a093d8f2b099df57e070be0305879a487f5de630b55d47d8bbc6b98f328c23aabfbe10a520ed00dc95b67d32f3d8977214ff7b08#npm:11.7.0"],\
-          ["cookie", "npm:1.0.1"],\
           ["dayjs", "npm:1.11.13"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:14.2.4"],\
@@ -69,6 +68,7 @@ const RAW_RUNTIME_STATE =
           ["little-state-machine", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:4.8.0"],\
           ["next", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:14.2.4"],\
           ["next-auth", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:5.0.0-beta.25"],\
+          ["next-client-cookies", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:2.0.0"],\
           ["next-pwa", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:5.6.0"],\
           ["postcss", "npm:8.4.41"],\
           ["prettier", "npm:3.3.3"],\
@@ -8402,13 +8402,6 @@ const RAW_RUNTIME_STATE =
           ["cookie", "npm:0.7.1"]\
         ],\
         "linkType": "HARD"\
-      }],\
-      ["npm:1.0.1", {\
-        "packageLocation": "./.yarn/cache/cookie-npm-1.0.1-833b8795e1-80afdcad7f.zip/node_modules/cookie/",\
-        "packageDependencies": [\
-          ["cookie", "npm:1.0.1"]\
-        ],\
-        "linkType": "HARD"\
       }]\
     ]],\
     ["cookie-signature", [\
@@ -13471,7 +13464,6 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/parser", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:7.18.0"],\
           ["axios", "npm:1.7.3"],\
           ["chromatic", "virtual:5d465395bb03a03c7d96f250a093d8f2b099df57e070be0305879a487f5de630b55d47d8bbc6b98f328c23aabfbe10a520ed00dc95b67d32f3d8977214ff7b08#npm:11.7.0"],\
-          ["cookie", "npm:1.0.1"],\
           ["dayjs", "npm:1.11.13"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:14.2.4"],\
@@ -13490,6 +13482,7 @@ const RAW_RUNTIME_STATE =
           ["little-state-machine", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:4.8.0"],\
           ["next", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:14.2.4"],\
           ["next-auth", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:5.0.0-beta.25"],\
+          ["next-client-cookies", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:2.0.0"],\
           ["next-pwa", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:5.6.0"],\
           ["postcss", "npm:8.4.41"],\
           ["prettier", "npm:3.3.3"],\
@@ -13694,6 +13687,33 @@ const RAW_RUNTIME_STATE =
           "@types/simplewebauthn__server",\
           "next",\
           "nodemailer",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["next-client-cookies", [\
+      ["npm:2.0.0", {\
+        "packageLocation": "./.yarn/cache/next-client-cookies-npm-2.0.0-1ffd8e870e-de4a49dad7.zip/node_modules/next-client-cookies/",\
+        "packageDependencies": [\
+          ["next-client-cookies", "npm:2.0.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:2.0.0", {\
+        "packageLocation": "./.yarn/__virtual__/next-client-cookies-virtual-c6e9431201/0/cache/next-client-cookies-npm-2.0.0-1ffd8e870e-de4a49dad7.zip/node_modules/next-client-cookies/",\
+        "packageDependencies": [\
+          ["next-client-cookies", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:2.0.0"],\
+          ["@types/next", null],\
+          ["@types/react", "npm:18.3.3"],\
+          ["js-cookie", "npm:3.0.5"],\
+          ["next", "virtual:ddccc941eb8b35cd4b898a64351d8bba4ecc85eb47e8f1b36dce7852d6c3635665e0fc5464861f723d175edb2248ce0fa54dfefb9b5e4d2fdaef4b2353c4aa82#npm:14.2.4"],\
+          ["react", "npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/next",\
+          "@types/react",\
+          "next",\
           "react"\
         ],\
         "linkType": "HARD"\

@@ -10,6 +10,7 @@ declare module 'next-auth' {
       familyCode: string
       name: string
       accessToken: string
+      refreshToken: string
     } & DefaultSession['user']
   }
 
@@ -19,5 +20,6 @@ declare module 'next-auth' {
     familyCode: string
     name: string
     accessToken: string
+    refreshToken: string
   }
 }

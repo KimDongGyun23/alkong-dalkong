@@ -25,7 +25,7 @@ export const HealthClientPage = () => {
 
   useEffect(() => {
     if (healthData?.data) {
-      const serverWeight = healthData.data.weight.weight.toString()
+      const serverWeight = healthData.data.weight?.weight?.toString()
       console.log(serverWeight)
       setInitialWeight(serverWeight)
     }
@@ -52,7 +52,11 @@ export const HealthClientPage = () => {
             readOnly
             className="subtitle-M grow rounded-xl bg-mint-0 px-6 py-[14px] focus:outline-none"
             size={5}
-            value={`${healthData.data.weight.weight}kg`}
+            value={
+              healthData.data?.weight
+                ? `${healthData.data.weight?.weight}kg`
+                : '아직 기록이 없어요.'
+            }
             placeholder="아직 기록이 없어요."
           />
           <Button width="w-[100px]" primary onClick={toggleWeightSheet}>
